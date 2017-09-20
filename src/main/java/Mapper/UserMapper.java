@@ -44,14 +44,14 @@ public class UserMapper {
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.users ("
                 + "username, password, balance, email)"
-                + "VALUES ("
-                + name + ", "
-                + password + ", "
-                + balance + ", "
-                + email + ");";
+                + "VALUES (?, ?, ?, ?);";
         PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
         try {
             conn.setAutoCommit(false);
+            recipePstmt.setString(1, name);
+            recipePstmt.setString(2, password);
+            recipePstmt.setDouble(3, balance);
+            recipePstmt.setString(4, email);
             recipePstmt.executeUpdate();
             conn.commit();
         } catch (SQLException ex) {
@@ -69,7 +69,10 @@ public class UserMapper {
         User myuser = new UserMapper().getUserByID(1);
         System.out.println(myuser);
         
-        new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
+        //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
+        
+        User myuser2 = new UserMapper().getUserByID(2);
+        System.out.println(myuser2);
         
     }
     
