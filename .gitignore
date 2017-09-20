@@ -13,3 +13,4 @@
 # Windows Installer files*.cab*.msi*.msm*.msp
 # Windows shortcuts*.lnk
 # End of https://www.gitignore.io/api/macos,maven,windows,netbeans
+/target/
