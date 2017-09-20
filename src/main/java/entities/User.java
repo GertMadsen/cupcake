@@ -14,10 +14,11 @@ public class User {
     int user_id;
     String name;
     String password;
-    String email;
     double balance;
+    String email;
+    
 
-    public User(int user_id, String name, String password, String email, double balance) {
+    public User(int user_id, String name, String password, double balance, String email) {
         this.user_id = user_id;
         this.name = name;
         this.password = password;
@@ -67,8 +68,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", email=" + email + ", balance=" + balance + '}';
+        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + '}';
     }
+
+    
     
     
     

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,9 +35,33 @@ public class UserMapper {
             balance = rs.getDouble("balance");
             email = rs.getString("email");
         }
-        output = new User(userID, userName, password, email, balance);
+        output = new User(userID, userName, password, balance, email);
         
         return output;
+    }
+    
+    public void putUser(String name, String password, double balance, String email) throws SQLException {
+        Connection conn = Connector.getConnection();
+        String insertUser = "INSERT INTO cupcake.users ("
+                + "username, password, balance, email)"
+                + "VALUES ("
+                + name + ", "
+                + password + ", "
+                + balance + ", "
+                + email + ");";
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        
     }
     
     public static void main(String[] args) throws SQLException {
@@ -44,5 +69,34 @@ public class UserMapper {
         User myuser = new UserMapper().getUserByID(1);
         System.out.println(myuser);
         
+        new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
+        
     }
+    
+    
+    /*
+    public void putUser(User user) throws SQLException {
+        User userToFile = null;
+        Connection conn = Connector.getConnection();
+        String insertUser = "INSERT INTO cupcake.users ("
+                + "username, password, balance, email)"
+                + "VALUES (?, ?, ?, ?);";
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
+        try {
+        conn.setAutoCommit(false);
+        recipePstmt.setString(1, user.getName());
+        recipePstmt.setString(2, user.getPassword());
+        recipePstmt.setDouble(3, user.getBalance());
+        recipePstmt.setString(4, user.getEmail());
+        recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+    }
+    */
 }
