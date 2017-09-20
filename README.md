@@ -1,4 +1,4 @@
-# cupcake opgave
+# Cupcake opgave
 
 # Chess gruppe
 
