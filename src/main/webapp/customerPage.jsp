@@ -68,9 +68,21 @@
                     "<input type="+
                     "\""+ "hidden"+"\""+
                     " name= " +
-                    "\""+"login"+"\""+
+                    "\""+"user"+"\""+
                     " value=" +
-                    "\""+ "true"+"\""+                                
+                    "\""+ 
+                    user.getUser_id() +
+                    "\""+                                
+                    ">"    +   
+                            
+                    "<input type="+
+                    "\""+ "hidden"+"\""+
+                    " name= " +
+                    "\""+"order"+"\""+
+                    " value=" +
+                    "\""+ 
+                    o.getOrder_id()+
+                    "\""+                                
                     ">"    +           
                             
                     " <input type=" +
