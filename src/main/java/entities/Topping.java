@@ -15,10 +15,10 @@ public class Topping {
     String name;
     double price;
 
-    public Topping(int id, String name, double price) {
+    public Topping(int id) {
         this.id = id;
-        this.name = name;
-        this.price = price;
+        //this.name = name;
+        //this.price = price;
     }
 
     public int getId() {
@@ -43,6 +43,11 @@ public class Topping {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Topping{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
     

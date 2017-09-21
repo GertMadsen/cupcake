@@ -16,10 +16,10 @@ public class Bottom {
     double price;
     
     
-    public Bottom (int id, String name, double price){
+    public Bottom (int id){
         this.id = id;
-        this.name = name;
-        this.price = price;     
+        //this.name = name;
+        //this.price = price;     
     }
 
     public void setId(int id) {
@@ -44,6 +44,11 @@ public class Bottom {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Bottom{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
     
