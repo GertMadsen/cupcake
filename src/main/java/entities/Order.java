@@ -15,8 +15,21 @@ public class Order {
 
     int order_id;
     User user;
+    String date;
     List<Orderline> orderlines;
+    int total_price;
+    
 
+    public Order(int order_id, User user, String date) {
+        this.order_id = order_id;
+        this.user = user;
+        this.date = date;
+        this.orderlines = orderlines;
+        this.total_price = total_price;
+
+    }
+
+    /*
     public Order(int order_id, User user, List orderlines, int total_price) {
         this.order_id = order_id;
         this.user = user;
@@ -24,38 +37,48 @@ public class Order {
         this.total_price = total_price;
 
     }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setOrderlines(List<Orderline> orderlines) {
-        this.orderlines = orderlines;
-    }
-
-    public void setTotal_price(int total_price) {
-        this.total_price = total_price;
-    }
+    */
 
     public int getOrder_id() {
         return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
     public User getUser() {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public List<Orderline> getOrderlines() {
         return orderlines;
+    }
+
+    public void setOrderlines(List<Orderline> orderlines) {
+        this.orderlines = orderlines;
     }
 
     public int getTotal_price() {
         return total_price;
     }
-    int total_price;
+
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
+    }
+    
+    
 
 }
