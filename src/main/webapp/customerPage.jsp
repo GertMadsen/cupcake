@@ -57,11 +57,12 @@
                 String output = "";
                 output = output+"<p>";
                 for (Order o: orderList) {
-                    out.println( "<a href =" + "invoicePage.jsp" +
-                            "?value="+ o +
+                    out.println( "<a href =" + "ShowEachOrder.java" +
+                            "?value="+ o.getOrder_id() +
                             "> " + o.getDate() + " " + o.getOrder_id() + "</a>"
                             + "<br>");
-                }
+                    }
+                    
                             
             %>
         </div>
