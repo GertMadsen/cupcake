@@ -57,14 +57,20 @@
                 String output = "";
                 output = output+"<p>";
                 for (Order o: orderList) {
-                    out.println( "<a href =" + "ShowEachOrder.java" +
+                    /*
+                    out.println( "<a href =" + "ShowEachOrder" +
                             "?value="+ o.getOrder_id() +
                             "> " + o.getDate() + " " + o.getOrder_id() + "</a>"
                             + "<br>");
                     }
-                    
-                            
+                            */
+                    out.println("hello");
+                }
             %>
+            <form action="ShowEachOrder" method="POST">  
+                   <input type="submit" name="submit" value="showorder">
+            </form>
+             
         </div>
         
         
