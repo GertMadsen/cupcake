@@ -60,8 +60,8 @@
             double balance = user.getBalance();
         %>
         <div class='brugerP'>
-            Hello <%=username%> - your balance is : <%=balance%>
-        </div>
+            Hello <b><%=username%></b> - your balance is : <b><%=balance%></b>
+        </div><br>
 
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
