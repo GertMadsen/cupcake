@@ -130,8 +130,8 @@
             <br>
             
             <div class="invoice">
-                <form method="get" action="invoice.jsp">
-                    <button type="submit">to to invoice</button>
+                <form method="get" action="customerPage.jsp">
+                    <button type="submit">to to customerPage</button>
                 </form>
             </div>
             
