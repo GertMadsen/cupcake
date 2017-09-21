@@ -25,63 +25,70 @@ public class OrderMapper {
     
     public List<Order> getOrdersByUserId(User user) throws SQLException {
         List<Order> output = new ArrayList<Order>();
-        Order order = null;
-        String sql = "SELECT order_id, date, users_user_id "
-                + "FROM cupcake.orders where users_user_id =" + 
-                user.getUser_id();
-        PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        
-        int orderId = 0;
-        String date = "";
-        while (rs.next()) {
-            orderId = rs.getInt("order_id");
-            date = rs.getString("date");
-            order = new Order(orderId, user, date);
-            order.setOrderlines(this.getOrderlinesByOrderId(order));
-            output.add(order);
+        try{
+            Order order = null;
+            String sql = "SELECT order_id, date, users_user_id "
+                    + "FROM cupcake.orders where users_user_id =" + 
+                    user.getUser_id();
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            int orderId = 0;
+            String date = "";
+            while (rs.next()) {
+                orderId = rs.getInt("order_id");
+                date = rs.getString("date");
+                order = new Order(orderId, user, date);
+                order.setOrderlines(this.getOrderlinesByOrderId(order));
+                output.add(order);
+            }
+        }catch (Exception e) {
+            return null;
         }
         return output;
     }
     
     public List<Orderline> getOrderlinesByOrderId(Order order) throws SQLException {
         List<Orderline> output = new ArrayList<Orderline>();
-        CupcakeMapper cm = new CupcakeMapper();
-        
-        Orderline oLine = null;
-        String sql = "SELECT "
-                + "orderline_id, "
-                + "bottoms_bottom_id, "
-                + "toppings_topping_id, "
-                +"price, "
-                + "quantity "
-                + "FROM cupcake.vieworderlinedetails where orders_order_id = " + 
-                order.getOrder_id();
-        PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        
-        int orderlineId = 0;
-        int bottomId = 0;
-        int toppingId = 0;
-        double price = 0;
-        int quantity = 0;
-        while (rs.next()) {
-            orderlineId = rs.getInt("orderline_id");
-            bottomId = rs.getInt("bottoms_bottom_id");
-            toppingId = rs.getInt("toppings_topping_id");
-            price = rs.getDouble("price");
-            quantity = rs.getInt("quantity");
-            
-            Bottom bot = new Bottom(bottomId);
-            bot = cm.getBottomByBottomId(bot);
-            
-            Topping top = new Topping(toppingId);
-            top = cm.getToppingByToppingId(top);
-            
-            oLine = new Orderline(orderlineId, bot, top, quantity, price);
-            output.add(oLine);
-        }        
-        
+        try{
+            CupcakeMapper cm = new CupcakeMapper();
+
+            Orderline oLine = null;
+            String sql = "SELECT "
+                    + "orderline_id, "
+                    + "bottoms_bottom_id, "
+                    + "toppings_topping_id, "
+                    +"price, "
+                    + "quantity "
+                    + "FROM cupcake.vieworderlinedetails where orders_order_id = " + 
+                    order.getOrder_id();
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            int orderlineId = 0;
+            int bottomId = 0;
+            int toppingId = 0;
+            double price = 0;
+            int quantity = 0;
+            while (rs.next()) {
+                orderlineId = rs.getInt("orderline_id");
+                bottomId = rs.getInt("bottoms_bottom_id");
+                toppingId = rs.getInt("toppings_topping_id");
+                price = rs.getDouble("price");
+                quantity = rs.getInt("quantity");
+
+                Bottom bot = new Bottom(bottomId);
+                bot = cm.getBottomByBottomId(bot);
+
+                Topping top = new Topping(toppingId);
+                top = cm.getToppingByToppingId(top);
+
+                oLine = new Orderline(orderlineId, bot, top, quantity, price);
+                output.add(oLine);
+            }        
+        }catch (Exception e) {
+            return null;
+        }
         return output;
     }
     
