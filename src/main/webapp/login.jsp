@@ -12,7 +12,7 @@
         <title>CUPCAKE4LIFE</title>
     </head>
     <body>
-        <h1>HELLO CUPCAKE LOVERS!!!</h1>
+        <h1>User login:</h1>
 
         <form action="CheckLogin" method="POST">  
             <b>Username:</b><br>

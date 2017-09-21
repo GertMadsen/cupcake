@@ -37,10 +37,11 @@ public class CheckLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
         UserMapper um = new UserMapper();
         CupcakeMapper cm = new CupcakeMapper();
+        
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         
         User loggedInUser = um.getUserByName(username);
         ArrayList<Topping> toppingList = (ArrayList)(cm.getListOfTops());

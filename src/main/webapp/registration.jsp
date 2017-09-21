@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello cupcake monsters!</h1>
+        <h1>Register new user:</h1>
 
         <form action="AddUserServlet">       
             <b>Username:</b><br>
