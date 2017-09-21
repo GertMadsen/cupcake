@@ -32,6 +32,8 @@ public class ShowEachOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String carryInfo = request.getParameter("submit");
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -41,6 +43,12 @@ public class ShowEachOrder extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ShowEachOrder at " + request.getContextPath() + "</h1>");
+            out.println("<p>");
+            out.println("hello: ");
+            out.println("</p>");
+            out.println("<p>");
+            out.println(carryInfo);
+            out.println("</p>");
             out.println("</body>");
             out.println("</html>");
         }
