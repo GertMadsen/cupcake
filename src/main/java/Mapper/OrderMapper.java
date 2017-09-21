@@ -38,53 +38,15 @@ public class OrderMapper {
             orderId = rs.getInt("order_id");
             date = rs.getString("date");
             order = new Order(orderId, user, date);
+            order.setOrderlines(this.getOrderlinesByOrderId(order));
             output.add(order);
         }
         return output;
     }
     
-    public Topping getToppingByToppingId(Topping topping) throws SQLException {
-        Topping output = topping;
-        String sql = "SELECT name, price "
-                + "FROM cupcake.toppings where topping_id =" + 
-                topping.getId();
-        PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        
-        String name = "";
-        double price = 0;
-        while (rs.next()) {
-            name = rs.getString("name");
-            price = rs.getDouble("price");
-        }
-        output.setName(name);
-        output.setPrice(price);
-        
-        return output;
-    }
-    
-    public Bottom getBottomByBottomId(Bottom bottom) throws SQLException {
-        Bottom output = bottom;
-        String sql = "SELECT name, price "
-                + "FROM cupcake.bottoms where bottom_id =" + 
-                bottom.getId();
-        PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        
-        String name = "";
-        double price = 0;
-        while (rs.next()) {
-            name = rs.getString("name");
-            price = rs.getDouble("price");
-        }
-        output.setName(name);
-        output.setPrice(price);
-        
-        return output;
-    }
-    
     public List<Orderline> getOrderlinesByOrderId(Order order) throws SQLException {
         List<Orderline> output = new ArrayList<Orderline>();
+        CupcakeMapper cm = new CupcakeMapper();
         
         Orderline oLine = null;
         String sql = "SELECT "
@@ -109,8 +71,13 @@ public class OrderMapper {
             toppingId = rs.getInt("toppings_topping_id");
             price = rs.getDouble("price");
             quantity = rs.getInt("quantity");
+            
             Bottom bot = new Bottom(bottomId);
+            bot = cm.getBottomByBottomId(bot);
+            
             Topping top = new Topping(toppingId);
+            top = cm.getToppingByToppingId(top);
+            
             oLine = new Orderline(orderlineId, bot, top, quantity, price);
             output.add(oLine);
         }        
@@ -126,14 +93,8 @@ public class OrderMapper {
         
         //System.out.println(myuser);
         
-        Topping top = new Topping(1);
-        Bottom bot = new Bottom(2);
-        top = new OrderMapper().getToppingByToppingId(top);
-        bot = new OrderMapper().getBottomByBottomId(bot);
-        System.out.println(top);
-        System.out.println(bot);
         
-        /*
+        
         List<Order> myorder = new OrderMapper().getOrdersByUserId(myuser);
         System.out.println(myorder);
         
@@ -143,7 +104,7 @@ public class OrderMapper {
             System.out.println("next orderline list");
             System.out.println(myLine);
         }
-        */
+        
         
         /*
         //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");

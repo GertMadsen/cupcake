@@ -24,25 +24,28 @@ public class UserMapper {
     
     public User getUserByName(String name) throws SQLException {
         User output = null;
-        String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username=" + name;
-        PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        
-        int userID = 0;
-        String userName = "";
-        String password = "";
-        double balance = 0;
-        String email = "";
-        while (rs.next()) {
-            userID = rs.getInt("user_id");
-            userName = name; //rs.getString("username");
-            password = rs.getString("password");
-            balance = rs.getDouble("balance");
-            email = rs.getString("email");
+        try {
+            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username=" + name;
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            int userID = 0;
+            String userName = "";
+            String password = "";
+            double balance = 0;
+            String email = "";
+            while (rs.next()) {
+                userID = rs.getInt("user_id");
+                userName = name; //rs.getString("username");
+                password = rs.getString("password");
+                balance = rs.getDouble("balance");
+                email = rs.getString("email");
+            }
+            output = new User(userName, password, balance, email);
+            output.setUser_id(userID);
+        }catch (SQLException ex) {
+            return null;
         }
-        output = new User(userName, password, balance, email);
-        output.setUser_id(userID);
-        
         return output;
     } 
     
@@ -102,13 +105,16 @@ public class UserMapper {
     
     public static void main(String[] args) throws SQLException {
     
-        User myuser = new UserMapper().getUserByID(1);
+        //User myuser = new UserMapper().getUserByID(1);
+        //System.out.println(myuser);
+        
+        User myuser = new UserMapper().getUserByName("Henrik");
         System.out.println(myuser);
         
         //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
         
-        User myuser2 = new UserMapper().getUserByID(2);
-        System.out.println(myuser2);
+        //User myuser2 = new UserMapper().getUserByID(2);
+        //System.out.println(myuser2);
         
     }
     
