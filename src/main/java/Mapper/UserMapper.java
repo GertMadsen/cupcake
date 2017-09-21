@@ -69,7 +69,8 @@ public class UserMapper {
         return output;
     }
     
-    public void putUser(User user) throws SQLException {
+    public int putUser(User user) throws SQLException {
+        int output = 0;
         String name = user.getName();
         String password = user.getPassword();
         double balance = user.getBalance();
@@ -79,14 +80,14 @@ public class UserMapper {
         String insertUser = "INSERT INTO cupcake.users ("
                 + "username, password, balance, email)"
                 + "VALUES (?, ?, ?, ?);";
-        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser, Statement.RETURN_GENERATED_KEYS);
         try {
             conn.setAutoCommit(false);
             recipePstmt.setString(1, name);
             recipePstmt.setString(2, password);
             recipePstmt.setDouble(3, balance);
             recipePstmt.setString(4, email);
-            recipePstmt.executeUpdate();
+            output = recipePstmt.executeUpdate();
             conn.commit();
         } catch (SQLException ex) {
             if (conn != null) {
@@ -95,6 +96,7 @@ public class UserMapper {
         } finally {
             conn.setAutoCommit(true);
         }
+        return output;
         
     }
     
