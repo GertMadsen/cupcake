@@ -40,10 +40,11 @@ public class CheckLogin extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserMapper um = new UserMapper();
-        CupcakeMapper cm = new CupcakeMappe();
+        CupcakeMapper cm = new CupcakeMapper();
         
         User loggedInUser = um.getUserByName(username);
-        ArrayList<Topping> topList = (ArrayList)(cm.getListOfTops());
+        ArrayList<Topping> toppingList = (ArrayList)(cm.getListOfTops());
+        ArrayList<Bottom> bottomList = (ArrayList)(cm.getListOfBots());
                 
                 
         if (loggedInUser == null) {
@@ -56,6 +57,8 @@ public class CheckLogin extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", loggedInUser);
+            session.setAttribute("toppingList", toppingList);
+            session.setAttribute("bottomList", bottomList);
             
             request.getRequestDispatcher("shopCart.jsp")
                     .forward(request, response);
