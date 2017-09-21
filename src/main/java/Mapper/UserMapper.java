@@ -111,8 +111,8 @@ public class UserMapper {
         //User myuser = new UserMapper().getUserByID(1);
         //System.out.println(myuser);
         
-        User myuser = new UserMapper().getUserByName("Jens Hansen");
-        System.out.println(myuser);
+//        User myuser = new UserMapper().getUserByName("Jens Hansen");
+//        System.out.println(myuser);
      
         //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
         

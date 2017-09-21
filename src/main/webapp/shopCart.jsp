@@ -4,6 +4,7 @@
     Author     : Strom
 --%>
 
+<%@page import="entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +39,13 @@
     <body>
         <h1>Welcome to the Cupcake shop</h1>
         
+        <%        
+        User user = (User)(session.getAttribute("user"));
+        String username = user.getName();
+        double balance = user.getBalance();
+        %>
         
+        Hello <%=username%> - your balance is : <%=balance%>
         
         
         <div class ="CShop">

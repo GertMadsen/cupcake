@@ -6,7 +6,7 @@
 package Servletter;
 
 import Mapper.*;
-import entities.User;
+import entities.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -40,8 +40,12 @@ public class CheckLogin extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserMapper um = new UserMapper();
+        CupcakeMapper cm = new CupcakeMappe();
+        
         User loggedInUser = um.getUserByName(username);
-
+        ArrayList<Topping> topList = (ArrayList)(cm.getListOfTops());
+                
+                
         if (loggedInUser == null) {
             request.getRequestDispatcher("login_error.jsp")
                     .forward(request, response);
@@ -52,7 +56,7 @@ public class CheckLogin extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", loggedInUser);
-
+            
             request.getRequestDispatcher("shopCart.jsp")
                     .forward(request, response);
         }

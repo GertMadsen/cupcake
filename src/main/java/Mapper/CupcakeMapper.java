@@ -21,7 +21,7 @@ import java.util.List;
 public class CupcakeMapper {
     
     
-    public List<Topping> getListOfTops() throws SQLException {
+    public List<Topping> getListOfTops()  {
         List<Topping> output = new ArrayList<Topping>();   
         try{
             String sql = "SELECT topping_id "
