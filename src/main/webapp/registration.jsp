@@ -13,8 +13,8 @@
     </head>
     <body>
         <h1>Hello cupcake monsters!</h1>
-        
-         <form action="AddUserServlet">       
+
+        <form action="AddUserServlet">       
             <b>Username:</b><br>
             <input type="text" name="username" value=""><br><br>
             <b>Password:</b><br>
@@ -23,12 +23,16 @@
             <input type="text" name="balance" value=""><br><br>
             <b>Email:</b><br>
             <input type="text" name="email" value=""><br><br>
-            
+
             <input type="submit" name="submit" value="Register">
         </form>
-        
-        
-        
-        
+        <br>
+
+        <form method="get" action="login.jsp">
+            <button type="submit">Go back to Login</button>
+        </form>
+
+
+
     </body>
 </html>
