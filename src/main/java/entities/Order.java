@@ -20,12 +20,12 @@ public class Order {
     int total_price;
     
 
-    public Order(int order_id, User user, String date) {
-        this.order_id = order_id;
+    public Order(User user) {
+        //this.order_id = order_id;
         this.user = user;
-        this.date = date;
-        this.orderlines = orderlines;
-        this.total_price = total_price;
+        //this.date = date;
+        //this.orderlines = orderlines;
+        //this.total_price = total_price;
 
     }
 

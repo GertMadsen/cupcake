@@ -16,8 +16,8 @@ public class Orderline {
     int quantity;
     double price;
 
-    public Orderline(int id, Bottom bottom, Topping topping, int quantity, double price) {
-        this.id = id;
+    public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
+        //this.id = id;
         this.bottom = bottom;
         this.topping = topping;
         this.quantity = quantity;
