@@ -55,11 +55,11 @@ public class Login_Registration extends HttpServlet {
             double totalPrice = 0;
             
             if (loggedInUser == null) {
-                request.getRequestDispatcher("login_error.jsp")
+                request.getRequestDispatcher("Errorpages/_error.jsp")
                         .forward(request, response);
 
             } else if (!loggedInUser.getPassword().equals(password)) {
-                request.getRequestDispatcher("login_error.jsp")
+                request.getRequestDispatcher("Errorpages/login_error.jsp")
                         .forward(request, response);
             } else {
                 HttpSession session = request.getSession();
@@ -78,7 +78,7 @@ public class Login_Registration extends HttpServlet {
         User testNameUser = um.getUserByName(username);
         
         if (testNameUser.getUser_id()!=0) {
-            request.getRequestDispatcher("error_user_exist.jsp")
+            request.getRequestDispatcher("Errorpages/error_user_exist.jsp")
                     .forward(request, response);
         } else {
             double balance = Double.parseDouble(request.getParameter("balance"));
@@ -88,11 +88,11 @@ public class Login_Registration extends HttpServlet {
 
             try {
                 um.putUser(newUser);
-                    request.getRequestDispatcher("register_completed.jsp")
+                    request.getRequestDispatcher("Subpages/register_completed.jsp")
                             .forward(request, response);
                 
             } catch (SQLException ex) {
-                request.getRequestDispatcher("error_not_registered.jsp")
+                request.getRequestDispatcher("Errorpages/error_not_registered.jsp")
                         .forward(request, response);
 
             }
