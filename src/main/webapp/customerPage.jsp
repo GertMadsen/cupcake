@@ -57,19 +57,50 @@
                 String output = "";
                 output = output+"<p>";
                 for (Order o: orderList) {
-                    /*
-                    out.println( "<a href =" + "ShowEachOrder" +
-                            "?value="+ o.getOrder_id() +
-                            "> " + o.getDate() + " " + o.getOrder_id() + "</a>"
-                            + "<br>");
-                    }
-                            */
-                    out.println("hello");
+                    
+                    out.println(
+                    "<form action="+
+                    "\""+ "ShowEachOrder"+"\""+
+                    " method="+
+                    "\""+ "POST"+"\""+
+                    ">" +
+                        
+                    "<input type="+
+                    "\""+ "hidden"+"\""+
+                    " name= " +
+                    "\""+"login"+"\""+
+                    " value=" +
+                    "\""+ "true"+"\""+                                
+                    ">"    +           
+                            
+                    " <input type=" +
+                    "\""+ "submit"+"\""+
+                    " name="+
+                    "\""+ "submit"+"\""+
+                    " value=" +
+                    "\""+ "Show Order"+"\""+
+                    ">" +
+                            
+                    "</form>"
+                    
+                    );
                 }
+                
+                    /*
+                    
+                    "<input type="+
+                    "\""+ "hidden"+"\""+
+                    " name= " +
+                    "\""+"login"+"\""+
+                    " value=" +
+                    "\""+ "true"+"\""+                                
+                    ">"    +   
+                */
             %>
-        <form action="ShowEachOrder" method="POST">  
+            <br>
             
-
+            
+        <form action="ShowEachOrder" method="POST">  
             <input type="submit" name="submit" value="Show Order">
         </form>
              
