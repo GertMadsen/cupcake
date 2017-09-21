@@ -55,7 +55,7 @@ public class Login_Registration extends HttpServlet {
             double totalPrice = 0;
             
             if (loggedInUser == null) {
-                request.getRequestDispatcher("login_error.jsp")
+                request.getRequestDispatcher("Errorpages/_error.jsp")
                         .forward(request, response);
 
             } else if (!loggedInUser.getPassword().equals(password)) {
@@ -88,7 +88,7 @@ public class Login_Registration extends HttpServlet {
 
             try {
                 um.putUser(newUser);
-                    request.getRequestDispatcher("register_completed.jsp")
+                    request.getRequestDispatcher("Subpages/register_completed.jsp")
                             .forward(request, response);
                 
             } catch (SQLException ex) {
