@@ -25,11 +25,22 @@
             input[type=text] {
                 width: 80%;
             }
-
+            .logout {
+               margin-left: 1200px;
+               margin-top: 350px; 
+            }
+                
+            
+            
         </style>
 
     </head>
     <body>
+        <h1>Welcome to the Cupcake shop</h1>
+        
+        
+        
+        
         <div class ="CShop">
             <form name="BottomSelect" action="" method="POST">
                 <div class="DD">
@@ -69,6 +80,12 @@
                     <input type="submit" name="submit" value="Add">
                 </div>
             </form>
+            
+            <div class="logout">
+            <form method="get" action="login.jsp">
+                <button type="submit">Logout</button>
+            </form>
+            </div>
 
         </div>
 
