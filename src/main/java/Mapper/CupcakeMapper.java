@@ -89,6 +89,30 @@ public class CupcakeMapper {
         return output;
     }
     
+        public Topping getToppingByToppingId(int id) {
+        Topping output = new Topping(id);
+        try {
+            String sql = "SELECT name, price "
+                    + "FROM cupcake.toppings where topping_id =" + 
+                    id;
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            String name = "";
+            double price = 0;
+            while (rs.next()) {
+                name = rs.getString("name");
+                price = rs.getDouble("price");
+            }
+            output.setName(name);
+            output.setPrice(price);
+        }catch (Exception e) {
+            return null;
+        }
+        return output;
+    }
+    
+    
     public Bottom getBottomByBottomId(Bottom bottom) {
         Bottom output = bottom;
         try{
@@ -111,6 +135,30 @@ public class CupcakeMapper {
         }
         return output;
     }
+    
+    public Bottom getBottomByBottomId(int id) {
+        Bottom output = new Bottom(id);
+        try{
+            String sql = "SELECT name, price "
+                    + "FROM cupcake.bottoms where bottom_id =" + 
+                    id;
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            String name = "";
+            double price = 0;
+            while (rs.next()) {
+                name = rs.getString("name");
+                price = rs.getDouble("price");
+            }
+            output.setName(name);
+            output.setPrice(price);
+        }catch (Exception e) {
+            return null;
+        }
+        return output;
+    }
+    
     
     public static void main(String[] args) {
         

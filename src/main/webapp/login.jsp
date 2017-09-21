@@ -29,11 +29,8 @@
             <button type="submit">Register new user</button>
         </form>
         
-        <br>
-        
-        <form method="get" action="index.html">
-            <button type="submit">Go to index</button>
-        </form>
+    
+
 
     </body>
 </html>

@@ -65,7 +65,7 @@
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
             ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
-            ArrayList<Orderline> orderline = new ArrayList();
+            ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
         %>
 
 
@@ -75,7 +75,7 @@
             <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
                 <div class="DD">
                     Bottom <br>
-                    <select name="mydropdown">
+                    <select name="bottom">
                         <% for (int b = 0; b < bottomList.size(); b++) {
                                 String navn = bottomList.get(b).getName() + "  " + Double.toString(bottomList.get(b).getPrice());
 
@@ -87,7 +87,7 @@
                 </div>
                 <div class="DD">
                     Topping <br>
-                    <select name="mydropdown">
+                    <select name="topping">
                         <% for (int t = 0; t < toppingList.size(); t++) {
                                 String navn = toppingList.get(t).getName() + "  " + Double.toString(toppingList.get(t).getPrice());
 
@@ -100,11 +100,22 @@
 
                 <div class="DD">
                     Quantity <br>
-                    <input type="text" name="quantity" value="">
+                    <input type="text" name="quantity" value="0">
                 </div>
 
                 <input type="submit" name="submit" value="Add">
 
+            <div class="CShop">
+                <br>
+                <% for (Orderline ol : orderlineList) { %>
+                Bottom = <%=ol.getBottom().getName() %> * 
+                Topping = <%=ol.getTopping().getName()%> * 
+                Quantity = <%=ol.getQuantity()%> * 
+                Price = <%=ol.getPrice()%>
+                <br>
+                <% } %>
+            </div>
+                
                 <div class='checkout'>
                     
                     
@@ -113,14 +124,7 @@
 
 
             </form>
-            <div class="orderline">
-                <%
-                    Orderline ol = (Orderline) (session.getAttribute("object"));
-                    orderline.add(ol);
-                    out.println(ol);
 
-                %>
-            </div>
             <div class="logout">
                 <form method="get" action="login.jsp">
                     <button type="submit">Logout</button>
