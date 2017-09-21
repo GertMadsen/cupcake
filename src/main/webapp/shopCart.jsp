@@ -17,9 +17,9 @@
         <h1>Hello World!</h1>
 
 
-        <form name="BottomSelect" action="" method="POST">
+        <form name="BottomSelect" action="" method="get">
             <div align="center">
-                <select name="mydropdown">
+                <select name="mydropdown">                  
                     <option value="1">Fresh Milk</option>
                     <option value="2">Old Cheese</option>
                     <option value="3">Hot Bread</option>
@@ -28,7 +28,7 @@
         </form>
         <br><br><br><br>
 
-        <form name="ToppingSelect" action="" method="POST">
+        <form name="ToppingSelect" action="" method="get">
             <div align="center">
                 <select name="mydropdown">
                     <option value="1">Fresh Milk</option>

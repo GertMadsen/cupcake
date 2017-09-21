@@ -22,10 +22,10 @@ import java.util.List;
 
 public class UserMapper {
     
-    public User getUserByName(String name) throws SQLException {
+    public User getUserByName(String name) {
         User output = null;
         try {
-            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username=" + name;
+            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username='" + name+"'";
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -108,9 +108,9 @@ public class UserMapper {
         //User myuser = new UserMapper().getUserByID(1);
         //System.out.println(myuser);
         
-        User myuser = new UserMapper().getUserByName("Henrik");
+        User myuser = new UserMapper().getUserByName("Jens Hansen");
         System.out.println(myuser);
-        
+     
         //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
         
         //User myuser2 = new UserMapper().getUserByID(2);

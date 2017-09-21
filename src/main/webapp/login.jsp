@@ -14,7 +14,7 @@
     <body>
         <h1>HELLO CUPCAKE LOVERS!!!</h1>
 
-        <form action="LoginUserServlet">  
+        <form action="CheckLogin" method="POST">  
             <b>Username:</b><br>
             <input type="text" name="username" value=""><br><br>
             <b>Password:</b><br>
@@ -25,7 +25,7 @@
 
         <br>
         
-        <form method="get" action="registration.jsp">
+        <form method="post" action="registration.jsp">
             <button type="submit">Register new user</button>
         </form>
 
