@@ -15,8 +15,8 @@
         <div>
             <h1>No cupcakes!</h1>
 
-            <h2>No cupcakes where added to Shopping Cart. 
-            <br>Select some cupcakes before checking out.</h2><br>
+            <h3>No cupcakes where added to Shopping Cart. 
+            <br>Select some cupcakes before checking out.</h3><br>
 
             <br>
             <form method="get" action="shopCart.jsp">

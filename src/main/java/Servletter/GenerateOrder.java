@@ -48,45 +48,52 @@ public class GenerateOrder extends HttpServlet {
 
         if (!orderlineList.isEmpty()) {
 
-            Order newOrder = new Order(user);
-            int orderNumber = 0;
-            try {
-                orderNumber = om.putToOrderTable(newOrder);
-            } catch (SQLException ex) {
-                request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
-                        .forward(request, response);
-            }
+            if (user.getBalance() < totalPrice) {
+               request.getRequestDispatcher("Subpages/notEnoughMoney.jsp")
+                            .forward(request, response); 
+            } else {
 
-            for (Orderline ol : orderlineList) {
-                int orderlineNumber = 0;
+                Order newOrder = new Order(user);
+                int orderNumber = 0;
                 try {
-                    orderlineNumber = om.putToOrderLineTable(ol);
+                    orderNumber = om.putToOrderTable(newOrder);
+                } catch (SQLException ex) {
+                    request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
+                            .forward(request, response);
+                }
+                
+                newOrder = om.getOrderById(orderNumber);
+                request.setAttribute("newOrder", newOrder);
+                
+                for (Orderline ol : orderlineList) {
+                    int orderlineNumber = 0;
+                    try {
+                        orderlineNumber = om.putToOrderLineTable(ol);
+                    } catch (SQLException ex) {
+                        request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
+                                .forward(request, response);
+                    }
+
+                    try {
+                        om.putToOrderdetailsTable(orderNumber, orderlineNumber, ol.getQuantity());
+                    } catch (SQLException ex) {
+                        request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
+                                .forward(request, response);
+                    }
+                }
+
+                double newBalance = user.getBalance() - totalPrice;
+
+                try {
+                    um.updateUserBalanceById(user, newBalance);
                 } catch (SQLException ex) {
                     request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
                             .forward(request, response);
                 }
 
-                try {
-                    om.putToOrderdetailsTable(orderNumber, orderlineNumber, ol.getQuantity());
-                } catch (SQLException ex) {
-                    request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
-                            .forward(request, response);
-                }
-
-            }
-
-            double newBalance = user.getBalance() - totalPrice;
-
-            try {
-                um.updateUserBalanceById(user, newBalance);
-            } catch (SQLException ex) {
-                request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
+                request.getRequestDispatcher("Subpages/orderFinished.jsp")
                         .forward(request, response);
             }
-
-            request.getRequestDispatcher("Subpages/orderFinished.jsp")
-                    .forward(request, response);
-            
 
         } else {
             request.getRequestDispatcher("Subpages/noOrderMade.jsp")
