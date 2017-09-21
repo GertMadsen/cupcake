@@ -5,8 +5,11 @@
  */
 package Servletter;
 
+import Mapper.UserMapper;
+import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,18 +35,35 @@ public class MakeRegistration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MakeRegistration</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MakeRegistration at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        UserMapper um = new UserMapper();
+
+        String username = request.getParameter("username");
+        User testNameUser = um.getUserByName(username);
+        
+        if (testNameUser.getUser_id()!=0) {
+            request.getRequestDispatcher("error_user_exist.jsp")
+                    .forward(request, response);
+        } else {
+            String password = request.getParameter("password");
+            double balance = Double.parseDouble(request.getParameter("balance"));
+            String email = request.getParameter("email");
+
+            User newUser = new User(username, password, balance, email);
+
+            try {
+                um.putUser(newUser);
+                    request.getRequestDispatcher("register_completed.jsp")
+                            .forward(request, response);
+                
+            } catch (SQLException ex) {
+                request.getRequestDispatcher("error_not_registered.jsp")
+                        .forward(request, response);
+
+            }
+
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

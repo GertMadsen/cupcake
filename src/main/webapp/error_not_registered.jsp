@@ -1,7 +1,7 @@
 <%-- 
-    Document   : errorpage
-    Created on : 21-09-2017, 08:49:22
-    Author     : Strom
+    Document   : error_reg
+    Created on : 21-09-2017, 11:34:49
+    Author     : GertLehmann
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,17 +15,12 @@
         <div>
             <h1>Error!</h1>
 
-            <h2>Username or password is incorrect 
-            <br>or user does not exits.</h2><br>
+            <h2>And error occured writing to database. 
+            <br>Please try register again.</h2><br>
 
-            <form method="get" action="login.jsp">
-                <button type="submit">Go to Login</button>
-            </form>
-            <br>
             <form method="get" action="registration.jsp">
                 <button type="submit">Register new user</button>
             </form>
 
-        </div>
-    </body>
+        </div>    </body>
 </html>
