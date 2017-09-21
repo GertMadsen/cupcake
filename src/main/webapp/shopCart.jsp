@@ -32,7 +32,8 @@
                 width: 80%;
             }
             .logout {
-                margin-left: 1200px;
+                margin-top: 15px;
+                margin-left: 5px;
             }
             .brugerP{
                 margin-left: 10px;
@@ -43,7 +44,7 @@
             }
             .checkout{
                 margin-left: 475px;
-                margin-top: 300px;
+                margin-top: 100px;
             }
 
 
@@ -66,6 +67,7 @@
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
             ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
             ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
+            double totalPrice = (double) (session.getAttribute("totalPrice"));
         %>
 
 
@@ -105,40 +107,44 @@
 
                 <input type="submit" name="submit" value="Add">
 
-            <div class="CShop">
-                <br>
-                <% for (Orderline ol : orderlineList) { %>
-                Bottom = <%=ol.getBottom().getName() %> * 
-                Topping = <%=ol.getTopping().getName()%> * 
-                Quantity = <%=ol.getQuantity()%> * 
-                Price = <%=ol.getPrice()%>
-                <br>
-                <% } %>
-            </div>
-                
-                <div class='checkout'>
-                    
-                    
-                    <input type="submit" name="submit" value="CheckOut">
-                </div>
-
 
             </form>
+            <br><br><br>
+            <div class="CShop">
+                <br>
+                <% for (Orderline ol : orderlineList) {%>
+                Bottom = <b><%=ol.getBottom().getName()%></b> * 
+                Topping = <b><%=ol.getTopping().getName()%></b> * 
+                Quantity = <b><%=ol.getQuantity()%></b> * 
+                Price = <b><%=ol.getPrice()%></b>
+                <br>
+                <% }%>
+                <br>Total price : <b><%=totalPrice%></b>
+
+            </div>
+
+            <div class="logout">
+                <form method="get" action="GenerateOrder">
+                    <input type="submit" name="submit" value="Check out">
+                </form>
+            </div>
+
+
+
+            <div class="logout">
+                <form method="get" action="customerPage.jsp">
+                    <input type="submit" name="submit" value="Show previous orders">
+                </form>
+            </div>
 
             <div class="logout">
                 <form method="get" action="login.jsp">
-                    <button type="submit">Logout</button>
+                    <input type="submit" name="submit" value="Log out">
                 </form>
             </div>
-            
-            <br>
-            
-            <div class="invoice">
-                <form method="get" action="customerPage.jsp">
-                    <button type="submit">to to customerPage</button>
-                </form>
-            </div>
-            
+
+
+
         </div>
 
 

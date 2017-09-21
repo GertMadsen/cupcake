@@ -14,12 +14,12 @@
     <body>
         <h1>User login:</h1>
 
-        <form action="CheckLogin" method="POST">  
+        <form action="Login_Registration" method="POST">  
             <b>Username:</b><br>
             <input type="text" name="username" value=""><br><br>
             <b>Password:</b><br>
             <input type="password" name="password" value=""><br><br>
-
+            <input type="hidden" name="login" value="true">
             <input type="submit" name="submit" value="Login">
         </form>
 

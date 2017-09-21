@@ -39,6 +39,7 @@ public class GenerateOrderLine extends HttpServlet {
 
         HttpSession session = request.getSession();
         ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
+        double totalPrice = (double) (session.getAttribute("totalPrice"));
         
         int bottomID = Integer.parseInt(request.getParameter("bottom"));
         int toppingID = Integer.parseInt(request.getParameter("topping"));
@@ -49,10 +50,12 @@ public class GenerateOrderLine extends HttpServlet {
         Bottom bottom = cm.getBottomByBottomId(bottomID);
         Topping topping = cm.getToppingByToppingId(toppingID);
         double price = (bottom.getPrice() + topping.getPrice())*(double)(quantity);
+        totalPrice += price;
         
         Orderline newLine = new Orderline (bottom,topping,quantity,price);
         orderlineList.add(newLine);
         session.setAttribute("orderLines",orderlineList);
+        session.setAttribute("totalPrice",totalPrice);
         
         request.getRequestDispatcher("shopCart.jsp").forward(request, response);
         

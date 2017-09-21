@@ -5,23 +5,25 @@
  */
 package Servletter;
 
-import Mapper.UserMapper;
-import entities.User;
+import Mapper.*;
+import entities.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author GertLehmann
  */
-@WebServlet(name = "MakeRegistration", urlPatterns = {"/MakeRegistration"})
-public class MakeRegistration extends HttpServlet {
+@WebServlet(name = "Login_Registration", urlPatterns = {"/Login_Registration"})
+public class Login_Registration extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,16 +38,49 @@ public class MakeRegistration extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        UserMapper um = new UserMapper();
+        String loginSite = request.getParameter("login");
 
-        String username = request.getParameter("username");
+        UserMapper um = new UserMapper();
+        CupcakeMapper cm = new CupcakeMapper();
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+
+        
+        if (loginSite.equals("true")) {
+
+            User loggedInUser = um.getUserByName(username);
+            ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
+            ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
+            ArrayList<Orderline> orderLines = new ArrayList();
+            double totalPrice = 0;
+            
+            if (loggedInUser == null) {
+                request.getRequestDispatcher("login_error.jsp")
+                        .forward(request, response);
+
+            } else if (!loggedInUser.getPassword().equals(password)) {
+                request.getRequestDispatcher("login_error.jsp")
+                        .forward(request, response);
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", loggedInUser);
+                session.setAttribute("toppingList", toppingList);
+                session.setAttribute("bottomList", bottomList);
+                session.setAttribute("orderLines", orderLines);
+                session.setAttribute("totalPrice", totalPrice);
+
+                request.getRequestDispatcher("shopCart.jsp")
+                        .forward(request, response);
+            }
+
+        } else {
+                    
         User testNameUser = um.getUserByName(username);
         
         if (testNameUser.getUser_id()!=0) {
             request.getRequestDispatcher("error_user_exist.jsp")
                     .forward(request, response);
         } else {
-            String password = request.getParameter("password");
             double balance = Double.parseDouble(request.getParameter("balance"));
             String email = request.getParameter("email");
 
@@ -61,6 +96,8 @@ public class MakeRegistration extends HttpServlet {
                         .forward(request, response);
 
             }
+
+        }
 
         }
 
