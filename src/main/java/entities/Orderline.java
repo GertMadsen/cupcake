@@ -64,4 +64,11 @@ public class Orderline {
         return price;
     }
 
+    @Override
+    public String toString() {
+        return "Orderline{" + "id=" + id + ", bottom=" + bottom + ", topping=" + topping + ", quantity=" + quantity + ", price=" + price + '}';
+    }
+    
+    
+
 }
