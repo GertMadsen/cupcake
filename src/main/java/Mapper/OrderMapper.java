@@ -126,7 +126,7 @@ public class OrderMapper {
     public void putToOrderdetailsTable(int orderId, int orderlineId, int quantity) throws SQLException {
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.orderdetails ("
-                + "order_order_id, "
+                + "orders_order_id, "
                 + "orderlines_orderline_id,"
                 + "quantity) "
                 + "VALUES (?, ?, ?);";
@@ -239,13 +239,13 @@ public class OrderMapper {
 //        
 //        //System.out.println(myuser);
 //        
-        OrderMapper om = new OrderMapper();
-
-        try {
-            om.putToOrderdetailsTable(15, 36, 2);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+//        OrderMapper om = new OrderMapper();
+//
+//        try {
+//            om.putToOrderdetailsTable(15, 36, 2);
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
 
 //        List<Order> myorder = new OrderMapper().getOrdersByUserId(myuser);
 //        System.out.println(myorder);
