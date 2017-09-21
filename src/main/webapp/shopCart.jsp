@@ -27,29 +27,35 @@
                 width: 80%;
             }
             .logout {
-               margin-left: 1200px;
-               margin-top: 350px; 
+                margin-left: 1200px;
+                margin-top: 350px; 
             }
-                
-            
-            
+            .brugerP{
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+
+
+
         </style>
 
     </head>
     <body>
         <h1>Welcome to the Cupcake shop</h1>
-        
-        <%        
-        User user = (User)(session.getAttribute("user"));
-        String username = user.getName();
-        double balance = user.getBalance();
+
+        <%
+            User user = (User) (session.getAttribute("user"));
+            String username = user.getName();
+            double balance = user.getBalance();
         %>
-        
-        Hello <%=username%> - your balance is : <%=balance%>
-        
-        
+        <div class='brugerP'>
+            Hello <%=username%> - your balance is : <%=balance%>
+        </div>
+
+
         <div class ="CShop">
-            <form name="BottomSelect" action="" method="POST">
+     
+            <form name="CupcakeSelect" action="GenerateOrderLine" method="POST">
                 <div class="DD">
                     Bottom <br>
                     <select name="mydropdown">
@@ -58,10 +64,6 @@
                         <option value="3">Hot Bread</option>
                     </select>
                 </div>
-            </form>
-
-
-            <form name="ToppingSelect" action="" method="POST">
                 <div class="DD">
                     Topping <br>
                     <select name="mydropdown">
@@ -70,28 +72,23 @@
                         <option value="3">Hot Bread</option>
                     </select>
                 </div>
-            </form>
 
 
-            <form name="quantity" action="" method="POST">
                 <div class="DD">
-                   Quantity <br>
+                    Quantity <br>
                     <input type="text" name="quantity" value="">
                 </div>
+
+                <input type="submit" name="submit" value="Add">
             </form>
 
 
-            <form name="AddOrderLine" action="AddOrderLineServlet" method="POST">
-                <div>
-                    <br>
-                    <input type="submit" name="submit" value="Add">
-                </div>
-            </form>
-            
+                      
+
             <div class="logout">
-            <form method="get" action="login.jsp">
-                <button type="submit">Logout</button>
-            </form>
+                <form method="get" action="login.jsp">
+                    <button type="submit">Logout</button>
+                </form>
             </div>
 
         </div>
