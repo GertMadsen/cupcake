@@ -5,8 +5,14 @@
  */
 package Servletter;
 
+import Mapper.OrderMapper;
+import Mapper.UserMapper;
+import entities.Order;
+import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +38,24 @@ public class ShowEachOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String carryInfo = request.getParameter("submit");
+        String carryInfo1 = request.getParameter("user");
+        String carryInfo2 = request.getParameter("order");
+        UserMapper userMap = new UserMapper();
+        OrderMapper orderMap = new OrderMapper();
+        User currentUser = userMap.getUserByID(Integer.parseInt(carryInfo1));
+        //nedenstående fylder meget men jeg er lidt træt nu.
+        List<Order> currentOrderList =  orderMap.getOrdersByUserId(currentUser);
+        Order currentOrder = null;
+        for (Order o: currentOrderList) {
+            if (o.getOrder_id() == Integer.parseInt(carryInfo2)) {
+                currentOrder = o;
+            }
+        }
+        
+        //Order currentOrder = new Order(Integer.parseInt(carryInfo));
+        
         
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -47,11 +67,15 @@ public class ShowEachOrder extends HttpServlet {
             out.println("hello: ");
             out.println("</p>");
             out.println("<p>");
-            out.println(carryInfo);
+            out.println(currentUser);
+            out.println("</p>");
+            out.println("<p>");
+            out.println(currentOrder);
             out.println("</p>");
             out.println("</body>");
             out.println("</html>");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
