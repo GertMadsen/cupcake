@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -52,9 +53,21 @@ public class ShowEachOrder extends HttpServlet {
             }
         }
         
+        if (currentOrder != null) {
+            HttpSession session = request.getSession();
+                session.setAttribute("orderId", currentOrder.getOrder_id());
+                session.setAttribute("username", currentOrder.getUser().getName());
+                session.setAttribute("date", currentOrder.getDate());
+                session.setAttribute("orderLines", currentOrder.getOrderlines());
+                session.setAttribute("totalPrice", currentOrder.getTotal_price());
+
+                request.getRequestDispatcher("invoicePage.jsp")
+                        .forward(request, response);
+        }
+        
         //Order currentOrder = new Order(Integer.parseInt(carryInfo));
         
-        
+        /*
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -75,7 +88,7 @@ public class ShowEachOrder extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-        
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
