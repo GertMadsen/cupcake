@@ -4,6 +4,8 @@
     Author     : Christian
 --%>
 
+<%@page import="java.util.Comparator"%>
+<%@page import="java.util.Collections"%>
 <%@page import="entities.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="Mapper.OrderMapper"%>
@@ -16,7 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World! her er invoice</h1>
+        <h1>Hello World! her er dine tidl. ordre</h1>
         <%
             User user = (User) (session.getAttribute("user"));
             String username = user.getName();
@@ -40,8 +42,28 @@
         <br>
         
         <div class='brugerP'>
-            Hello <%=username%> - orders vs. 2 : 
-            <%=orderList%>
+            Hello <%=username%> - orders version 2 : 
+            <br>
+            <%
+                if (orderList.size() > 0) {
+                    Collections.sort(orderList, new Comparator<Order>() {
+                        @Override
+                        public int compare(final Order object1, final Order object2) {
+                            return object1.getDate().compareTo(object2.getDate());
+                        }
+                    });
+                }              
+                
+                String output = "";
+                output = output+"<p>";
+                for (Order o: orderList) {
+                    out.println( "<a href =" + "invoicePage.jsp" +
+                            "?value="+ o +
+                            "> " + o.getDate() + " " + o.getOrder_id() + "</a>"
+                            + "<br>");
+                }
+                            
+            %>
         </div>
         
         
