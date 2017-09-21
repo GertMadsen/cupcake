@@ -65,6 +65,13 @@
                     "\""+ "POST"+"\""+
                     ">" +
                         
+                    "<input type="+
+                    "\""+ "hidden"+"\""+
+                    " name= " +
+                    "\""+"login"+"\""+
+                    " value=" +
+                    "\""+ "true"+"\""+                                
+                    ">"    +           
                             
                     " <input type=" +
                     "\""+ "submit"+"\""+

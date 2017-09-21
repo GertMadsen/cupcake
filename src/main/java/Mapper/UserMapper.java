@@ -49,6 +49,30 @@ public class UserMapper {
         return output;
     } 
     
+    public User updateUserBalanceById(User user, double newbalance) throws SQLException {
+        User output = user;
+                
+        Connection conn = Connector.getConnection();
+        String sql = "UPDATE cupcake.users SET balance="+
+                newbalance +" WHERE user_id="+user.getUser_id();
+        PreparedStatement recipePstmt = conn.prepareStatement(sql);
+        
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+            return null;
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        output.setBalance(newbalance);
+        return output;
+    }
+    
     public User getUserByID(int id) {
         User output = null;
         try{
@@ -105,10 +129,13 @@ public class UserMapper {
         
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
     
-        //User myuser = new UserMapper().getUserByID(1);
-        //System.out.println(myuser);
+        User myuser = new UserMapper().getUserByID(1);
+        System.out.println(myuser);
+        
+        //myuser = new UserMapper().updateUserBalanceById(myuser, 450000.00);
+        System.out.println(myuser);
         
 //        User myuser = new UserMapper().getUserByName("Jens Hansen");
 //        System.out.println(myuser);
