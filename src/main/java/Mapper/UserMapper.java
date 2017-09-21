@@ -49,7 +49,7 @@ public class UserMapper {
         return output;
     } 
     
-    public User getUserByID(int id) throws SQLException {
+    public User getUserByID(int id) {
         User output = null;
         try{
             String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where user_id=" + id;
@@ -106,7 +106,7 @@ public class UserMapper {
         
     }
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
     
         //User myuser = new UserMapper().getUserByID(1);
         //System.out.println(myuser);

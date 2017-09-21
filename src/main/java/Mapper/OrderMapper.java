@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class OrderMapper {
     
-    public List<Order> getOrdersByUserId(User user) throws SQLException {
+    public List<Order> getOrdersByUserId(User user) {
         List<Order> output = new ArrayList<Order>();
         try{
             Order order = null;
@@ -48,7 +48,7 @@ public class OrderMapper {
         return output;
     }
     
-    public List<Orderline> getOrderlinesByOrderId(Order order) throws SQLException {
+    public List<Orderline> getOrderlinesByOrderId(Order order) {
         List<Orderline> output = new ArrayList<Orderline>();
         try{
             CupcakeMapper cm = new CupcakeMapper();
@@ -93,7 +93,7 @@ public class OrderMapper {
     }
     
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args){
     
         
         User myuser = new UserMapper().getUserByID(1);

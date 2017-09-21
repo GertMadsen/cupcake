@@ -21,7 +21,7 @@ import java.util.List;
 public class CupcakeMapper {
     
     
-    public List<Topping> getListOfTops() throws SQLException {
+    public List<Topping> getListOfTops() {
         List<Topping> output = new ArrayList<Topping>();   
         try{
             String sql = "SELECT topping_id "
@@ -44,7 +44,7 @@ public class CupcakeMapper {
         return output;
     }
     
-    public List<Bottom> getListOfBots() throws SQLException {
+    public List<Bottom> getListOfBots() {
         List<Bottom> output = new ArrayList<Bottom>();
         try{   
             String sql = "SELECT bottom_id "
@@ -66,7 +66,7 @@ public class CupcakeMapper {
         return output;
     }
     
-    public Topping getToppingByToppingId(Topping topping) throws SQLException {
+    public Topping getToppingByToppingId(Topping topping) {
         Topping output = topping;
         try {
             String sql = "SELECT name, price "
@@ -89,7 +89,7 @@ public class CupcakeMapper {
         return output;
     }
     
-    public Bottom getBottomByBottomId(Bottom bottom) throws SQLException {
+    public Bottom getBottomByBottomId(Bottom bottom) {
         Bottom output = bottom;
         try{
             String sql = "SELECT name, price "
@@ -112,7 +112,7 @@ public class CupcakeMapper {
         return output;
     }
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         
         List<Topping> toplist = new CupcakeMapper().getListOfTops();
         List<Bottom> botlist = new CupcakeMapper().getListOfBots();
