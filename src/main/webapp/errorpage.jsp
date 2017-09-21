@@ -14,7 +14,7 @@
     <body>
         <h1>Welcome to the errorpage!</h1>
         
-        <a href="<%="login.jsp"%>"><%="Register"%></a>
+        <a href="<%="login.jsp"%>"><%="Login"%></a>
         
         <a href="<%="registration.jsp"%>"><%="Register"%></a>
         
