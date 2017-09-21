@@ -4,6 +4,8 @@
     Author     : GertLehmann
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="entities.Orderline"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+
+
         <div>
             <h1>Order Finished!</h1>
 
@@ -30,5 +34,15 @@
             </div>
 
         </div>
+
+
+        <%
+
+            ArrayList<Orderline> orderLines = new ArrayList();
+            double totalPrice = 0;
+            session.setAttribute("orderLines", orderLines);
+            session.setAttribute("totalPrice", totalPrice);
+
+        %>
     </body>
 </html>

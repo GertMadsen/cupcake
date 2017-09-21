@@ -5,7 +5,7 @@
  */
 package Servletter;
 
-import Mapper.OrderMapper;
+import Mapper.*;
 import entities.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,16 +37,17 @@ public class GenerateOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         HttpSession session = request.getSession();
         ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
         double totalPrice = (double) (session.getAttribute("totalPrice"));
         User user = (User) (session.getAttribute("user"));
-        
+
+        UserMapper um = new UserMapper();
+        OrderMapper om = new OrderMapper();
+
         if (!orderlineList.isEmpty()) {
-            
-            OrderMapper om = new OrderMapper();
-            
+
             Order newOrder = new Order(user);
             int orderNumber = 0;
             try {
@@ -55,7 +56,7 @@ public class GenerateOrder extends HttpServlet {
                 request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
                         .forward(request, response);
             }
-            
+
             for (Orderline ol : orderlineList) {
                 int orderlineNumber = 0;
                 try {
@@ -64,23 +65,34 @@ public class GenerateOrder extends HttpServlet {
                     request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
                             .forward(request, response);
                 }
-                
+
                 try {
                     om.putToOrderdetailsTable(orderNumber, orderlineNumber, ol.getQuantity());
                 } catch (SQLException ex) {
                     request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
                             .forward(request, response);
                 }
-                
+
             }
+
+            double newBalance = user.getBalance() - totalPrice;
+
+            try {
+                um.updateUserBalanceById(user, newBalance);
+            } catch (SQLException ex) {
+                request.getRequestDispatcher("Errorpages/error_writing_order.jsp")
+                        .forward(request, response);
+            }
+
+            request.getRequestDispatcher("Subpages/orderFinished.jsp")
+                    .forward(request, response);
             
-            
-            
+
         } else {
-            request.getRequestDispatcher("noOrderMade.jsp")
+            request.getRequestDispatcher("Subpages/noOrderMade.jsp")
                     .forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
