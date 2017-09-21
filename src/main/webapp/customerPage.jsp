@@ -30,10 +30,20 @@
             Hello <%=username%> - your balance is : <%=balance%>
         </div>
         
+        <br>
+        
         <div class='brugerP'>
             Hello <%=username%> - here are your previous orders : 
             <%=orderList%>
         </div>
+        
+        <br>
+        
+        <div class='brugerP'>
+            Hello <%=username%> - orders vs. 2 : 
+            <%=orderList%>
+        </div>
+        
         
         
         <br>
