@@ -67,9 +67,11 @@
                     out.println("hello");
                 }
             %>
-            <form action="ShowEachOrder" method="POST">  
-                   <input type="submit" name="submit" value="showorder">
-            </form>
+        <form action="ShowEachOrder" method="POST">  
+            
+
+            <input type="submit" name="submit" value="Show Order">
+        </form>
              
         </div>
         
