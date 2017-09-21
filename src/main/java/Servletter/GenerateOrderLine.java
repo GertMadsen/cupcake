@@ -5,24 +5,20 @@
  */
 package Servletter;
 
-import Mapper.*;
-import entities.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author GertLehmann
  */
-@WebServlet(name = "CheckLogin", urlPatterns = {"/CheckLogin"})
-public class CheckLogin extends HttpServlet {
+@WebServlet(name = "GenerateOrderLine", urlPatterns = {"/GenerateOrderLine"})
+public class GenerateOrderLine extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,35 +32,18 @@ public class CheckLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserMapper um = new UserMapper();
-        CupcakeMapper cm = new CupcakeMapper();
-        
-        User loggedInUser = um.getUserByName(username);
-        ArrayList<Topping> toppingList = (ArrayList)(cm.getListOfTops());
-        ArrayList<Bottom> bottomList = (ArrayList)(cm.getListOfBots());
-        ArrayList<Orderline> orderLines = new ArrayList();        
-                
-        if (loggedInUser == null) {
-            request.getRequestDispatcher("login_error.jsp")
-                    .forward(request, response);
-
-        } else if (!loggedInUser.getPassword().equals(password)) {
-            request.getRequestDispatcher("login_error.jsp")
-                    .forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", loggedInUser);
-            session.setAttribute("toppingList", toppingList);
-            session.setAttribute("bottomList", bottomList);
-            session.setAttribute("orderLines", orderLines);
-            
-            request.getRequestDispatcher("shopCart.jsp")
-                    .forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet GenerateOrderLine</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet GenerateOrderLine at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
