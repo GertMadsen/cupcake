@@ -22,8 +22,13 @@
 
             <input type="submit" name="submit" value="Login">
         </form>
+
+        <br>
         
-        <a href="<%="registration.jsp"%>"><%="Register"%></a>
-        
+        <form method="get" action="registration.jsp">
+            <button type="submit">Register new user</button>
+        </form>
+
+
     </body>
 </html>

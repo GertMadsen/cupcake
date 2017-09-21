@@ -12,12 +12,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Welcome to the errorpage!</h1>
-        
-        <a href="<%="login.jsp"%>"><%="Register"%></a>
-        
-        <a href="<%="registration.jsp"%>"><%="Register"%></a>
-        
-        
+        <div>
+            <h1>Error!</h1>
+
+            <h2>Username or password is incorrect 
+            <br>or user does not exits.</h2><br>
+
+            <form method="get" action="login.jsp">
+                <button type="submit">Go to Login</button>
+            </form>
+            <br>
+            <form method="get" action="registration.jsp">
+                <button type="submit">Register new user</button>
+            </form>
+
+        </div>
     </body>
 </html>
