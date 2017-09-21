@@ -11,9 +11,11 @@ import entities.Order;
 import entities.Orderline;
 import entities.Topping;
 import entities.User;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,9 @@ public class OrderMapper {
             while (rs.next()) {
                 orderId = rs.getInt("order_id");
                 date = rs.getString("date");
-                order = new Order(orderId, user, date);
+                order = new Order(user);
+                order.setDate(date);
+                order.setOrder_id(orderId);
                 order.setOrderlines(this.getOrderlinesByOrderId(order));
                 output.add(order);
             }
@@ -83,13 +87,94 @@ public class OrderMapper {
                 Topping top = new Topping(toppingId);
                 top = cm.getToppingByToppingId(top);
 
-                oLine = new Orderline(orderlineId, bot, top, quantity, price);
+                oLine = new Orderline(bot, top, quantity, price);
+                oLine.setId(orderlineId);
                 output.add(oLine);
             }        
         }catch (Exception e) {
             return null;
         }
         return output;
+    }
+    
+    public void putToOrderdetailsTable(int orderId, int orderlineId, int quantity) throws SQLException {
+        Connection conn = Connector.getConnection();
+        String insertUser = "INSERT INTO cupcake.orderdetails ("
+                + "order_order_id, "
+                + "orderlines_orderline_id,"
+                + "quantity) "
+                + "VALUES (?, ?, ?);";
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.setInt(1, orderId);
+            recipePstmt.setInt(2, orderlineId);
+            recipePstmt.setInt(3, quantity);
+            recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+    }
+    
+    public int putToOrderTable(Order order) throws SQLException {
+        int output = 0;
+        int userId = order.getUser().getUser_id();
+        
+        //String name, String password, double balance, String email
+        Connection conn = Connector.getConnection();
+        String insertUser = "INSERT INTO cupcake.orders ("
+                + "users_user_id)"
+                + "VALUES (?);";
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser, Statement.RETURN_GENERATED_KEYS);
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.setInt(1, userId);
+            output = recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        return output;
+        
+    }
+    
+    // public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
+    public int putToOrderLineTable(Orderline oLine) throws SQLException {
+        int output = 0;
+        Bottom bot = oLine.getBottom();
+        Topping top = oLine.getTopping();
+        double price = oLine.getPrice();
+        
+        Connection conn = Connector.getConnection();
+        String insertOrderline = "INSERT INTO cupcake.orderlines ("
+                + "price, bottoms_bottom_id, toppings_topping_id)"
+                + "VALUES (?, ?, ?);";
+        PreparedStatement recipePstmt = conn.prepareStatement(insertOrderline, Statement.RETURN_GENERATED_KEYS);
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.setDouble(1, price);
+            recipePstmt.setInt(2, bot.getId());
+            recipePstmt.setInt(3, top.getId());
+            output = recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        return output;
+        
     }
     
     
