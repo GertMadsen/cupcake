@@ -5,13 +5,17 @@
  */
 package Servletter;
 
+import Mapper.CupcakeMapper;
+import entities.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,18 +36,27 @@ public class GenerateOrderLine extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GenerateOrderLine</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GenerateOrderLine at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+        HttpSession session = request.getSession();
+        ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
+        
+        int bottomID = Integer.parseInt(request.getParameter("bottom"));
+        int toppingID = Integer.parseInt(request.getParameter("topping"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        CupcakeMapper cm = new CupcakeMapper();
+        
+        Bottom bottom = cm.getBottomByBottomId(bottomID);
+        Topping topping = cm.getToppingByToppingId(toppingID);
+        double price = (bottom.getPrice() + topping.getPrice())*(double)(quantity);
+        
+        Orderline newLine = new Orderline (bottom,topping,quantity,price);
+        orderlineList.add(newLine);
+        session.setAttribute("orderLines",orderlineList);
+        
+        request.getRequestDispatcher("shopCart.jsp").forward(request, response);
+        
+                
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
