@@ -9,9 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Error page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        
+        <div>
+            <h1>Succes</h1>
+            <% String username = request.getParameter("username"); %>
+            
+            <h2>The user <%=username%> has been succesfully registered. 
+            <br>Please login before you continue.</h2><br>
+            
+            <form method="get" action="login.jsp">
+                <button type="submit">Go to Login</button>
+            </form>
+
+        </div>    </body>
 </html>

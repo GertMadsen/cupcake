@@ -9,9 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Error page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <div>
+            <h1>Error!</h1>
+
+            <h2>And error occured writing to database. 
+            <br>Please try register again.</h2><br>
+
+            <form method="get" action="registration.jsp">
+                <button type="submit">Register new user</button>
+            </form>
+
+        </div>    </body>
 </html>
