@@ -25,7 +25,7 @@ public class UserMapper {
     public User getUserByName(String name) {
         User output = null;
         try {
-            String sql = "SELECT user_id,username, password,balance, email, customer, admin FROM cupcake.users where username='" + name+"'";
+            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username='" + name+"'";
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -34,26 +34,44 @@ public class UserMapper {
             String password = "";
             double balance = 0;
             String email = "";
-            boolean customer = false;
-            boolean admin = false;
             while (rs.next()) {
                 userID = rs.getInt("user_id");
                 userName = name; //rs.getString("username");
                 password = rs.getString("password");
                 balance = rs.getDouble("balance");
                 email = rs.getString("email");
-                customer = rs.getBoolean("customer");
-                admin = rs.getBoolean("admin");
             }
             output = new User(userName, password, balance, email);
             output.setUser_id(userID);
-            output.setCustomer(customer);
-            output.setAdmin(admin);
         }catch (SQLException ex) {
             return null;
         }
         return output;
     } 
+    
+    public User updateUserBalanceById(User user, double newbalance) throws SQLException {
+        User output = user;
+                
+        Connection conn = Connector.getConnection();
+        String sql = "UPDATE cupcake.users SET balance="+
+                newbalance +" WHERE user_id="+user.getUser_id();
+        PreparedStatement recipePstmt = conn.prepareStatement(sql);
+        
+        try {
+            conn.setAutoCommit(false);
+            recipePstmt.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            if (conn != null) {
+                conn.rollback();
+            }
+            return null;
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        output.setBalance(newbalance);
+        return output;
+    }
     
     public User getUserByID(int id) {
         User output = null;
@@ -66,21 +84,15 @@ public class UserMapper {
             String password = "";
             double balance = 0;
             String email = "";
-            boolean customer = false;
-            boolean admin = false;
             while (rs.next()) {
                 userID = id;//rs.getInt("user_id");
                 userName = rs.getString("username");
                 password = rs.getString("password");
                 balance = rs.getDouble("balance");
                 email = rs.getString("email");
-                customer = rs.getBoolean("customer");
-                admin = rs.getBoolean("admin");
             }
             output = new User(userName, password, balance, email);
             output.setUser_id(id);
-            output.setCustomer(customer);
-            output.setAdmin(admin);
         }catch (Exception e) {
             return null;
         }
@@ -93,13 +105,11 @@ public class UserMapper {
         String password = user.getPassword();
         double balance = user.getBalance();
         String email = user.getEmail();
-        boolean customer = user.isCustomer();
-        boolean admin = user.isAdmin();
         //String name, String password, double balance, String email
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.users ("
-                + "username, password, balance, email, customer, admin)"
-                + "VALUES (?, ?, ?, ?, ?, ?);";
+                + "username, password, balance, email)"
+                + "VALUES (?, ?, ?, ?);";
         PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
         try {
             conn.setAutoCommit(false);
@@ -107,8 +117,6 @@ public class UserMapper {
             recipePstmt.setString(2, password);
             recipePstmt.setDouble(3, balance);
             recipePstmt.setString(4, email);
-            recipePstmt.setBoolean(5, customer);
-            recipePstmt.setBoolean(6, admin);
             recipePstmt.executeUpdate();
             conn.commit();
         } catch (SQLException ex) {
@@ -121,10 +129,13 @@ public class UserMapper {
         
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
     
-        //User myuser = new UserMapper().getUserByID(1);
-        //System.out.println(myuser);
+        User myuser = new UserMapper().getUserByID(1);
+        System.out.println(myuser);
+        
+        //myuser = new UserMapper().updateUserBalanceById(myuser, 450000.00);
+        System.out.println(myuser);
         
 //        User myuser = new UserMapper().getUserByName("Jens Hansen");
 //        System.out.println(myuser);

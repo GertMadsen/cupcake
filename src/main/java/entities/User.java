@@ -16,8 +16,6 @@ public class User {
     String password;
     double balance;
     String email;
-    boolean customer = true;
-    boolean admin = false;
     
 
     public User(String name, String password, double balance, String email) {
@@ -68,27 +66,12 @@ public class User {
         return balance;
     }
 
-    public boolean isCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(boolean customer) {
-        this.customer = customer;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
     @Override
     public String toString() {
-        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + ", customer=" + customer + ", admin=" + admin + '}';
+        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + '}';
     }
-   
+
+    
     
     
     
