@@ -102,7 +102,7 @@
 
                 <div class="DD">
                     Quantity <br>
-                    <input type="text" name="quantity" value="0">
+                    <input type="text" name="quantity" value="1">
                 </div>
 
                 <input type="submit" name="submit" value="Add">
