@@ -32,8 +32,9 @@
                 width: 80%;
             }
             .logout {
-                margin-top: 15px;
-                margin-left: 5px;
+                position: absolute;
+                top: 60px;
+                left: 550px;
             }
             .brugerP{
                 margin-left: 10px;
@@ -43,11 +44,23 @@
                 margin-top: 15px;
             }
             .checkout{
-                margin-left: 475px;
-                margin-top: 100px;
+                position: absolute;
+                left: 540px;
+                top: 108px;
             }
-
-
+            .OrderlinePrinter{
+                
+                margin-left: 10px;
+                margin-top: 30px;
+                border-style: groove;
+                width: 40%;
+            }
+           
+            .prevOrder {
+                position: absolute;
+                left: 300px;
+                top: 60px;
+            }
         </style>
 
     </head>
@@ -60,8 +73,9 @@
             double balance = user.getBalance();
         %>
         <div class='brugerP'>
-            Hello <b><%=username%></b> - your balance is : <b><%=balance%></b>
-        </div><br>
+            Hello <%=username%> - your balance is : <%=balance%>
+        </div>
+ 
 
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
@@ -102,10 +116,23 @@
 
                 <div class="DD">
                     Quantity <br>
-                    <input type="text" name="quantity" value="0">
+                    <input type="text" name="quantity" value="1">
                 </div>
 
                 <input type="submit" name="submit" value="Add">
+
+            <div class="OrderlinePrinter">
+                <br>
+                <% for (Orderline ol : orderlineList) { %>
+                Bottom = <%=ol.getBottom().getName() %> * 
+                Topping = <%=ol.getTopping().getName()%> * 
+                Quantity = <%=ol.getQuantity()%> * 
+                Price = <%=ol.getPrice()%>
+                <br>
+                <% } %>
+            </div>
+                
+              
 
 
             </form>
@@ -123,7 +150,7 @@
 
             </div>
 
-            <div class="logout">
+            <div class="checkout">
                 <form method="get" action="GenerateOrder">
                     <input type="submit" name="submit" value="Check out">
                 </form>
@@ -131,7 +158,7 @@
 
 
 
-            <div class="logout">
+            <div class="prevOrder">
                 <form method="get" action="customerPage.jsp">
                     <input type="submit" name="submit" value="Show previous orders">
                 </form>
@@ -142,9 +169,11 @@
                     <input type="submit" name="submit" value="Log out">
                 </form>
             </div>
-
-
-
+            
+            <br>
+            
+            
+            
         </div>
 
 

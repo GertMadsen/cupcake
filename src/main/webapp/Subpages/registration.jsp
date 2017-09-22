@@ -14,7 +14,7 @@
     <body>
         <h1>Register new user:</h1>
 
-        <form action="../Login_Registration">       
+        <form action="Login_Registration">       
             <b>Username:</b><br>
             <input type="text" name="username" value=""><br><br>
             <b>Password:</b><br>
@@ -28,7 +28,7 @@
         </form>
         <br>
 
-        <form method="get" action="../login.jsp">
+        <form method="get" action="login.jsp">
             <button type="submit">Go back to Login</button>
         </form>
 

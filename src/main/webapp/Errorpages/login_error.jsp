@@ -22,7 +22,7 @@
                 <button type="submit">Go to Login</button>
             </form>
             <br>
-            <form method="get" action="Subpages/registration.jsp">
+            <form method="get" action="registration.jsp">
                 <button type="submit">Register new user</button>
             </form>
 
