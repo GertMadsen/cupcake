@@ -32,8 +32,9 @@
                 width: 80%;
             }
             .logout {
-                margin-top: 15px;
-                margin-left: 5px;
+                position: absolute;
+                top: 60px;
+                left: 550px;
             }
             .brugerP{
                 margin-left: 10px;
@@ -45,26 +46,21 @@
             .checkout{
                 position: absolute;
                 left: 540px;
-                top:129px;
-               
+                top: 108px;
+            }
             .OrderlinePrinter{
-                position: absolute;
-                top: 250px;
-                left:10px;
+                
+                margin-left: 10px;
+                margin-top: 30px;
                 border-style: groove;
                 width: 40%;
             }
-            .invoice{
-                margin-left: 350px;
+           
+            .prevOrder {
                 position: absolute;
-                top: 75px;
+                left: 300px;
+                top: 60px;
             }
-            .customerpage{
-               position: absolute;
-               left: 350px;
-               top: 125px;
-            }
-            
         </style>
 
     </head>
@@ -79,13 +75,7 @@
         <div class='brugerP'>
             Hello <%=username%> - your balance is : <%=balance%>
         </div>
-        
-        <div class="invoice">
-                <form method="get" action="customerPage.jsp">
-                    <button type="submit">Customer Page</button>
-                </form>
-            </div>
-        
+ 
 
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
@@ -140,14 +130,9 @@
                 Price = <%=ol.getPrice()%>
                 <br>
                 <% } %>
-                <br>Total price : <b><%=totalPrice%></b>
             </div>
                 
-               <div class="checkout">
-                <form method="get" action="GenerateOrder">
-                    <input type="submit" name="submit" value="Check out">
-                </form>
-            </div>
+              
 
 
             </form>
@@ -165,7 +150,7 @@
 
             </div>
 
-            <div class="logout">
+            <div class="checkout">
                 <form method="get" action="GenerateOrder">
                     <input type="submit" name="submit" value="Check out">
                 </form>
@@ -173,7 +158,7 @@
 
 
 
-            <div class="logout">
+            <div class="prevOrder">
                 <form method="get" action="customerPage.jsp">
                     <input type="submit" name="submit" value="Show previous orders">
                 </form>
@@ -184,9 +169,6 @@
                     <input type="submit" name="submit" value="Log out">
                 </form>
             </div>
-
-
-
             
             <br>
             
