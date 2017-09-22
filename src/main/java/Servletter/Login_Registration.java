@@ -55,7 +55,7 @@ public class Login_Registration extends HttpServlet {
             double totalPrice = 0;
             
             if (loggedInUser == null) {
-                request.getRequestDispatcher("Errorpages/_error.jsp")
+                request.getRequestDispatcher("Errorpages/login_error.jsp")
                         .forward(request, response);
 
             } else if (!loggedInUser.getPassword().equals(password)) {
