@@ -25,7 +25,7 @@
 
         <br>
         
-        <form method="post" action="Subpages/registration.jsp">
+        <form method="post" action="registration.jsp">
             <button type="submit">Register new user</button>
         </form>
         

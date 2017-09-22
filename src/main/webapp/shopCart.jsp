@@ -43,11 +43,28 @@
                 margin-top: 15px;
             }
             .checkout{
-                margin-left: 475px;
-                margin-top: 100px;
+                position: absolute;
+                left: 540px;
+                top:129px;
+               
+            .OrderlinePrinter{
+                position: absolute;
+                top: 250px;
+                left:10px;
+                border-style: groove;
+                width: 40%;
             }
-
-
+            .invoice{
+                margin-left: 350px;
+                position: absolute;
+                top: 75px;
+            }
+            .customerpage{
+               position: absolute;
+               left: 350px;
+               top: 125px;
+            }
+            
         </style>
 
     </head>
@@ -60,8 +77,15 @@
             double balance = user.getBalance();
         %>
         <div class='brugerP'>
-            Hello <b><%=username%></b> - your balance is : <b><%=balance%></b>
-        </div><br>
+            Hello <%=username%> - your balance is : <%=balance%>
+        </div>
+        
+        <div class="invoice">
+                <form method="get" action="customerPage.jsp">
+                    <button type="submit">Customer Page</button>
+                </form>
+            </div>
+        
 
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
@@ -102,10 +126,28 @@
 
                 <div class="DD">
                     Quantity <br>
-                    <input type="text" name="quantity" value="0">
+                    <input type="text" name="quantity" value="1">
                 </div>
 
                 <input type="submit" name="submit" value="Add">
+
+            <div class="OrderlinePrinter">
+                <br>
+                <% for (Orderline ol : orderlineList) { %>
+                Bottom = <%=ol.getBottom().getName() %> * 
+                Topping = <%=ol.getTopping().getName()%> * 
+                Quantity = <%=ol.getQuantity()%> * 
+                Price = <%=ol.getPrice()%>
+                <br>
+                <% } %>
+                <br>Total price : <b><%=totalPrice%></b>
+            </div>
+                
+               <div class="checkout">
+                <form method="get" action="GenerateOrder">
+                    <input type="submit" name="submit" value="Check out">
+                </form>
+            </div>
 
 
             </form>
@@ -145,6 +187,11 @@
 
 
 
+            
+            <br>
+            
+            
+            
         </div>
 
 

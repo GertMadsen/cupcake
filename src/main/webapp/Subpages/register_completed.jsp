@@ -17,8 +17,8 @@
             <h1>Succes</h1>
             <% String username = request.getParameter("username"); %>
             
-            <h3>The user <%=username%> has been succesfully registered. 
-            <br>Please login before you continue.</h3><br>
+            <h2>The user <%=username%> has been succesfully registered. 
+            <br>Please login before you continue.</h2><br>
             
             <form method="get" action="login.jsp">
                 <button type="submit">Go to Login</button>

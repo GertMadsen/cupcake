@@ -19,7 +19,7 @@
             <h2>The username <%=username%> is already used by another user. 
                 <br>Please choose another username.</h2><br>
 
-            <form method="get" action="Subpages/registration.jsp">
+            <form method="get" action="registration.jsp">
                 <button type="submit">Register new user</button>
             </form>
 
