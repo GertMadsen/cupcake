@@ -17,7 +17,7 @@ public class Order {
     User user;
     String date;
     List<Orderline> orderlines;
-    int total_price;
+    double total_price;
     
 
     public Order(User user) {
@@ -71,7 +71,7 @@ public class Order {
         this.orderlines = orderlines;
     }
 
-    public int getTotal_price() {
+    public double getTotal_price() {
         return total_price;
     }
 

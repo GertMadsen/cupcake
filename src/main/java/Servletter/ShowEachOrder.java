@@ -8,6 +8,7 @@ package Servletter;
 import Mapper.OrderMapper;
 import Mapper.UserMapper;
 import entities.Order;
+import entities.Orderline;
 import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,11 +56,13 @@ public class ShowEachOrder extends HttpServlet {
         
         if (currentOrder != null) {
             HttpSession session = request.getSession();
-                session.setAttribute("orderId", currentOrder.getOrder_id());
-                session.setAttribute("username", currentOrder.getUser().getName());
-                session.setAttribute("date", currentOrder.getDate());
-                session.setAttribute("orderLines", currentOrder.getOrderlines());
-                session.setAttribute("totalPrice", currentOrder.getTotal_price());
+                
+                session.setAttribute("invoiceorderId", currentOrder.getOrder_id());
+                session.setAttribute("invoiceusername", currentOrder.getUser().getName());
+                session.setAttribute("invoicedate", currentOrder.getDate());
+                List<Orderline> loList = currentOrder.getOrderlines();
+                session.setAttribute("invoicelines", loList);
+                session.setAttribute("invoicetotalPrice", currentOrder.getTotal_price());
 
                 request.getRequestDispatcher("invoicePage.jsp")
                         .forward(request, response);

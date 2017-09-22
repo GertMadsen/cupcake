@@ -4,6 +4,7 @@
     Author     : Christian
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.Orderline"%>
 <%@page import="entities.Order"%>
@@ -19,11 +20,14 @@
         <h1>Hello World! invoice</h1>
         
         <%
-            int orderid = (int) session.getAttribute("orderId");
-            String username = (String) session.getAttribute("username");
-            String date = (String) session.getAttribute("date");
-            List<Orderline> orderlineList = (List<Orderline>) session.getAttribute("orderLines");
-            int totalPrice = (int) session.getAttribute("totalPrice");
+            int orderid = (int) session.getAttribute("invoiceorderId");
+            String username = (String) session.getAttribute("invoiceusername");
+            String date = (String) session.getAttribute("invoicedate");
+            List<Orderline> orderlineList = (List) (session.getAttribute("invoicelines"));
+            double totalPrice = (double) (session.getAttribute("invoicetotalPrice"));
+            
+            //List<Orderline> orderlineList = (List<Orderline>) session.getAttribute("orderLines");
+            //int totalPrice = (int) session.getAttribute("totalPrice");
             
             
         %>
