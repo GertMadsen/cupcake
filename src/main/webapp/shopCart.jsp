@@ -65,7 +65,7 @@
 
     </head>
     <body>
-        <h1>Welcome to the Cupcake shop</h1>
+        <h1>Welcome to the Cupcake shop 22-09:  10:19</h1>
 
         <%
             User user = (User) (session.getAttribute("user"));
