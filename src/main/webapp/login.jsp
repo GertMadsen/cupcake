@@ -10,26 +10,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Page - CupCake4Life.dk</title>
+        <style>
+            .tablehead {
+                text-align: center;
+            }
+        </style> 
     </head>
     <body>
-        <h1>User login:</h1>
 
-        <form action="Login_Registration" method="POST">  
-            <b>Username:</b><br>
-            <input type="text" name="username" value=""><br><br>
-            <b>Password:</b><br>
-            <input type="password" name="password" value=""><br><br>
-            <input type="hidden" name="login" value="true">
-            <input type="submit" name="submit" value="Login">
-        </form>
+        <table border="0">
+            <thead class="tablehead">
+                <tr>
+                    <th>
+                        <h1>Cupcake4Life.dk</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="cupcakes.jpg" width="670" height="365" alt="cupcakes"/>
 
-        <br>
-        
-        <form method="post" action="Subpages/registration.jsp">
-            <button type="submit">Register new user</button>
-        </form>
-        
-    
+                    </td>
+                    <td>
+                        <h3>User login:</h3>
+
+                        <form action="Login_Registration" method="POST">  
+                            <b>Username:</b><br>
+                            <input type="text" name="username" value=""><br><br>
+                            <b>Password:</b><br>
+                            <input type="password" name="password" value=""><br><br>
+                            <input type="hidden" name="login" value="true">
+                            <input type="submit" name="submit" value="Login">
+                        </form>
+
+                        <br>
+
+                        <form method="post" action="Subpages/registration.jsp">
+                            <button type="submit">Register new user</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
     </body>

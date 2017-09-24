@@ -24,7 +24,7 @@
 
         <h1>Previous Orders by Customer:</h1>
         
-        Customer : <b><%=user.getName()%></b><br><br>
+        <h3>Customer : <%=user.getName()%></h3>
         
        
         <%=ViewGenerator.viewOrdersByUser(user)%>
