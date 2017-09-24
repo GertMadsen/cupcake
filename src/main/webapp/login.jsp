@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CUPCAKE4LIFE</title>
+        <title>Login Page - CupCake4Life.dk</title>
     </head>
     <body>
         <h1>User login:</h1>

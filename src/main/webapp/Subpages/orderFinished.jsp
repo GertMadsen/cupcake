@@ -3,7 +3,7 @@
     Created on : 21-09-2017, 19:34:30
     Author     : GertLehmann
 --%>
-
+<%@page import="Servletter.ViewGenerator"%>
 <%@page import="entities.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,13 +11,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Order Finished - CupCake4Life.dk</title>
+        <style>
+            .logout {
+                margin-top: 15px;
+                margin-left: 5px;
+            }
+        </style>
     </head>
     <body>
 
         <%
-            ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
-            ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
             ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
             double totalPrice = (double) (session.getAttribute("totalPrice"));
             User user = (User) (session.getAttribute("user"));
@@ -27,31 +31,31 @@
         <div>
             <h1>Order Finished!</h1>
 
-            <h3>Order number : <%=newOrder.getOrder_id()%>
-                <br>User :  <%=user.getName()%>
-                <br>Date :  <%=newOrder.getDate()%>
+            <h3>Order number : <%=newOrder.getOrder_id()%></h3>
 
-                <br><br></h3>
+            Customer : <b><%=user.getName()%></b>
+            <br>Date : <b><%=newOrder.getDate()%></b><br><br>
 
-            <% for (Orderline ol : orderlineList) {%>
-            Bottom = <b><%=ol.getBottom().getName()%></b> * 
-            Topping = <b><%=ol.getTopping().getName()%></b> * 
-            Quantity = <b><%=ol.getQuantity()%></b> * 
-            Price = <b><%=ol.getPrice()%></b>
-            <br>
-            <% }%>
-            <h3><br>Total price : <b><%=totalPrice%></b>
+            <%=ViewGenerator.linesAddedView(orderlineList)%>  
 
-                <br><br>
-                Your cupcakes has been shipped.
-                <br>Thanks for shopping at our webshop.</h3><br>
+            <h3>Total price : <%=totalPrice%></h3>
 
-            
-            <form method="get" action="shopCart.jsp">
-                <button type="submit">Go back to Shopping Cart</button>
-            </form>
+            Your cupcakes has been shipped.
+            <br>Thanks for shopping at our webshop.<br><br>
 
-            <div >
+            <div class="logout">
+                <form method="get" action="shopCart.jsp">
+                    <button type="submit">Go back to Shopping Cart</button>
+                </form>
+            </div>
+
+            <div class="logout">
+                <form method="get" action="Subpages/showOrders.jsp">
+                    <button type="submit">Show Previous Orders</button>
+                </form>
+            </div>
+
+            <div class="logout">
                 <form method="get" action="login.jsp">
                     <input type="submit" name="submit" value="Log out">
                 </form>

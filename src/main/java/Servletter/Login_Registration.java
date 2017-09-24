@@ -68,9 +68,8 @@ public class Login_Registration extends HttpServlet {
                 session.setAttribute("bottomList", bottomList);
                 session.setAttribute("orderLines", orderLines);
                 session.setAttribute("totalPrice", totalPrice);
-
-                request.getRequestDispatcher("shopCart.jsp")
-                        .forward(request, response);
+                request.getRequestDispatcher("shopCart.jsp").forward(request, response);
+                        
             }
 
         } else {
