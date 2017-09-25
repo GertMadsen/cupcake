@@ -37,7 +37,7 @@ public class Login_Registration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         String loginSite = request.getParameter("login");
 
         UserMapper um = new UserMapper();

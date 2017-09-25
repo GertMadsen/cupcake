@@ -147,23 +147,10 @@ public class OrderMapper {
         }
     }
 
-    private int countOrders() throws SQLException {
-        int output = 0;
-        try {
-            String sql = "select count(*) as ordercount from orders;";
-            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                output = rs.getInt("ordercount");
-            }
-        } catch (Exception e) {
-            return output;
-        }
-        return output;
-    }
 
     public int putToOrderTable(Order order) throws SQLException {
-        int output = countOrders() + 1;
+        int output = 0;
+        ResultSet rs = null;
         int userId = order.getUser().getUser_id();
 
         //String name, String password, double balance, String email
@@ -171,11 +158,14 @@ public class OrderMapper {
         String insertUser = "INSERT INTO cupcake.orders ("
                 + "users_user_id)"
                 + "VALUES (?);";
-        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
+        PreparedStatement recipePstmt = conn.prepareStatement(insertUser, Statement.RETURN_GENERATED_KEYS);
         try {
             conn.setAutoCommit(false);
             recipePstmt.setInt(1, userId);
             recipePstmt.executeUpdate();
+            rs = recipePstmt.getGeneratedKeys();
+            rs.next();
+            output = rs.getInt(1);
             conn.commit();
         } catch (SQLException ex) {
             if (conn != null) {
@@ -188,24 +178,11 @@ public class OrderMapper {
 
     }
 
-    private int countOrderlines() throws SQLException {
-        int output = 0;
-        try {
-            String sql = "select count(*) as linescount from orderlines;";
-            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                output = rs.getInt("linescount");
-            }
-        } catch (Exception e) {
-            return output;
-        }
-        return output;
-    }
 
     // public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
     public int putToOrderLineTable(Orderline oLine) throws SQLException {
-        int output = countOrderlines() + 1;
+        int output = 0;
+        ResultSet rs = null;
         Bottom bot = oLine.getBottom();
         Topping top = oLine.getTopping();
         double price = oLine.getPrice();
@@ -214,13 +191,16 @@ public class OrderMapper {
         String insertOrderline = "INSERT INTO cupcake.orderlines ("
                 + "price, bottoms_bottom_id, toppings_topping_id)"
                 + "VALUES (?, ?, ?);";
-        PreparedStatement recipePstmt = conn.prepareStatement(insertOrderline);
+        PreparedStatement recipePstmt = conn.prepareStatement(insertOrderline, Statement.RETURN_GENERATED_KEYS);
         try {
             conn.setAutoCommit(false);
             recipePstmt.setDouble(1, price);
             recipePstmt.setInt(2, bot.getId());
             recipePstmt.setInt(3, top.getId());
             recipePstmt.executeUpdate();
+            rs = recipePstmt.getGeneratedKeys();
+            rs.next();
+            output = rs.getInt(1);
             conn.commit();
         } catch (SQLException ex) {
             if (conn != null) {
