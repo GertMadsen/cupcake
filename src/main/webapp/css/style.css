@@ -7,8 +7,68 @@ and open the template in the editor.
     Created on : Sep 27, 2017, 3:16:16 PM
     Author     : Christian
 */
+            
+/*
 
-.CShop {
+     width: 303px;
+     height: 303px;
+*/
+
+#wholebody {
+    
+}
+
+body {
+    background-color: #D2691E;
+     color: #FFFDD0;
+    /*
+    background-image: url("../cupcakes.jpg");
+    float: left;
+    */
+}
+
+#outernav {
+position:relative;
+}
+
+#nav {
+position:absolute;
+left:50%;top:0;
+margin-left:-375px; /* negative margin equal to half the width */
+width:750px;
+list-style:none;
+}
+#nav li {
+float:left;
+}
+#nav a {
+display:block;
+text-align:center;
+width:150px; /* fixed width */
+text-decoration:none; 
+}
+	
+
+#picture {
+    margin-left: auto ;
+    margin-right: auto ;
+    width: 300px;
+     height: 300px;
+}
+
+#wholeForm {
+    margin-left: auto ;
+  margin-right: auto ;
+     width: 300px;
+     height: 450px;
+     border-style: solid;
+    border-color: brown;
+    padding-left: 10px;
+    padding-right: 10px;
+     
+}
+
+            .CShop {
                 margin-left: 5px;
             }
             .DD{
@@ -37,3 +97,34 @@ and open the template in the editor.
                 margin-top: 100px;
             }
 
+/*
+    
+            .CShop {
+                margin-left: 5px;
+            }
+            .DD{
+                float: left; 
+                width: 150px;
+                height: 75px;
+                margin-left: 5px;
+                margin-bottom: 5px;
+            }
+            input[type=text] {
+                width: 80%;
+            }
+            .logout {
+                margin-top: 15px;
+                margin-left: 5px;
+            }
+            .brugerP{
+                margin-left: 10px;
+                margin-bottom: 25px;
+            }
+            input[type=submit] {
+                margin-top: 15px;
+            }
+            .checkout{
+                margin-left: 475px;
+                margin-top: 100px;
+            }
+*/
