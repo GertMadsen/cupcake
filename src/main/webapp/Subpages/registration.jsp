@@ -24,9 +24,14 @@
             <b>Email:</b><br>
             <input type="text" name="email" value=""><br><br>
             <input type="hidden" name="login" value="false">
-            <input type="submit" name="submit" value="Register">
+            
+            <b>User: </b>
             <input type="radio" name="role" value="user" checked="checked" />
-            <input type="radio" name="role" value="admin" checked="unchecked" />
+            
+            <b>    Admin: </b>
+            <input type="radio" name="role" value="admin" />
+            <br><br>
+            <input type="submit" name="submit" value="Register">
             
         </form>
         <br>

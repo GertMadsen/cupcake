@@ -25,7 +25,7 @@ public class UserMapper {
     public User getUserByName(String name) {
         User output = null;
         try {
-            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where username='" + name+"'";
+            String sql = "SELECT user_id,username, password,balance, email, administrator FROM cupcake.users where username='" + name+"'";
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -41,7 +41,7 @@ public class UserMapper {
                 password = rs.getString("password");
                 balance = rs.getDouble("balance");
                 email = rs.getString("email");
-                admin = rs.getBoolean("admin");
+                admin = rs.getBoolean("administrator");
                 
             }
             output = new User(userName, password, balance, email, admin);
@@ -79,7 +79,7 @@ public class UserMapper {
     public User getUserByID(int id) {
         User output = null;
         try{
-            String sql = "SELECT user_id,username, password,balance, email FROM cupcake.users where user_id=" + id;
+            String sql = "SELECT user_id,username, password,balance, email, administrator FROM cupcake.users where user_id=" + id;
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             int userID = 0;
@@ -94,7 +94,7 @@ public class UserMapper {
                 password = rs.getString("password");
                 balance = rs.getDouble("balance");
                 email = rs.getString("email");
-                admin = rs.getBoolean("admin");
+                admin = rs.getBoolean("administrator");
             }
             output = new User(userName, password, balance, email, admin);
             output.setUser_id(id);
