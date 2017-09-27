@@ -25,7 +25,15 @@
             <input type="text" name="email" value=""><br><br>
             <input type="checkbox" name="administrator" value="admin" disabled="disabled" />
             <input type="hidden" name="login" value="false">
+            
+            <b>User: </b>
+            <input type="radio" name="role" value="user" checked="checked" />
+            
+            <b>    Admin: </b>
+            <input type="radio" name="role" value="admin" />
+            <br><br>
             <input type="submit" name="submit" value="Register">
+            
         </form>
         <br>
 

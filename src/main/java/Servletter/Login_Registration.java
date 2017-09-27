@@ -82,8 +82,13 @@ public class Login_Registration extends HttpServlet {
         } else {
             double balance = Double.parseDouble(request.getParameter("balance"));
             String email = request.getParameter("email");
+            String role = request.getParameter("role");
+            boolean admin = false;
+            if (role.equals("admin")) {
+                admin = true;
+            }
 
-            User newUser = new User(username, password, balance, email);
+            User newUser = new User(username, password, balance, email, admin);
 
             try {
                 um.putUser(newUser);

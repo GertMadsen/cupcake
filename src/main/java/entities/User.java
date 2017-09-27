@@ -16,14 +16,16 @@ public class User {
     String password;
     double balance;
     String email;
+    boolean admin;
     
 
-    public User(String name, String password, double balance, String email) {
+    public User(String name, String password, double balance, String email, boolean admin) {
         //this.user_id = user_id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.balance = balance;
+        this.admin = admin;
     }
 
     public void setUser_id(int user_id) {
@@ -62,15 +64,25 @@ public class User {
         return email;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+   
+    
     public double getBalance() {
         return balance;
     }
 
     @Override
     public String toString() {
-        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + '}';
+        return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + ", admin=" + admin + '}';
     }
 
+    
     
     
     
