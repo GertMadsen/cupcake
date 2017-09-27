@@ -20,15 +20,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="css/style2.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/style2.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
+        <%@ include file = "topMenu.jsp" %>
 
         <%
             User user = (User) (session.getAttribute("user"));
-            String username = user.getName();
-            double balance = user.getBalance();
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
             ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
             ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
@@ -100,7 +99,7 @@
                 </div>
 
                 <div class="logout">
-                    <form method="get" action="Subpages/showOrders.jsp">
+                    <form method="get" action="showOrders.jsp">
                         <input type="submit" name="submit" value="Show Previous Orders">
                     </form>
                 </div>
@@ -108,11 +107,7 @@
 
         </div>
 
-        <div class="logout">
-            <form method="get" action="login.jsp">
-                <input type="submit" name="submit" value="Log Out">
-            </form>
-        </div>
+
 
     </div>
 

@@ -9,53 +9,50 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        
-        
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <title>Admin Page - CupCake4Life.dk</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body id ="wholebody">
-        <div id="outernav">
-         <ul id="nav">
-            <li><a href="../login.jsp">Login</a></li>
-            <li><a href="../index.html">Index</a></li>
-          </ul> 
-        </div>
-        
-        <div id="wholeForm">
-            <h1>Register new user:</h1>
+        <%@ include file = "topMenu.jsp" %>
 
-            <form action="../Login_Registration">       
-                <b>Username:</b><br>
-                <input type="text" name="username" value=""><br><br>
-                <b>Password:</b><br>
-                <input type="password" name="password" value=""><br><br>
-                <b>Balance:</b><br>
-                <input type="text" name="balance" value=""><br><br>
-                <b>Email:</b><br>
-                <input type="text" name="email" value=""><br><br>
-                <input type="checkbox" name="administrator" value="admin" disabled="disabled" />
-                <input type="hidden" name="login" value="false">
-
-                <b>User: </b>
-                <input type="radio" name="role" value="user" checked="checked" />
-
-                <b>    Admin: </b>
-                <input type="radio" name="role" value="admin" />
-                <br><br>
-                <input type="submit" name="submit" value="Register">
-
-            </form>
-            <br>
-
-            <form method="get" action="../login.jsp">
-                <button type="submit">Go back to Login</button>
-            </form>
-
+        <div class="picFrame">
             
+            <div id="regForm">
+                <h2>Register new user:</h2>
+
+                <form action="../Login_Registration">       
+                    <b>Username:</b><br>
+                    <input class="blackText" type="text" name="username" value=""><br><br>
+                    <b>Password:</b><br>
+                    <input class="blackText" type="password" name="password" value=""><br><br>
+                    <b>Balance:</b><br>
+                    <input class="blackText" type="text" name="balance" value=""><br><br>
+                    <b>Email:</b><br>
+                    <input class="blackText" type="text" name="email" value=""><br><br>
+                    <b>User: </b>
+                    <input class="blackText" type="radio" name="role" value="user" checked="checked" />
+                    <b>Admin: </b>
+                    <input class="blackText" type="radio" name="role" value="admin" />
+                    <br><br>
+                    <input type="hidden" name="login" value="false">
+                    <input class="blackText" type="submit" name="submit" value="Register">
+
+                </form>
+                <br>
+
+                <form method="post" action="../index.jsp">
+                    <button class="blackText" type="submit">Go back to Login</button>
+                </form>
+
+            </div>
+
         </div>
-        <div id="picture">
-            <img src="../cupcakes.jpg" width="370" height="195" alt="cupcakes"/>
-        </div>
+
     </body>
 </html>

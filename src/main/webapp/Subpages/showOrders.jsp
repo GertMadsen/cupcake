@@ -12,14 +12,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Orders by User - CupCake4Life.dk</title>
-        <style>
-            .logout {
-                margin-top: 15px;
-                margin-left: 5px;
-            }
-        </style>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
+        <%@ include file = "topMenu.jsp" %>
+         
         <% 
             User user = (User) (session.getAttribute("user")); 
             boolean admin = user.isAdmin();%>
@@ -38,19 +42,14 @@
         
         <%if (!admin) {%>
             <div class="logout">
-            <form method="get" action="../shopCart.jsp">
+            <form method="get" action="shopCart.jsp">
                 <button type="submit">Go back to Shopping Cart</button>
             </form>
             </div>
             
             <br>
          <%}%>   
-         
-            <div class="logout">
-                <form method="get" action="login.jsp">
-                    <input type="submit" name="submit" value="Log Out">
-                </form>
-            </div>
+
         
     </body>
 </html>

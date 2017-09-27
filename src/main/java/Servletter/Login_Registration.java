@@ -61,6 +61,9 @@ public class Login_Registration extends HttpServlet {
             } else if (!loggedInUser.getPassword().equals(password)) {
                 request.getRequestDispatcher("Errorpages/login_error.jsp")
                         .forward(request, response);
+            } else if (loggedInUser.getName().equals("")) {
+                request.getRequestDispatcher("Errorpages/login_error.jsp")
+                        .forward(request, response);
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", loggedInUser);
@@ -70,10 +73,10 @@ public class Login_Registration extends HttpServlet {
                 session.setAttribute("totalPrice", totalPrice);
                 boolean admin = loggedInUser.isAdmin();
                 if (admin) {
-                    request.getRequestDispatcher("adminPage.jsp").forward(request, response);
+                    request.getRequestDispatcher("Subpages/adminPage.jsp").forward(request, response);
                     
                 } else {
-                    request.getRequestDispatcher("shopCart.jsp").forward(request, response);
+                    request.getRequestDispatcher("Subpages/shopCart.jsp").forward(request, response);
                     
                 }
                         

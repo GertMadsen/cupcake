@@ -9,10 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Error page</title>
+        <title>Registration complete - CupCake4Life.dk</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
-        
+        <%@ include file = "topMenu.jsp" %>
+      
         <div>
             <h1>Succes</h1>
             <% String username = request.getParameter("username"); %>
@@ -20,7 +29,7 @@
             <h3>The user <%=username%> has been succesfully registered. 
             <br>Please login before you continue.</h3><br>
             
-            <form method="get" action="login.jsp">
+            <form method="get" action="index.jsp">
                 <button type="submit">Go to Login</button>
             </form>
 
