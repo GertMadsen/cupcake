@@ -46,7 +46,7 @@ public class ViewGenerator {
             String username = o.getUser().getName();
             
             output += "Order no. : " + id + " by User : " + username  
-                    + " - <a href=\"Subpages/showOrderInfo.jsp?orderId="+id+"\"> View this order </a>" 
+                    + " - <a href=\"showOrderInfo.jsp?orderId="+id+"\"> View this order </a>" 
                     + " - Date : " + o.getDate() + "<br>";
         }
 

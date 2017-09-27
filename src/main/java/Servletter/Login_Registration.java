@@ -70,7 +70,7 @@ public class Login_Registration extends HttpServlet {
                 session.setAttribute("totalPrice", totalPrice);
                 boolean admin = loggedInUser.isAdmin();
                 if (admin) {
-                    request.getRequestDispatcher("Subpages/showOrders.jsp").forward(request, response);
+                    request.getRequestDispatcher("adminPage.jsp").forward(request, response);
                     
                 } else {
                     request.getRequestDispatcher("shopCart.jsp").forward(request, response);
