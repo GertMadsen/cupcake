@@ -29,7 +29,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <img src="cupcakes.jpg" width="670" height="365" alt="cupcakes"/>
+                        <img src="cupcakes.jpg" width="370" height="195" alt="cupcakes"/>
 
                     </td>
                     <td>

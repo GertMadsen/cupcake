@@ -105,7 +105,6 @@ public class UserMapper {
     }
     
     public void putUser(User user) throws SQLException {
-        
         String name = user.getName();
         String password = user.getPassword();
         double balance = user.getBalance();
