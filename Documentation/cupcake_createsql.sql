@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`users` (
 ENGINE = InnoDB;
 
 INSERT INTO users (username,password,balance,email,administrator) VALUE
-('admin','1234',5000.00,'admin@cupcake.dk',1);
+('admin','1234',5000.00,'admin@cupcake.dk',1),
+('testuser','1234',10000.00,'testuser@cupcake.dk',0);
 
 -- -----------------------------------------------------
 -- Table `cupcake`.`orders`
