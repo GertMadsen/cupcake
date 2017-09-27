@@ -25,7 +25,7 @@
         <div class="picFrame">
 
             <div id="adminFrame"> 
-
+               
                 <h2>Succes!</h2>
 
                 <% String username = request.getParameter("username");%>
