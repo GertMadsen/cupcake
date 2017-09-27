@@ -19,11 +19,12 @@ CREATE TABLE IF NOT EXISTS `cupcake`.`users` (
   `password` VARCHAR(45) NOT NULL,
   `balance` DECIMAL(10,2) UNSIGNED NOT NULL,
   `email` VARCHAR(45) NULL,
+  `administrator` TINYINT NOT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB;
 
-INSERT INTO users (username,password,balance,email) VALUE
-('admin','1234',5000.00,'admin@cupcake.dk');
+INSERT INTO users (username,password,balance,email,administrator) VALUE
+('admin','1234',5000.00,'admin@cupcake.dk',1);
 
 -- -----------------------------------------------------
 -- Table `cupcake`.`orders`
