@@ -23,6 +23,7 @@
             <input type="text" name="balance" value=""><br><br>
             <b>Email:</b><br>
             <input type="text" name="email" value=""><br><br>
+            <input type="checkbox" name="administrator" value="admin" disabled="disabled" />
             <input type="hidden" name="login" value="false">
             <input type="submit" name="submit" value="Register">
         </form>

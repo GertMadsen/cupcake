@@ -21,7 +21,9 @@
     </head>
     <body>
         <h1>Order Specification: </h1>
-        <% int orderId = Integer.parseInt(request.getParameter("orderId"));%>
+        
+        <%  String oid = request.getParameter("orderId");
+            int orderId = Integer.parseInt(oid);%>
 
         <%=ViewGenerator.viewSingleOrder(orderId)%>
 
