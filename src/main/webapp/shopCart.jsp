@@ -20,43 +20,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <style>
-            .CShop {
-                margin-left: 5px;
-            }
-            .DD{
-                float: left; 
-                width: 150px;
-                height: 75px;
-                margin-left: 5px;
-                margin-bottom: 5px;
-            }
-            input[type=text] {
-                width: 80%;
-            }
-            .logout {
-                margin-top: 15px;
-                margin-left: 5px;
-            }
-            .brugerP{
-                margin-left: 10px;
-                margin-bottom: 25px;
-            }
-            input[type=submit] {
-                margin-top: 15px;
-            }
-            .checkout{
-                margin-left: 475px;
-                margin-top: 100px;
-            }
-
-
-        </style>
+        <link href="css/style2.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
-        <h1>Welcome to Cupcake4life.dk</h1>
 
         <%
             User user = (User) (session.getAttribute("user"));
@@ -68,59 +35,86 @@
             double totalPrice = (double) (session.getAttribute("totalPrice"));
         %>
 
-        <div class='brugerP'>
-            Customer : <b><%=username%></b> - Balance = <b><%=balance%></b><br>
+
+        <div id="container2" class="container" >
+
+            <div class="col-sm-2">
+
+            </div>
+
+            <div class="col-sm-8" id="shopVindue">
+
+
+                <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
+                    <div class="DD">
+                        Bottom <br>
+                        <select name="bottom">
+                            <%=ViewGenerator.bottomSelect(bottomList)%>
+                        </select>
+                    </div>
+                    <div class="DD">
+                        Topping <br>
+                        <select name="topping">
+                            <%=ViewGenerator.toppingSelect(toppingList)%>
+                        </select>
+                    </div>
+
+                    <div class="DD">
+                        Quantity <br>
+                        <input type="text" name="quantity" value="1">
+                    </div>
+
+                    <div id="addKnap">
+                        <input type="submit" name="submit" value="Add">
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div class="col-sm-2">
+
+            </div>
         </div>
-        <div class ="CShop">
 
-            <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
-                <div class="DD">
-                    Bottom <br>
-                    <select name="bottom">
-                        <%=ViewGenerator.bottomSelect(bottomList)%>
-                    </select>
-                </div>
-                <div class="DD">
-                    Topping <br>
-                    <select name="topping">
-                        <%=ViewGenerator.toppingSelect(toppingList)%>
-                    </select>
-                </div>
-
-                <div class="DD">
-                    Quantity <br>
-                    <input type="text" name="quantity" value="1">
-                </div>
-
-                <input type="submit" name="submit" value="Add">
+        <div class="container">
+            <div class="col-sm-2"></div>
 
 
-            </form>
-            <br><br><br>
-            <div class="CShop">
+            <div class="col-sm-8" id="itemsKurv">
                 <%=ViewGenerator.linesAddedView(orderlineList)%>
                 <h3>Total price : <%=totalPrice%></h3>
             </div>
+            <div class="col-sm-2"></div>
+        </div>
 
-            <div class="logout">
-                <form method="get" action="GenerateOrder">
-                    <input type="submit" name="submit" value="Finish Order">
-                </form>
-            </div>
 
-            <div class="logout">
-                <form method="get" action="Subpages/showOrders.jsp">
-                    <input type="submit" name="submit" value="Show Previous Orders">
-                </form>
-            </div>
+        <div class="container">
+            <div class="col-sm-10"></div>
 
-            <div class="logout">
-                <form method="get" action="login.jsp">
-                    <input type="submit" name="submit" value="Log Out">
-                </form>
+            <div class="col-sm-2">
+                <div class="logout">
+                    <form method="get" action="GenerateOrder">
+                        <input type="submit" name="submit" value="Finish Order">
+                    </form>
+                </div>
+
+                <div class="logout">
+                    <form method="get" action="Subpages/showOrders.jsp">
+                        <input type="submit" name="submit" value="Show Previous Orders">
+                    </form>
+                </div>
             </div>
 
         </div>
 
-    </body>
+        <div class="logout">
+            <form method="get" action="login.jsp">
+                <input type="submit" name="submit" value="Log Out">
+            </form>
+        </div>
+
+    </div>
+
+</body>
 </html>
