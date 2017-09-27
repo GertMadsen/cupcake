@@ -19,7 +19,10 @@ public class ViewGenerator {
         String output = "";
         OrderMapper om = new OrderMapper();
         ArrayList<Order> userOrders = (ArrayList) om.getOrdersByUserId(user);
-
+ 
+        output += "<h1>Previous Orders by Customer:</h1>";
+        output += "<h3>Customer : "+user.getName()+"</h3>";
+        
         for (Order o : userOrders) {
             int id = o.getOrder_id();
             output += "Order no. : " + id 
@@ -30,7 +33,29 @@ public class ViewGenerator {
         return output;
     }
 
-    public static String viewSingleOrder(int orderId) {
+        public static String viewAllOrders() {
+
+      
+        String output = "";
+        OrderMapper om = new OrderMapper();
+        ArrayList<Order> userOrders = (ArrayList) om.getAllOrders();
+        output += "<h1>Previous Orders by All Customers:</h1>";
+        
+        for (Order o : userOrders) {
+            int id = o.getOrder_id();
+            String username = o.getUser().getName();
+            
+            output += "Order no. : " + id + " by User : " + username  
+                    + " - <a href=\"Subpages/showOrderInfo.jsp?orderId="+id+"\"> View this order </a>" 
+                    + " - Date : " + o.getDate() + "<br>";
+        }
+
+        return output;
+    }
+    
+        
+        
+    public static String viewSingleOrder(int orderId, boolean admin) {
         String output = "";
         OrderMapper om = new OrderMapper();
         Order orderToShow = om.getOrderById(orderId);
@@ -39,8 +64,11 @@ public class ViewGenerator {
 
         output = "<h3>Order no. : " + orderId + "</h3>";
         output += "Customer : <b>" + orderToShow.getUser().getName() + "</b><br>";
+        if (admin) {
+            output += "email : <b>" + orderToShow.getUser().getEmail() + "</b><br>";
+        }
         output += "Date : <b>" + orderToShow.getDate() + "</b><br><br>";
-
+        
         for (Orderline o : orderLines) {
             Bottom bot = o.getBottom();
             Topping top = o.getTopping();
@@ -110,8 +138,8 @@ public class ViewGenerator {
         String toShow = viewOrdersByUser(testUser);
         System.out.println(toShow);
 
-        String toShow2 = viewSingleOrder(1);
-        System.out.println(toShow2);
+//        String toShow2 = viewSingleOrder(1);
+//        System.out.println(toShow2);
 
     }
 

@@ -51,6 +51,37 @@ public class OrderMapper {
         }
         return output;
     }
+    
+        public List<Order> getAllOrders() {
+        List<Order> output = new ArrayList<Order>();
+        UserMapper um = new UserMapper();
+        try {
+            Order order = null;
+            String sql = "SELECT * FROM cupcake.orders ";
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            int orderId = 0;
+            String date = "";
+            int userId = 0;
+            
+            while (rs.next()) {
+                orderId = rs.getInt("order_id");
+                date = rs.getString("date");
+                userId = rs.getInt("users_user_id");
+                User user = um.getUserByID(userId);
+                order = new Order(user);
+                order.setDate(date);
+                order.setOrder_id(orderId);
+                order.setOrderlines(this.getOrderlinesByOrderId(order));
+                output.add(order);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return output;
+    }
+    
 
     public Order getOrderById(int id) {
         Order order = null;

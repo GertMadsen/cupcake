@@ -20,15 +20,23 @@
         </style>
     </head>
     <body>
-        <% User user = (User) (session.getAttribute("user")); %>
-
-        <h1>Previous Orders by Customer:</h1>
+        <% 
+            User user = (User) (session.getAttribute("user")); 
+            boolean admin = user.isAdmin();%>
+            
         
-        <h3>Customer : <%=user.getName()%></h3>
+        <%if (admin) {%>
         
-       
+          <%=ViewGenerator.viewAllOrders()%>
+          
+         <%} else {%>   
+        
         <%=ViewGenerator.viewOrdersByUser(user)%>
         
+        <%}%>   
+        
+        
+        <%if (!admin) {%>
             <div class="logout">
             <form method="get" action="../shopCart.jsp">
                 <button type="submit">Go back to Shopping Cart</button>
@@ -36,9 +44,10 @@
             </div>
             
             <br>
-
+         <%}%>   
+         
             <div class="logout">
-                <form method="get" action="../login.jsp">
+                <form method="get" action="login.jsp">
                     <input type="submit" name="submit" value="Log Out">
                 </form>
             </div>

@@ -23,9 +23,11 @@
         <h1>Order Specification: </h1>
         
         <%  String oid = request.getParameter("orderId");
-            int orderId = Integer.parseInt(oid);%>
-
-        <%=ViewGenerator.viewSingleOrder(orderId)%>
+            int orderId = Integer.parseInt(oid);
+            User user = (User) (session.getAttribute("user"));
+            boolean admin = user.isAdmin(); %>
+            
+        <%=ViewGenerator.viewSingleOrder(orderId,admin)%>
 
         <div class="logout">
             <form method="get" action="showOrders.jsp">
