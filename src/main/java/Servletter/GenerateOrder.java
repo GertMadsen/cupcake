@@ -49,7 +49,7 @@ public class GenerateOrder extends HttpServlet {
         if (!orderlineList.isEmpty()) {
 
             if (user.getBalance() < totalPrice) {
-               request.getRequestDispatcher("Subpages/notEnoughMoney.jsp")
+               request.getRequestDispatcher("notEnoughMoney.jsp")
                             .forward(request, response); 
             } else {
 
@@ -91,12 +91,12 @@ public class GenerateOrder extends HttpServlet {
                             .forward(request, response);
                 }
 
-                request.getRequestDispatcher("Subpages/orderFinished.jsp")
+                request.getRequestDispatcher("orderFinished.jsp")
                         .forward(request, response);
             }
 
         } else {
-            request.getRequestDispatcher("Subpages/noOrderMade.jsp")
+            request.getRequestDispatcher("noOrderMade.jsp")
                     .forward(request, response);
         }
 

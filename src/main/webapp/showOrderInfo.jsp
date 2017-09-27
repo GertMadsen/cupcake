@@ -18,28 +18,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
-        <%@ include file = "topMenu_x.jsp" %>
-        
-        <h1>Order Specification: </h1>
-        
-        <%  String oid = request.getParameter("orderId");
-            int orderId = Integer.parseInt(oid);
-            User user = (User) (session.getAttribute("user"));
-            boolean admin = user.isAdmin(); %>
-            
-        <%=ViewGenerator.viewSingleOrder(orderId,admin)%>
+    <body style="background-color: #D2691E">
+        <%@ include file = "topMenu.jsp" %>
 
-        <div class="logout">
-            <form method="get" action="showOrders.jsp">
-                <button type="submit">Go back to Show Orders</button>
-            </form>
+        <div id="ordersFrame">
+
+            <h1>Order Specification: </h1>
+
+            <%  String oid = request.getParameter("orderId");
+                int orderId = Integer.parseInt(oid);
+                User user = (User) (session.getAttribute("user"));
+                boolean admin = user.isAdmin();%>
+  
+                
+            <%=ViewGenerator.viewSingleOrder(orderId, admin)%>
+
+            <div class="logout">
+                <form method="get" action="showOrders.jsp">
+                    <button type="submit">Go back to Show Orders</button>
+                </form>
+                
+                <br>
+                
+            </div>
+
         </div>
-
-        <br>
 
 
     </body>

@@ -16,22 +16,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
-        <%@ include file = "topMenu.jsp" %>
-      
-        <div>
-            <h1>Succes</h1>
-            <% String username = request.getParameter("username"); %>
-            
-            <h3>The user <%=username%> has been succesfully registered. 
-            <br>Please login before you continue.</h3><br>
-            
-            <form method="get" action="index.jsp">
-                <button type="submit">Go to Login</button>
-            </form>
+    <body id ="wholebody">
+        <%@ include file = "../topMenu.jsp" %>
 
-        </div>    </body>
+        <div class="picFrame">
+
+            <div id="adminFrame"> 
+
+                <h2>Succes!</h2>
+
+                <% String username = request.getParameter("username");%>
+
+                The user <h3><%=username%></h3> has been succesfully registered. 
+                <br><br>Please login before you continue.<br><br>
+
+                <form method="get" action="index.jsp">
+                    <button class="blackText" type="submit">Go to Login</button>
+                </form>
+
+                <br>
+
+            </div>
+
+        </div> 
+
+
+    </body>
 </html>

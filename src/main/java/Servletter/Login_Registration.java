@@ -73,10 +73,10 @@ public class Login_Registration extends HttpServlet {
                 session.setAttribute("totalPrice", totalPrice);
                 boolean admin = loggedInUser.isAdmin();
                 if (admin) {
-                    request.getRequestDispatcher("Subpages/adminPage.jsp").forward(request, response);
+                    request.getRequestDispatcher("adminPage.jsp").forward(request, response);
                     
                 } else {
-                    request.getRequestDispatcher("Subpages/shopCart.jsp").forward(request, response);
+                    request.getRequestDispatcher("shopCart.jsp").forward(request, response);
                     
                 }
                         
@@ -102,7 +102,7 @@ public class Login_Registration extends HttpServlet {
 
             try {
                 um.putUser(newUser);
-                    request.getRequestDispatcher("Subpages/register_completed.jsp")
+                    request.getRequestDispatcher("register_completed.jsp")
                             .forward(request, response);
                 
             } catch (SQLException ex) {

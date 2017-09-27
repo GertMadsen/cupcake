@@ -16,23 +16,35 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style2.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
-        <%@ include file = "../Subpages/topMenu.jsp" %>
+    <body id ="wholebody">
+        <%@ include file = "../topMenu.jsp" %>
 
-        <div>
-            <h1>Error!</h1>
-            <% String username = request.getParameter("username");%>
+        <div class="picFrame">
 
-            <h2>The username <%=username%> is already used by another user. 
-                <br>Please choose another username.</h2><br>
+            <div id="adminFrame"> 
 
-            <form method="get" action="Subpages/registration.jsp">
-                <button type="submit">Register new user</button>
-            </form>
+                <h2>Error!</h2>
 
-        </div>
+                <% String username = request.getParameter("username");%>
+
+                The username <h3><%=username%></h3> is already used by another user. 
+                    Please choose another username.<br><br>
+
+                <form method="get" action="index.jsp">
+                    <button class="blackText" type="submit">Go to Login</button>
+                </form>
+                <br>
+                <form method="get" action="registration.jsp">
+                    <button class="blackText" type="submit">Register new user</button>
+                </form>
+                <br>
+
+            </div>
+
+        </div> 
+
     </body>
 </html>

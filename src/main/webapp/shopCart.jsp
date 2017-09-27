@@ -20,7 +20,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style2.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style2.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
@@ -80,9 +80,37 @@
             <div class="col-sm-2"></div>
 
 
+
             <div class="col-sm-8" id="itemsKurv">
-                <%=ViewGenerator.linesAddedView(orderlineList)%>
-                <h3>Total price : <%=totalPrice%></h3>
+                <% if (!orderlineList.isEmpty()) {%>
+
+                <table class="table table-center table-striped">
+                    <thead>
+                        <tr>
+                            <th>Bottom</th>
+                            <th>Topping</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%=ViewGenerator.linesAddedView(orderlineList)%>
+
+                        <tr>
+                            <td><h3>Total</h3></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><h3><%=totalPrice%></h3></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <% }%>
+
+
             </div>
             <div class="col-sm-2"></div>
         </div>

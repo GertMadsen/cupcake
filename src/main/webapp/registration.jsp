@@ -16,7 +16,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body id ="wholebody">
         <%@ include file = "topMenu.jsp" %>
@@ -26,7 +26,7 @@
             <div id="regForm">
                 <h2>Register new user:</h2>
 
-                <form action="../Login_Registration">       
+                <form action="Login_Registration">       
                     <b>Username:</b><br>
                     <input class="blackText" type="text" name="username" value=""><br><br>
                     <b>Password:</b><br>
@@ -34,7 +34,7 @@
                     <b>Balance:</b><br>
                     <input class="blackText" type="text" name="balance" value=""><br><br>
                     <b>Email:</b><br>
-                    <input class="blackText" type="text" name="email" value=""><br><br>
+                    <input class="blackText" type="email" name="email" value=""><br><br>
                     <b>User: </b>
                     <input class="blackText" type="radio" name="role" value="user" checked="checked" />
                     <b>Admin: </b>
@@ -46,7 +46,7 @@
                 </form>
                 <br>
 
-                <form method="post" action="../index.jsp">
+                <form method="post" action="index.jsp">
                     <button class="blackText" type="submit">Go back to Login</button>
                 </form>
 

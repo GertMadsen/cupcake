@@ -1,6 +1,6 @@
 <%-- 
-    Document   : topmenu_x
-    Created on : 27-09-2017, 21:05:12
+    Document   : topMenu
+    Created on : 27-09-2017, 17:45:43
     Author     : GertLehmann
 --%>
 
@@ -25,8 +25,10 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="navbar-text">Logged in as : <%=topName%></li>
+            <% if (!topUser.isAdmin()) { %>
             <li class="navbar-text">Your balance is : <%=topBalance%></li>
-            <li><a href="../index.jsp">Log Out</a></li>
+            <% } %>
+            <li><a href="index.jsp">Log Out</a></li>
         </ul>
 
         <% } %>

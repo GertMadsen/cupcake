@@ -21,7 +21,7 @@
     </head>
     <body id ="wholebody">
         <%  session.setAttribute("user", null);%>
-        <%@ include file = "Subpages/topMenu.jsp" %>
+        <%@ include file = "topMenu.jsp" %>
 
         <div class="picFrame">
 
@@ -39,7 +39,7 @@
 
                 <br>
 
-                <form method="post" action="Subpages/registration.jsp">
+                <form method="post" action="registration.jsp">
                     <button class="blackText" type="submit">Register new user</button>
                 </form>
 

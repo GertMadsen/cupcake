@@ -16,20 +16,28 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/style2.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
-        <%@ include file = "../Subpages/topMenu.jsp" %>
-        <div>
-            <h1>Error!</h1>
+    <body id ="wholebody">
+        <%@ include file = "../topMenu.jsp" %>
 
-            <h2>And error occured writing to database. 
-            <br>Please try register again.</h2><br>
+        <div class="picFrame">
 
-            <form method="get" action="Subpages/registration.jsp">
-                <button type="submit">Register new user</button>
-            </form>
+            <div id="adminFrame"> 
 
-        </div>    </body>
+                <h2>Error!</h2>
+
+                <h3>And error occured writing to database. 
+                <br>Please try register again.</h3><br>
+
+                <form method="get" action="registration.jsp">
+                    <button class="blackText" type="submit">Register new user</button>
+                </form>
+
+            </div>
+
+        </div>
+     
+    </body>
 </html>

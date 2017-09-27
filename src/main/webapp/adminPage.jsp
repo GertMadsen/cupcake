@@ -40,7 +40,7 @@
                 and email.
 
                 <div class="logout">
-                    <form method="get" action="Subpages/showOrders.jsp">
+                    <form method="get" action="showOrders.jsp">
                         <input class="blackText" type="submit" name="submit" value="Show All Orders">
                     </form>
                 </div>

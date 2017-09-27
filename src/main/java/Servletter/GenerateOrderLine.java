@@ -57,7 +57,7 @@ public class GenerateOrderLine extends HttpServlet {
         session.setAttribute("orderLines",orderlineList);
         session.setAttribute("totalPrice",totalPrice);
         
-        request.getRequestDispatcher("Subpages/shopCart.jsp").forward(request, response);
+        request.getRequestDispatcher("shopCart.jsp").forward(request, response);
         
                 
     }

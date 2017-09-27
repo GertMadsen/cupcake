@@ -100,7 +100,17 @@ text-decoration:none;
     text-align: center;
 }
 
-
+#ordersFrame {
+    background-color: #FFFFFF;
+    margin-top: 50px; 
+    margin-left: auto ;
+    margin-right: auto ;
+    width: 90%;
+    border-style: solid;
+    border-color: brown;
+    padding-left: 10px;
+    padding-right: 10px; 
+}
 
 
 
