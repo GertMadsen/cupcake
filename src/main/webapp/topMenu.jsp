@@ -27,8 +27,9 @@
             <li class="navbar-text">Logged in as : <%=topName%></li>
             <% if (!topUser.isAdmin()) { %>
             <li class="navbar-text">Your balance is : <%=topBalance%></li>
-            <% } %>
-            <li><a href="index.jsp">Log Out</a></li>
+            <% } else { %>
+            <li class="navbar-text">(Administrator)</li>
+            <% } %><li><a href="index.jsp">Log Out</a></li>
         </ul>
 
         <% } %>
