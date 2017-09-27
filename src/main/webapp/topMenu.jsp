@@ -16,7 +16,7 @@
 %>
 
 <nav class="navbar navbar-inverse">
-    <div id="top_menu" class="container-fluid">
+    <div class="container-fluid">
        <ul class="nav navbar-nav">
        <li style="font-size: 24px" id="cc4l" class="navbar-text">CupCake4life.dk</li>
      </ul>
