@@ -133,14 +133,14 @@
     </div>
  </div>
 
-    <div class="container">
-        <div class="col-sm-12" id="orderPrevBtn">
-                <form method="get" action="showOrders.jsp">
-                    <input class="btn btn-danger btn-lg btn-block" type="submit" name="submit" value="Show Previous Orders">
-                </form>
-        </div>
-
+<div class="container">
+    <div class="col-sm-12" id="orderPrevBtn">
+            <form method="get" action="showOrders.jsp">
+                <input class="btn btn-danger btn-lg btn-block" type="submit" name="submit" value="Show Previous Orders">
+            </form>
     </div>
+
+</div>
 
 
 

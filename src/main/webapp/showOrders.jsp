@@ -62,11 +62,6 @@
 
             </table>           
 
-            <div class="logout">
-                <form method="get" action="shopCart.jsp">
-                    <button type="submit">Go back to Shopping Cart</button>
-                </form>
-            </div>
             <br>
             <%}%>   
 

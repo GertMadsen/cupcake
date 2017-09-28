@@ -32,19 +32,11 @@
                 int orderId = Integer.parseInt(oid);
                 User user = (User) (session.getAttribute("user"));
                 boolean admin = user.isAdmin();%>
-  
-                
+
+
             <%=ViewGenerator.viewSingleOrder(orderId, admin)%>
 
-            <div class="logout">
-                <form method="get" action="showOrders.jsp">
-                    <button type="submit">Go back to Show Orders</button>
-                </form>
-                
-                <br>
-                
-            </div>
-
+            <br>
         </div>
 
 
