@@ -22,6 +22,7 @@ public class Connector {
     private final static String PASSWORD = "cupcakemysql";
 
 //  Gerts MySQL aerver.
+//    private final static String DRIVER = "com.mysql.jdbc.Driver";
 //    private final static String URL = "jdbc:mysql://138.197.189.73:3306/cupcake";
 //    private final static String USER = "cupcakeuser";
 //    private final static String PASSWORD = "cupcake1971";
