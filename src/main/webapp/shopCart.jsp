@@ -69,7 +69,7 @@
                             <div class="text-center font-weight-bold" id="textColor"> 
                                 <p class="font-weight-bold" ><h3>Quantity</h3></p>  
                             </div>
-                            <input id="qua"type="text" name="quantity" value="1">
+                            <input class="form-control" id="qua" type="text" name="quantity" value="1">
                         </div>
 
                         <div id="idKnapD">
