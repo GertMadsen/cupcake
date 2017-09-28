@@ -16,7 +16,7 @@ and open the template in the editor.
     float: left;
     width: 200px;
     height: 340px;
-    padding: 10px;
+    
     margin: 10px;
     margin-bottom: 30px;
     border-style: double;
@@ -24,6 +24,12 @@ and open the template in the editor.
     border-width: 1px;
 
 
+}
+#addKnap{
+    float: none;
+    padding: auto;
+    
+    
 }
 #textColor{
     color: #555;
@@ -59,20 +65,20 @@ and open the template in the editor.
 
 #bottomBtn{
     color: #555;
-    margin-left: 8%;
+    margin-left: 5%;
     margin-bottom: 5%;
 }
 #toppingBtn{
     color: #555;
-    margin-left: 4%;
-    margin-bottom: 5%;
+    
+    
 }
 #qua{
     color: #555;
     width: 120px;
     height: 20px;
     margin-left: 15%;
-    margin-bottom: 4%
+    margin-bottom: 10%
 }
 #addBtn{
     margin-left: 15%;
