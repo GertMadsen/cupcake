@@ -18,7 +18,7 @@ public class Connector {
     private final static String url = "jdbc:mysql://46.101.152.26:3306/cupcake";
     private final static String user = "cupcakeuser";
     private final static String password = "cupcakemysql";
-
+  
     public static Connection getConnection() {
         Connection conn = null;
         try {
