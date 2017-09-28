@@ -34,52 +34,46 @@
             double totalPrice = (double) (session.getAttribute("totalPrice"));
         %>
 
-        
-            <div id="container2" class="container d-inline border-bottom-0 " >
+        <div id="container2" class="container d-inline border-bottom-0 " >
 
-                <div class="col-sm-2">
+            <div class="col-sm-2">
+            </div>
 
-                </div>
+            <div class="col-sm-4 d-inline" id="shopVindue">
 
+                <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
 
-                <div class="col-sm-4 d-inline" id="shopVindue">
-
-
-                    <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
-
-                        <div class="DD">
-                            <div class="text-center" id="textColor">  
-                                <p class="font-weight-bold" ><h3>Bottom</h3></p> 
-                            </div>
-
-                            <select class="btn dropdown-toggle" id="bottomBtn" name="bottom">
-                                <%=ViewGenerator.bottomSelect(bottomList)%>
-                            </select>
-                        </div>
-                        <div class="DD">
-                            <div class="text-center" id="textColor"> 
-                                <p class="font-weight-bold"><h3>Topping</h3></p> 
-                            </div>
-                            <select class="btn dropdown-toggle" id="toppingBtn" name="topping">
-                                <%=ViewGenerator.toppingSelect(toppingList)%>
-                            </select>
+                    <div class="DD">
+                        <div class="text-center" id="textColor">  
+                            <p class="font-weight-bold" ><h3>Bottom</h3></p> 
                         </div>
 
-                        <div class="DD">
-                            <div class="text-center font-weight-bold" id="textColor"> 
-                                <p class="font-weight-bold" ><h3>Quantity</h3></p>  
-                            </div>
-                            <input class="form-control" id="qua" type="text" name="quantity" value="1">
+                        <select class="btn dropdown-toggle" id="bottomBtn" name="bottom">
+                            <%=ViewGenerator.bottomSelect(bottomList)%>
+                        </select>
+                    </div>
+                    <div class="DD">
+                        <div class="text-center" id="textColor"> 
+                            <p class="font-weight-bold"><h3>Topping</h3></p> 
                         </div>
+                        <select class="btn dropdown-toggle" id="toppingBtn" name="topping">
+                            <%=ViewGenerator.toppingSelect(toppingList)%>
+                        </select>
+                    </div>
 
-                        <div id="idKnapD">
-                            <input class="btn btn-success btn-lg btn-block" id="addKnap" type="submit" name="submit" value="Add">
+                    <div class="DD">
+                        <div class="text-center font-weight-bold" id="textColor"> 
+                            <p class="font-weight-bold" ><h3>Quantity</h3></p>  
                         </div>
+                        <input class="form-control" id="qua" type="text" name="quantity" value="1">
+                    </div>
 
+                    <div id="idKnapD">
+                        <input class="btn btn-success btn-lg btn-block" id="addKnap" type="submit" name="submit" value="Add">
+                    </div>
 
-
-                    </form>
-                </div>
+                </form>
+            </div>
         </span>
         <div class="col-sm-6 pre-scrollable" id="itemsKurv">
 
@@ -111,40 +105,29 @@
 
             <% }%>
 
-
         </div>
 
-
-
-
-
-
     </div>
-</div>
 
 
+    <div class="container">
+        <div class="col-sm-12" id="finishBtn">
+            <form method="get" action="GenerateOrder">
+                <input class="btn btn-success btn-lg btn-block" type="submit" name="submit" value="Finish Order">
+            </form>
 
-<div class="container">
-    <div class="col-sm-12" id="finishBtn">
-        <form method="get" action="GenerateOrder">
-            <input class="btn btn-success btn-lg btn-block" type="submit" name="submit" value="Finish Order">
-        </form>
-
+        </div>
     </div>
- </div>
 
-<div class="container">
-    <div class="col-sm-12" id="orderPrevBtn">
+    <div class="container">
+        <div class="col-sm-12" id="orderPrevBtn">
             <form method="get" action="showOrders.jsp">
                 <input class="btn btn-danger btn-lg btn-block" type="submit" name="submit" value="Show Previous Orders">
             </form>
+        </div>
+
     </div>
 
-</div>
-
-
-
-
-
+    <script src="script/scroll_script.js" type="text/javascript"></script>
 </body>
 </html>
