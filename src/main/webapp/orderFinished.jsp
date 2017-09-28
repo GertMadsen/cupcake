@@ -33,6 +33,7 @@
 
         <div id="ordersFrame">
             <h1>Order Finished!</h1>
+            Your cupcakes has been shipped. Thanks for shopping at our webshop.<br>
 
             <h3>Order number : <%=newOrder.getOrder_id()%></h3>
 
@@ -63,10 +64,6 @@
 
                 </tbody>
             </table>
-                    
-            <h3>Your cupcakes has been shipped. Thanks for shopping at our webshop.</h3>
-
-            <br>
 
         </div>
 
