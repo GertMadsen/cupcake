@@ -23,7 +23,7 @@
         <link href="css/style2.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
+    <body id="shopBody">
         <%@ include file = "topMenu.jsp" %>
 
         <%
@@ -34,110 +34,117 @@
             double totalPrice = (double) (session.getAttribute("totalPrice"));
         %>
 
+        
+            <div id="container2" class="container d-inline border-bottom-0 " >
 
-        <div id="container2" class="container" >
+                <div class="col-sm-2">
 
-            <div class="col-sm-2">
-
-            </div>
-
-            <div class="col-sm-8" id="shopVindue">
-
-
-                <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
-                    <div class="DD">
-                        Bottom <br>
-                        <select name="bottom">
-                            <%=ViewGenerator.bottomSelect(bottomList)%>
-                        </select>
-                    </div>
-                    <div class="DD">
-                        Topping <br>
-                        <select name="topping">
-                            <%=ViewGenerator.toppingSelect(toppingList)%>
-                        </select>
-                    </div>
-
-                    <div class="DD">
-                        Quantity <br>
-                        <input type="text" name="quantity" value="1">
-                    </div>
-
-                    <div id="addKnap">
-                        <input type="submit" name="submit" value="Add">
-                    </div>
-
-
-                </form>
-            </div>
-
-            <div class="col-sm-2">
-
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="col-sm-2"></div>
-
-
-
-            <div class="col-sm-8" id="itemsKurv">
-                <% if (!orderlineList.isEmpty()) {%>
-
-                <table class="table table-center table-striped">
-                    <thead>
-                        <tr>
-                            <th>Bottom</th>
-                            <th>Topping</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>SubTotal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <%=ViewGenerator.linesAddedView(orderlineList)%>
-
-                        <tr>
-                            <td><h3>Total</h3></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><h3><%=totalPrice%></h3></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <% }%>
-
-
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
-
-
-        <div class="container">
-            <div class="col-sm-10"></div>
-
-            <div class="col-sm-2">
-                <div class="logout">
-                    <form method="get" action="GenerateOrder">
-                        <input type="submit" name="submit" value="Finish Order">
-                    </form>
                 </div>
 
-                <div class="logout">
-                    <form method="get" action="showOrders.jsp">
-                        <input type="submit" name="submit" value="Show Previous Orders">
+
+                <div class="col-sm-4 d-inline" id="shopVindue">
+
+
+                    <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
+
+                        <div class="DD">
+                            <div class="text-center" id="textColor">  
+                                <p class="font-weight-bold" ><h3>Bottom</h3></p> 
+                            </div>
+
+                            <select class="btn dropdown-toggle" id="bottomBtn" name="bottom">
+                                <%=ViewGenerator.bottomSelect(bottomList)%>
+                            </select>
+                        </div>
+                        <div class="DD">
+                            <div class="text-center" id="textColor"> 
+                                <p class="font-weight-bold"><h3>Topping</h3></p> 
+                            </div>
+                            <select class="btn dropdown-toggle" id="toppingBtn" name="topping">
+                                <%=ViewGenerator.toppingSelect(toppingList)%>
+                            </select>
+                        </div>
+
+                        <div class="DD">
+                            <div class="text-center font-weight-bold" id="textColor"> 
+                                <p class="font-weight-bold" ><h3>Quantity</h3></p>  
+                            </div>
+                            <input id="qua"type="text" name="quantity" value="1">
+                        </div>
+
+                        <div id="idKnapD">
+                            <input class="btn btn-success btn-lg btn-block" id="addKnap" type="submit" name="submit" value="Add">
+                        </div>
+
+
+
                     </form>
                 </div>
-            </div>
+        </span>
+        <div class="col-sm-6 pre-scrollable" id="itemsKurv">
+
+            <% if (!orderlineList.isEmpty()) {%>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Bottom</th>
+                        <th>Topping</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <%=ViewGenerator.linesAddedView(orderlineList)%>
+
+                    <tr id="totalprice">
+                        <td><h3>Total</h3></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h3><%=totalPrice%></h3></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <% }%>
+
 
         </div>
+
+
+
 
 
 
     </div>
+</div>
+
+
+
+<div class="container">
+    <div class="col-sm-12" id="finishBtn">
+        <form method="get" action="GenerateOrder">
+            <input class="btn btn-success btn-lg btn-block" type="submit" name="submit" value="Finish Order">
+        </form>
+
+    </div>
+ </div>
+
+    <div class="container">
+        <div class="col-sm-12" id="orderPrevBtn">
+                <form method="get" action="showOrders.jsp">
+                    <input class="btn btn-danger btn-lg btn-block" type="submit" name="submit" value="Show Previous Orders">
+                </form>
+        </div>
+
+    </div>
+
+
+
+
 
 </body>
 </html>
