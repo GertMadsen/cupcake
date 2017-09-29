@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       <title>Not Enough Money - CupCake4Life.dk</title>
+        <title>Not Enough Money - CupCake4Life.dk</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- jQuery library -->
@@ -21,26 +21,32 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
+    <body id="wholebody">
         <%@ include file = "topMenu.jsp" %>
 
-        <div>
-            <h1>Not enough cash!!</h1>
+        <div class="picFrame">
 
-            <h3>You do not have enough cash for this order. 
-                <br>Go back to Shopping Cart and make a new order.</h3><br>
+            <div id="adminFrame"> 
 
-            <br>
-            <form method="get" action="shopCart.jsp">
-                <button type="submit">Go back to Shopping Cart</button>
-            </form>
+                <h2>Order Error!</h2>
+                No order was submitted.<br>
+                <h3>Not enough cash.</h3> 
+                You do not have enough cash for this order.
+                Go back to Shopping Cart and make a new order..
 
+                <br><br><br>
+                
+                <form method="get" action="shopCart.jsp">
+                    <button class="blackText" type="submit">Go back to Shopping Cart</button>
+                </form>
 
-        </div>
+            </div>
+
+        </div> 
+
 
 
         <%
-
             ArrayList<Orderline> orderLines = new ArrayList();
             double totalPrice = 0;
             session.setAttribute("orderLines", orderLines);

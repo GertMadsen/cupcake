@@ -14,19 +14,26 @@ import java.sql.SQLException;
  * @author GertLehmann
  */
 public class Connector {
-    private final static String driver = "com.mysql.jdbc.Driver";
-    private final static String url = "jdbc:mysql://46.101.152.26:3306/cupcake";
-    private final static String user = "cupcakeuser";
-    private final static String password = "cupcakemysql";
+   
+//  Christians MySQL aerver.
+    private final static String DRIVER = "com.mysql.jdbc.Driver";
+    private final static String URL = "jdbc:mysql://46.101.152.26:3306/cupcake";
+    private final static String USER = "cupcakeuser";
+    private final static String PASSWORD = "cupcakemysql";
 
+//  Gerts MySQL aerver.
+//    private final static String DRIVER = "com.mysql.jdbc.Driver";
+//    private final static String URL = "jdbc:mysql://138.197.189.73:3306/cupcake";
+//    private final static String USER = "cupcakeuser";
+//    private final static String PASSWORD = "cupcake1971";
+
+    
     public static Connection getConnection() {
         Connection conn = null;
         try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(url,user,password);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
+            Class.forName(DRIVER);
+            conn = DriverManager.getConnection(URL,USER,PASSWORD);
+        } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         }
         return conn;

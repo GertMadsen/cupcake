@@ -33,6 +33,7 @@
 
         <div id="ordersFrame">
             <h1>Order Finished!</h1>
+            Your cupcakes has been shipped. Thanks for shopping at our webshop.<br>
 
             <h3>Order number : <%=newOrder.getOrder_id()%></h3>
 
@@ -63,22 +64,6 @@
 
                 </tbody>
             </table>
-                    
-            <h3>Your cupcakes has been shipped. Thanks for shopping at our webshop.</h3>
-
-            <div class="logout">
-                <form method="get" action="shopCart.jsp">
-                    <button type="submit">Go back to Shopping Cart</button>
-                </form>
-            </div>
-
-            <div class="logout">
-                <form method="get" action="showOrders.jsp">
-                    <button type="submit">Show Previous Orders</button>
-                </form>
-            </div>
-
-            <br>
 
         </div>
 

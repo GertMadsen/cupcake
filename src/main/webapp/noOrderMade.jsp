@@ -19,20 +19,29 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
+    <body id="wholebody">
         <%@ include file = "topMenu.jsp" %>
 
-        <div>
-            <h1>No cupcakes!</h1>
+        <div class="picFrame">
 
-            <h3>No cupcakes where added to Shopping Cart. 
-                <br>Select some cupcakes before checking out.</h3><br>
+            <div id="adminFrame"> 
 
-            <br>
-            <form method="get" action="shopCart.jsp">
-                <button type="submit">Go back to Shopping Cart</button>
-            </form>
+                <h2>Order Error!</h2>
+                No order was submitted.<br>
+                <h3>No cupcakes where added.</h3> 
+                Please choose some cupcakes in the Shopping Cart before
+                finishing the order.
 
-        </div>
+                <br><br><br>
+                
+                <form method="get" action="shopCart.jsp">
+                    <button class="blackText" type="submit">Go back to Shopping Cart</button>
+                </form>
+
+            </div>
+
+        </div> 
+
+
     </body>
 </html>
