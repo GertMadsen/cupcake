@@ -5,10 +5,10 @@
  */
 package Servletter;
 
+import Data.Connector;
 import Mapper.*;
 import entities.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -37,23 +37,24 @@ public class Login_Registration extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String loginSite = request.getParameter("login");
+        String logoutSite = request.getParameter("logout");
 
         UserMapper um = new UserMapper();
         CupcakeMapper cm = new CupcakeMapper();
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-        
+        if (logoutSite.equals("true")) {
+            Connector.closeConnection();
+            request.getRequestDispatcher("index.jsp")
+                    .forward(request, response);
+        }
         if (loginSite.equals("true")) {
 
             User loggedInUser = um.getUserByName(username);
-            ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
-            ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
-            ArrayList<Orderline> orderLines = new ArrayList();
-            double totalPrice = 0;
-            
+
             if (loggedInUser == null) {
                 request.getRequestDispatcher("Errorpages/login_error.jsp")
                         .forward(request, response);
@@ -65,6 +66,11 @@ public class Login_Registration extends HttpServlet {
                 request.getRequestDispatcher("Errorpages/login_error.jsp")
                         .forward(request, response);
             } else {
+                ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
+                ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
+                ArrayList<Orderline> orderLines = new ArrayList();
+                double totalPrice = 0;
+                
                 HttpSession session = request.getSession();
                 session.setAttribute("user", loggedInUser);
                 session.setAttribute("toppingList", toppingList);
@@ -74,44 +80,44 @@ public class Login_Registration extends HttpServlet {
                 boolean admin = loggedInUser.isAdmin();
                 if (admin) {
                     request.getRequestDispatcher("adminPage.jsp").forward(request, response);
-                    
+
                 } else {
                     request.getRequestDispatcher("shopCart.jsp").forward(request, response);
-                    
+
                 }
-                        
+
             }
 
         } else {
-                    
-        User testNameUser = um.getUserByName(username);
-        
-        if (testNameUser.getUser_id()!=0) {
-            request.getRequestDispatcher("Errorpages/error_user_exist.jsp")
-                    .forward(request, response);
-        } else {
-            double balance = Double.parseDouble(request.getParameter("balance"));
-            String email = request.getParameter("email");
-            String role = request.getParameter("role");
-            boolean admin = false;
-            if (role.equals("admin")) {
-                admin = true;
-            }
 
-            User newUser = new User(username, password, balance, email, admin);
+            User testNameUser = um.getUserByName(username);
 
-            try {
-                um.putUser(newUser);
+            if (testNameUser.getUser_id() != 0) {
+                request.getRequestDispatcher("Errorpages/error_user_exist.jsp")
+                        .forward(request, response);
+            } else {
+                double balance = Double.parseDouble(request.getParameter("balance"));
+                String email = request.getParameter("email");
+                String role = request.getParameter("role");
+                boolean admin = false;
+                if (role.equals("admin")) {
+                    admin = true;
+                }
+
+                User newUser = new User(username, password, balance, email, admin);
+
+                try {
+                    um.putUser(newUser);
                     request.getRequestDispatcher("register_completed.jsp")
                             .forward(request, response);
-                
-            } catch (SQLException ex) {
-                request.getRequestDispatcher("Errorpages/error_not_registered.jsp")
-                        .forward(request, response);
+
+                } catch (SQLException ex) {
+                    request.getRequestDispatcher("Errorpages/error_not_registered.jsp")
+                            .forward(request, response);
+
+                }
 
             }
-
-        }
 
         }
 
