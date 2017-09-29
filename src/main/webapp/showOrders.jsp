@@ -42,6 +42,7 @@
                     </tr>
                 </thead>
                                
+                <%=ViewGenerator.viewAllOrders()%>
                 <%--
                 <%=ViewGenerator.viewAllOrders()%>
                --%>
@@ -68,7 +69,8 @@
 
         </div>
             <%-- 
-            <script src="script/script.js" type="text/javascript"></script>
+          <script src="script/script.js" type="text/javascript"></script>  
            --%>
+           
     </body>
 </html>
