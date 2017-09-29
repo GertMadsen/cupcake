@@ -29,8 +29,11 @@ sortdate.onclick = function () {
     var data = dataFromElements(tableRows);
 
     data.sort(function (x, y) {
-        return (x.id - y.id);
+        var a = new Date(x.date);
+        var b = new Date(y.date);
+        return a - b;
     });
+
     var newRows = data.map(function (obj) {
         return "<tr><td>" + obj.id + "</td>" + "<td>" + obj.user + "</td>" + "<td>" + obj.details + "</td>" + "<td>" + obj.date + "</td></tr>";
     }).reduce(function (accumulator, currentValue) {

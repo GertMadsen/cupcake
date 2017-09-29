@@ -56,7 +56,7 @@
 
             <div class="container">
                 <div class="col-sm-12" id="orderPrevBtn">
-                    <button id="sortdate" type="button" class="btn btn-danger btn-lg btn-block">Sort by Date.</button>
+                    <button id="sortdate" type="button" class="btn btn-success btn-lg btn-block">Sort by Date.</button>
                 </div>
             </div>
 
