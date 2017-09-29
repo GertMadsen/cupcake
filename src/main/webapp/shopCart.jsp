@@ -127,7 +127,6 @@
         </div>
 
     </div>
-
     <script src="script/scroll_script.js" type="text/javascript"></script>
 </body>
 </html>

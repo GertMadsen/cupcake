@@ -19,6 +19,7 @@ public class ViewGenerator {
         String output = "";
         OrderMapper om = new OrderMapper();
         ArrayList<Order> userOrders = (ArrayList) om.getOrdersByUserId(user);
+       // ArrayList<Order> userOrders = user.orderList();
         output += "<tbody>";
 
         for (Order o : userOrders) {

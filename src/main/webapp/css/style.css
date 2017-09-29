@@ -48,7 +48,14 @@ text-align:center;
 width:150px;  fixed width 
 text-decoration:none; 
 }*/
-
+.baggrund{
+    border: 2px solid #555; 
+    height: 520px;
+    width: 1000px;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-image: url("../Images/cupcake2.jpg"); 
+}
 .picFrame {
     border: 2px solid #555; 
     height: 520px;
@@ -82,7 +89,7 @@ text-decoration:none;
     border-color: brown;
     padding-left: 10px;
     padding-right: 10px; 
-    
+
 }
 
 
@@ -192,6 +199,7 @@ input[type=submit] {
             }
 */
 
+
 #shopBody{
     background-color: #D2691E;
     color: #FFFDD0;
@@ -202,7 +210,7 @@ input[type=submit] {
     float: left;
     width: 200px;
     height: 340px;
-    
+
     margin: 10px;
     margin-bottom: 30px;
     border-style: double;
@@ -223,7 +231,6 @@ input[type=submit] {
     border-color: black;
     border-width: 1px;
     overflow-y:auto; 
-    overflow: auto;
     color: #555;
 
 }
@@ -253,7 +260,6 @@ input[type=submit] {
 #finishBtn{
     float: none;
     margin: 0 auto;
-    margin-top: 20px;
     width: 60%;
 }
 
