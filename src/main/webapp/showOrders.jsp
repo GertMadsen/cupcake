@@ -32,7 +32,7 @@
             <%if (admin) {%>
 
             <h2>Previous Orders by All Customers:</h2>
-            <table class="table table-center table-striped">
+            <table class="table table-center table-striped" id="ordertable">
                 <thead>
                     <tr>
                         <th>Order ID.</th>
@@ -41,11 +41,12 @@
                         <th>Date</th>
                     </tr>
                 </thead>
-
+                               
+                <%--
                 <%=ViewGenerator.viewAllOrders()%>
-
+               --%>
             </table>
-
+            
             <%} else {%>   
 
             <h2>Previous Orders by Customer: <%=user.getName()%>  </h2>
@@ -71,7 +72,8 @@
             <%}%>   
 
         </div>
-
-
+            <%-- 
+            <script src="script/script.js" type="text/javascript"></script>
+           --%>
     </body>
 </html>

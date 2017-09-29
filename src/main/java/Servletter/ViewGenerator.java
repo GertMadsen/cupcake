@@ -30,7 +30,14 @@ public class ViewGenerator {
         output += "</tbody>";
         return output;
     }
-
+    
+    
+    
+    public static String getMyString() {
+        String output = "hello from viewGenerator";
+        return output;
+    }
+    
     public static String viewAllOrders() {
 
         String output = "";
