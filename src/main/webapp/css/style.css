@@ -192,10 +192,11 @@ input[type=submit] {
             }
 */
 
-#welcome{
-    width: 100%x;
-
+#shopBody{
+    background-color: #D2691E;
+    color: #FFFDD0;
 }
+
 #shopVindue{
     background: lightgrey;
     float: left;
@@ -207,14 +208,6 @@ input[type=submit] {
     border-style: double;
     border-color: black;
     border-width: 1px;
-
-
-}
-#addKnap{
-    float: none;
-    padding: auto;
-    
-    
 }
 #textColor{
     color: #555;
@@ -222,8 +215,8 @@ input[type=submit] {
 #itemsKurv{
     background: lightgrey;
     box-sizing: border-box;
-    height: 400px;
-    width: 550px;
+    height: 60%;
+    width: 50%;
     margin: 10px;
     float: left;
     border-style: double;
@@ -234,6 +227,29 @@ input[type=submit] {
     color: #555;
 
 }
+#bottomBtn{
+    color: #555;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+#toppingBtn{
+    color: #555;
+}
+#qua{
+    color: #555;
+    width: 120px;
+    height: 20px;
+    margin-left: 15%;
+    margin-bottom: 5%;
+}
+#idKnapD{
+    margin-top: 5%
+}
+
+#totalprice{
+    color: #555;
+}
+
 #finishBtn{
     float: none;
     margin: 0 auto;
@@ -246,32 +262,4 @@ input[type=submit] {
     margin: 0 auto;
     margin-top: 10px;
     width: 60%;
-}
-
-#bottomBtn{
-    color: #555;
-    margin-left: 5%;
-    margin-bottom: 5%;
-}
-#toppingBtn{
-    color: #555;
-    
-    
-}
-#qua{
-    color: #555;
-    width: 120px;
-    height: 20px;
-    margin-left: 15%;
-    margin-bottom: 10%
-}
-#addBtn{
-    margin-left: 15%;
-}
-#shopBody{
-    background-color: #D2691E;
-    color: #FFFDD0;
-}
-#totalprice{
-    color: #555;
 }

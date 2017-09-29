@@ -43,7 +43,7 @@
 
                 <form name="CupcakeSelect" action="GenerateOrderLine" method="get">
 
-                    <div class="DD">
+                    <div>
                         <div class="text-center" id="textColor">  
                             <p class="font-weight-bold" ><h3>Bottom</h3></p> 
                         </div>
@@ -52,7 +52,7 @@
                             <%=ViewGenerator.bottomSelect(bottomList)%>
                         </select>
                     </div>
-                    <div class="DD">
+                    <div>
                         <div class="text-center" id="textColor"> 
                             <p class="font-weight-bold"><h3>Topping</h3></p> 
                         </div>
@@ -61,8 +61,8 @@
                         </select>
                     </div>
 
-                    <div class="DD">
-                        <div class="text-center font-weight-bold" id="textColor"> 
+                    <div>
+                        <div class="text-center" id="textColor"> 
                             <p class="font-weight-bold" ><h3>Quantity</h3></p>  
                         </div>
                         <input class="form-control" id="qua" type="text" name="quantity" value="1">                       
