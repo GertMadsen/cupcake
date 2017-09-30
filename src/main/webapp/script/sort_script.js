@@ -14,7 +14,7 @@ sortuser.onclick = function () {
     
     data.sort(function (x, y) {
         var a = x.user.toLowerCase(), b = y.user.toLowerCase();
-        var c = parseInt(x.id), d = parseInt(y.id);
+        var c = new Date(x.date), d = new Date(y.date);
         return (a < b) ? -1 : ((a > b) ? 1 : c-d);
     });
     var newRows = data.map(function (obj) {
@@ -31,8 +31,7 @@ sortdate.onclick = function () {
     var data = dataFromElements(tableRows);
 
     data.sort(function (x, y) {
-        var a = new Date(x.date);
-        var b = new Date(y.date);
+        var a = new Date(x.date), b = new Date(y.date);
         return a - b;
     });
 
