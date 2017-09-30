@@ -36,7 +36,7 @@
                 <% } else { %>
             <li class="navbar-text">(Administrator)</li>
                 <% } %>
-            <li><form action="Login_Registration" method="POST">  
+            <li class="navbar-text"><form action="Login_Registration" method="POST">  
                     <input type="hidden" name="logout" value="true">
                     <input class="blackText" type="submit" name="submit" value="LogOut">
                 </form></li>
