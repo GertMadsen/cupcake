@@ -95,9 +95,18 @@ public class Login_Registration extends HttpServlet {
                 request.getRequestDispatcher("Errorpages/error_user_exist.jsp")
                         .forward(request, response);
             } else {
-                double balance = Double.parseDouble(request.getParameter("balance"));
+                String balanceText = request.getParameter("balance");
+                
                 String email = request.getParameter("email");
                 String role = request.getParameter("role");
+                
+                if (username.equals("") | password.equals("") 
+                        | balanceText.equals("") | email.equals("")) {
+                     request.getRequestDispatcher("Errorpages/error_fill_all.jsp")
+                        .forward(request, response);
+                }
+             
+                double balance = Double.parseDouble(balanceText);
                 boolean admin = false;
                 if (role.equals("admin")) {
                     admin = true;
