@@ -6,11 +6,7 @@
 package Mapper;
 
 import Data.Connector;
-import entities.Bottom;
-import entities.Order;
-import entities.Orderline;
-import entities.Topping;
-import entities.User;
+import entities.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -244,36 +240,6 @@ public class OrderMapper {
 
     }
 
-    public static void main(String[] args) {
 
-//        User myuser = new UserMapper().getUserByID(1);
-//        
-//        //System.out.println(myuser);
-//        
-//        OrderMapper om = new OrderMapper();
-//
-//        try {
-//            om.putToOrderdetailsTable(15, 36, 2);
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-
-//        List<Order> myorder = new OrderMapper().getOrdersByUserId(myuser);
-//        System.out.println(myorder);
-//        
-//        for (Order o: myorder) {
-//            List<Orderline> myLine = new OrderMapper().getOrderlinesByOrderId(o);
-//            System.out.println("");
-//            System.out.println("next orderline list");
-//            System.out.println(myLine);
-//        }
-//        
-        /*
-        //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
-        
-        User myuser2 = new UserMapper().getUserByID(2);
-        System.out.println(myuser2);
-         */
-    }
 
 }

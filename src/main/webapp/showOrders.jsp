@@ -32,6 +32,19 @@
             <%if (admin) {%>
 
             <h2>Previous Orders by All Customers:</h2>
+
+            <div class="container">
+                <div class="col-sm-12" id="orderPrevBtn">
+                    <button id="sortuser" type="button" class="btn btn-danger btn-lg btn-block"">Sort by User.</button>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="col-sm-12" id="orderPrevBtn">
+                    <button id="sortdate" type="button" class="btn btn-success btn-lg btn-block">Sort by Date.</button>
+                </div>
+            </div>
+            <br>
             <table class="table table-center table-striped" id="ordertable">
                 <thead>
                     <tr>
@@ -41,13 +54,15 @@
                         <th>Date</th>
                     </tr>
                 </thead>
-                               
+
                 <%=ViewGenerator.viewAllOrders()%>
                 <%--
                 <%=ViewGenerator.viewAllOrders()%>
-               --%>
+                --%>
             </table>
-            
+
+            <br>
+
             <%} else {%>   
 
             <h2>Previous Orders by Customer: <%=user.getName()%>  </h2>
@@ -67,10 +82,13 @@
             <br>
             <%}%>   
 
+
         </div>
-            <%-- 
-          <script src="script/script.js" type="text/javascript"></script>  
-           --%>
-           
+
+
+        <%-- 
+      <script src="script/script.js" type="text/javascript"></script>  
+        --%>
+        <script src="script/sort_script.js" type="text/javascript"></script>
     </body>
 </html>

@@ -19,15 +19,6 @@ and open the template in the editor.
     color: #FFFDD0;
 }
 
-body {/*
-    background-color: #D2691E;
-    color: #FFFDD0;
-    
-    background-image: url("../cupcakes.jpg");
-    float: left;
-    */
-}
-
 /*#outernav {
 position:relative;
 }*/
@@ -48,14 +39,11 @@ text-align:center;
 width:150px;  fixed width 
 text-decoration:none; 
 }*/
-.baggrund{
-    border: 2px solid #555; 
-    height: 520px;
-    width: 1000px;
-    margin-left: auto ;
-    margin-right: auto ;
-    background-image: url("../Images/cupcake2.jpg"); 
-}
+
+
+
+
+
 .picFrame {
     border: 2px solid #555; 
     height: 520px;
@@ -119,7 +107,6 @@ text-decoration:none;
     padding-left: 10px;
     padding-right: 10px; 
 }
-
 
 
 .blackText {

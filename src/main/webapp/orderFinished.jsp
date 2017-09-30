@@ -25,8 +25,7 @@
     <body style="background-color: #D2691E">
         <%@ include file = "topMenu.jsp" %>
         <%
-            ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
-            double totalPrice = (double) (session.getAttribute("totalPrice"));
+            ShoppingCart shopCart = (ShoppingCart) (session.getAttribute("shopCart"));
             User user = (User) (session.getAttribute("user"));
             Order newOrder = (Order) request.getAttribute("newOrder");
         %>
@@ -52,14 +51,14 @@
                 </thead>
                 <tbody>
 
-                    <%=ViewGenerator.linesAddedView(orderlineList)%>  
+                    <%=ViewGenerator.linesAddedView(shopCart.getOrderlines())%>  
 
                     <tr>
                         <td><h3>Total</h3></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><h3><%=totalPrice%></h3></td>
+                        <td><h3><%=shopCart.getTotal_price()%></h3></td>
                     </tr>
 
                 </tbody>
@@ -68,11 +67,7 @@
         </div>
 
         <%
-            ArrayList<Orderline> orderLines = new ArrayList();
-            totalPrice = 0;
-            session.setAttribute("orderLines", orderLines);
-            session.setAttribute("totalPrice", totalPrice);
-
+            session.setAttribute("shopCart", new ShoppingCart());
         %>
 
     </body>

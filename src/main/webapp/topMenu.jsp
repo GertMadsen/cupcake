@@ -36,7 +36,10 @@
                 <% } else { %>
             <li class="navbar-text">(Administrator)</li>
                 <% } %>
-            <li><a href="index.jsp">Log Out</a></li>
+            <li><form action="Login_Registration" method="POST">  
+                    <input type="hidden" name="logout" value="true">
+                    <input class="blackText" type="submit" name="submit" value="LogOut">
+                </form></li>
         </ul>
         <% } else { %>
         <ul class="nav navbar-nav navbar-right">

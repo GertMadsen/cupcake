@@ -20,7 +20,7 @@
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body id ="wholebody">
-        <%  session.setAttribute("user", null);%>
+        <%  session.setAttribute("user", null); %>
         <%@ include file = "topMenu.jsp" %>
 
         <div class="picFrame">
@@ -34,6 +34,7 @@
                     <b>Password:</b><br>
                     <input class="blackText" type="password" name="password" value=""><br><br>
                     <input type="hidden" name="login" value="true">
+                    <input type="hidden" name="logout" value="false">
                     <input class="blackText" type="submit" name="submit" value="Login">
                 </form>
 

@@ -41,6 +41,7 @@
                     <input class="blackText" type="radio" name="role" value="admin" />
                     <br><br>
                     <input type="hidden" name="login" value="false">
+                    <input type="hidden" name="logout" value="false">
                     <input class="blackText" type="submit" name="submit" value="Register">
 
                 </form>

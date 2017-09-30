@@ -1,6 +1,6 @@
 <%-- 
-    Document   : error_user_exist
-    Created on : 21-09-2017, 14:01:54
+    Document   : error_fill_all
+    Created on : 30-09-2017, 09:17:11
     Author     : GertLehmann
 --%>
 
@@ -27,22 +27,19 @@
             <div id="adminFrame"> 
 
                 <h2>Error!</h2>
+                Registration not completed<br><br>
 
-                <% String username = request.getParameter("username");%>
-
-               Registration not completed
-                <h3><%=username%></h3> is already used by another user. 
-                    Please choose another username in order to complete user registration.<br><br>
-
+                <h3>Fill Out all Fields.</h3> 
+                <br>No input field must be left blank in order to
+                complete user registration.<br><br>
 
                 <form method="get" action="registration.jsp">
                     <button class="blackText" type="submit">Register new user</button>
                 </form>
-                <br>
 
             </div>
 
-        </div> 
-
+        </div>
+     
     </body>
 </html>

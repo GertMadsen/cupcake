@@ -6,14 +6,12 @@
 package Mapper;
 
 import Data.Connector;
-import entities.Order;
 import entities.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -135,57 +133,7 @@ public class UserMapper {
         
     }
     
-    public static void main(String[] args) throws SQLException {
+
     
-        User myuser = new UserMapper().getUserByID(1);
-        System.out.println(myuser);
-        
-        //myuser = new UserMapper().updateUserBalanceById(myuser, 450000.00);
-        System.out.println(myuser);
-        
-//        User myuser = new UserMapper().getUserByName("Jens Hansen");
-//        System.out.println(myuser);
-     
-        //new UserMapper().putUser("Jens Hansen", "bondegaard", 100000, "eyaeyajo@farmer.dk");
-        
-        //User myuser2 = new UserMapper().getUserByID(2);
-        //System.out.println(myuser2);
-//        UserMapper um = new UserMapper();
-//        User test = new User("Hong Li","123456",10000.0,"test@dummy.dk");
-//        try { 
-//            um.putUser(test);
-//        } catch (SQLException ex)
-//        {
-//        }    
-        
-        
-        
-    }
-    
-    
-    /*
-    public void putUser(User user) throws SQLException {
-        User userToFile = null;
-        Connection conn = Connector.getConnection();
-        String insertUser = "INSERT INTO cupcake.users ("
-                + "username, password, balance, email)"
-                + "VALUES (?, ?, ?, ?);";
-        PreparedStatement recipePstmt = conn.prepareStatement(insertUser);
-        try {
-        conn.setAutoCommit(false);
-        recipePstmt.setString(1, user.getName());
-        recipePstmt.setString(2, user.getPassword());
-        recipePstmt.setDouble(3, user.getBalance());
-        recipePstmt.setString(4, user.getEmail());
-        recipePstmt.executeUpdate();
-            conn.commit();
-        } catch (SQLException ex) {
-            if (conn != null) {
-                conn.rollback();
-            }
-        } finally {
-            conn.setAutoCommit(true);
-        }
-    }
-    */
+
 }

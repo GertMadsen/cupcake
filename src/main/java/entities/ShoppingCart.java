@@ -5,26 +5,19 @@
  */
 package entities;
 
-import java.util.List;
-
+import java.util.ArrayList;
 
 public class ShoppingCart {
     
-    int order_id;
-    List<Orderline> Orderlines;
+    ArrayList<Orderline> Orderlines;
     double total_price;
 
-    public ShoppingCart(int order_id, List<Orderline> Orderlines, double total_price) {
-        this.order_id = order_id;
-        this.Orderlines = Orderlines;
-        this.total_price = total_price;
-    }
+    public ShoppingCart() {
+        this.Orderlines = new ArrayList();
+        this.total_price = 0;
+    }    
 
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public List<Orderline> getOrderlines() {
+    public ArrayList<Orderline> getOrderlines() {
         return Orderlines;
     }
 
@@ -32,18 +25,21 @@ public class ShoppingCart {
         return total_price;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
-
-    public void setOrderlines(List<Orderline> Orderlines) {
-        this.Orderlines = Orderlines;
-    }
-
     public void setTotal_price(double total_price) {
         this.total_price = total_price;
     }
     
+    public void addToOrderlines(Orderline orderline) {
+        this.Orderlines.add(orderline);
+    }
     
+    public boolean isEmpty() {
+        return Orderlines.isEmpty();
+    }
+    
+    public static ShoppingCart createShoppingCart() {
+        ShoppingCart newCart = new ShoppingCart();
+        return newCart;
+    }
     
 }

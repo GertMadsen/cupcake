@@ -39,14 +39,14 @@ public class GenerateOrder extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession();
-        ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
-        double totalPrice = (double) (session.getAttribute("totalPrice"));
+        ShoppingCart shopCart = (ShoppingCart) (session.getAttribute("shopCart"));
+        double totalPrice = shopCart.getTotal_price();
         User user = (User) (session.getAttribute("user"));
 
         UserMapper um = new UserMapper();
         OrderMapper om = new OrderMapper();
 
-        if (!orderlineList.isEmpty()) {
+        if (!shopCart.isEmpty()) {
 
             if (user.getBalance() < totalPrice) {
                request.getRequestDispatcher("notEnoughMoney.jsp")
@@ -65,7 +65,7 @@ public class GenerateOrder extends HttpServlet {
                 newOrder = om.getOrderById(orderNumber);
                 request.setAttribute("newOrder", newOrder);
                 
-                for (Orderline ol : orderlineList) {
+                for (Orderline ol : shopCart.getOrderlines()) {
                     int orderlineNumber = 0;
                     try {
                         orderlineNumber = om.putToOrderLineTable(ol);
