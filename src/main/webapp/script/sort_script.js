@@ -11,10 +11,10 @@ sortuser.onclick = function () {
     var tbody = document.getElementsByTagName("tbody")[0];
     var tableRows = tbody.getElementsByTagName("tr");
     var data = dataFromElements(tableRows);
-
-    data.sort(function (x, y) {
-        return (x.user < y.user) ? -1 : ((x.user > y.user) ? 1 : 0);
-    });
+data.sort(function(x, y){
+ var a=x.user.toLowerCase(), b=y.user.toLowerCase();
+        return (a < b) ? -1 : ((a > b) ? 1 : 0);
+});
     var newRows = data.map(function (obj) {
         return "<tr><td>" + obj.id + "</td>" + "<td>" + obj.user + "</td>" + "<td>" + obj.details + "</td>" + "<td>" + obj.date + "</td></tr>";
     }).reduce(function (accumulator, currentValue) {
@@ -54,7 +54,7 @@ function dataFromElements(tableRows) {
             var obj = {};
             obj.id = tds[0].innerText;
             obj.user = tds[1].innerText;
-            obj.details = tds[2].innerText;
+            obj.details = tds[2].innerHTML;
             obj.date = tds[3].innerText;
             result.push(obj);
         }
