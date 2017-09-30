@@ -22,10 +22,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
+        
     </head>
     <body id="shopBody">
         <%@ include file = "topMenu.jsp" %>
-
+        
+        <div class="baggrund">
         <%
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
             ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
@@ -33,9 +35,6 @@
         %>
 
         <div id="container2" class="container d-inline border-bottom-0 " >
-
-            <div class="col-sm-2">
-            </div>
 
             <div class="col-sm-4 d-inline" id="shopVindue">
 
@@ -73,7 +72,7 @@
                 </form>
             </div>
         </span>
-        <div class="col-sm-6 pre-scrollable" id="itemsKurv">
+        <div class="col-sm-8 pre-scrollable" id="itemsKurv">
 
             <% if (!shopCart.isEmpty()) {%>
 
@@ -125,6 +124,8 @@
         </div>
 
     </div>
+   </div>
     <script src="script/scroll_script.js" type="text/javascript"></script>
+    
 </body>
 </html>

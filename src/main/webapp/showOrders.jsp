@@ -22,7 +22,9 @@
 
     </head>
     <body style="background-color: #D2691E">
+        <div id="include">
         <%@ include file = "topMenu.jsp" %>
+        </div>
 
         <div id="ordersFrame">
             <%

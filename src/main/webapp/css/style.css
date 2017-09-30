@@ -19,18 +19,18 @@ and open the template in the editor.
     color: #FFFDD0;
 }
 
-/*#outernav {
+/*
+#outernav {
 position:relative;
-}*/
-
-/*#nav {
+}
+#nav {
 position:absolute;
 left:50%;top:0;
 margin-left:-375px;  negative margin equal to half the width 
 width:750px;
 list-style:none;
-}*/
-/*#nav li {
+}
+#nav li {
 float:left;
 }
 #nav a {
@@ -38,7 +38,17 @@ display:block;
 text-align:center;
 width:150px;  fixed width 
 text-decoration:none; 
-}*/
+}
+*/
+.navbar{
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    z-index: 100;
+}
+.navbar-text{
+    
+}
 
 .picFrame {
     border: 2px solid #555; 
@@ -89,11 +99,17 @@ text-decoration:none;
     padding-left: 10px;
     padding-right: 10px; 
     text-align: center;
+
+}
+#include{
+}
+#ordertable{
+    margin-top: 5%;
 }
 
 #ordersFrame {
     background-color: #FFFFFF;
-    margin-top: 50px; 
+    margin-top: 0; 
     margin-bottom: 50px; 
     margin-left: auto ;
     margin-right: auto ;
@@ -102,17 +118,13 @@ text-decoration:none;
     border-color: brown;
     padding-left: 10px;
     padding-right: 10px; 
+    padding-top: 5%;
 }
 
 
 .blackText {
     color: black;
 }
-
-
-
-
-
 
 #picture {
     margin-left: auto ;
@@ -121,84 +133,40 @@ text-decoration:none;
     height: 300px;
 }
 
-.CShop {
-    margin-left: 5px;
-}
-.DD{
-    float: left; 
-    width: 150px;
-    height: 75px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-}
-input[type=text] {
-    width: 80%;
-}
-.logout {
-    margin-top: 15px;
-    margin-left: 5px;
-}
-.brugerP{
-    margin-left: 10px;
-    margin-bottom: 25px;
-}
-input[type=submit] {
-    margin-top: 15px;
-}
-.checkout{
-    margin-left: 475px;
-    margin-top: 100px;
-}
-
-/*
-    
-            .CShop {
-                margin-left: 5px;
-            }
-            .DD{
-                float: left; 
-                width: 150px;
-                height: 75px;
-                margin-left: 5px;
-                margin-bottom: 5px;
-            }
-            input[type=text] {
-                width: 80%;
-            }
-            .logout {
-                margin-top: 15px;
-                margin-left: 5px;
-            }
-            .brugerP{
-                margin-left: 10px;
-                margin-bottom: 25px;
-            }
-            input[type=submit] {
-                margin-top: 15px;
-            }
-            .checkout{
-                margin-left: 475px;
-                margin-top: 100px;
-            }
-*/
-
-
+/*SHOPCART UNDER*/
 #shopBody{
+
     background-color: #D2691E;
     color: #FFFDD0;
+}
+#container2{
+    padding-top: 6%;
+
+}
+.baggrund {
+    border: 2px solid #555; 
+    height: 65%;
+    width: 80%;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-image: url("../Images/cupcake2.jpg");
 }
 
 #shopVindue{
     background: lightgrey;
-    float: left;
-    width: 200px;
-    height: 340px;
 
-    margin: 10px;
+    width: 18%;
+    height: 340px;;
+
+    margin-left:15%;
+
+    margin-top: 2%;
     margin-bottom: 30px;
+    margin-right: 2%;
     border-style: double;
     border-color: black;
     border-width: 1px;
+    overflow-y:auto; 
 }
 #textColor{
     color: #555;
@@ -207,8 +175,9 @@ input[type=submit] {
     background: lightgrey;
     box-sizing: border-box;
     height: 340px;
-    width: 50%;
-    margin: 10px;
+    width: 45%;
+    margin: auto;
+    margin-top: 2%;
     float: left;
     border-style: double;
     border-color: black;
@@ -218,18 +187,23 @@ input[type=submit] {
 
 }
 #bottomBtn{
+    width: 75%;
     color: #555;
-    margin-left: 5%;
-    margin-bottom: 5%;
+    margin: auto;
+    margin-left: 12%;
 }
 #toppingBtn{
+    width: 75%;
     color: #555;
+    margin: auto;
+    margin-left: 12%;
 }
 #qua{
     color: #555;
-    width: 120px;
+    width: 75%;
     height: 25px;
-    margin-left: 15%;
+    margin: auto;
+    margin-left: 12%;
     margin-bottom: 5%;
 }
 #idKnapD{
@@ -242,13 +216,14 @@ input[type=submit] {
 
 #finishBtn{
     float: none;
-    margin: 0 auto;
-    width: 60%;
+    margin:auto;
+    width: 50%;
 }
 
 #orderPrevBtn{
     float: none;
-    margin: 0 auto;
+    margin: auto;
     margin-top: 10px;
-    width: 60%;
+    width: 50%;
 }
+/*---------------------------*/
