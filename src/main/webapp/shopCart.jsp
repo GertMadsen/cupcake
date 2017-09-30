@@ -27,11 +27,9 @@
         <%@ include file = "topMenu.jsp" %>
 
         <%
-            User user = (User) (session.getAttribute("user"));
             ArrayList<Topping> toppingList = (ArrayList) (session.getAttribute("toppingList"));
             ArrayList<Bottom> bottomList = (ArrayList) (session.getAttribute("bottomList"));
-            ArrayList<Orderline> orderlineList = (ArrayList) (session.getAttribute("orderLines"));
-            double totalPrice = (double) (session.getAttribute("totalPrice"));
+            ShoppingCart shopCart = (ShoppingCart) (session.getAttribute("shopCart"));
         %>
 
         <div id="container2" class="container d-inline border-bottom-0 " >
@@ -77,7 +75,7 @@
         </span>
         <div class="col-sm-6 pre-scrollable" id="itemsKurv">
 
-            <% if (!orderlineList.isEmpty()) {%>
+            <% if (!shopCart.isEmpty()) {%>
 
             <table class="table table-striped">
                 <thead>
@@ -91,14 +89,14 @@
                 </thead>
                 <tbody>
 
-                    <%=ViewGenerator.linesAddedView(orderlineList)%>
+                    <%=ViewGenerator.linesAddedView(shopCart.getOrderlines())%>
 
                     <tr id="totalprice">
                         <td><h3>Total</h3></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><h3><%=totalPrice%></h3></td>
+                        <td><h3><%=shopCart.getTotal_price()%></h3></td>
                     </tr>
                 </tbody>
             </table>

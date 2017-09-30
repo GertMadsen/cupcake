@@ -68,15 +68,14 @@ public class Login_Registration extends HttpServlet {
             } else {
                 ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
                 ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
-                ArrayList<Orderline> orderLines = new ArrayList();
-                double totalPrice = 0;
-                
+                ShoppingCart shopCart = new ShoppingCart();
+ 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", loggedInUser);
                 session.setAttribute("toppingList", toppingList);
                 session.setAttribute("bottomList", bottomList);
-                session.setAttribute("orderLines", orderLines);
-                session.setAttribute("totalPrice", totalPrice);
+                session.setAttribute("shopCart", shopCart);
+
                 boolean admin = loggedInUser.isAdmin();
                 if (admin) {
                     request.getRequestDispatcher("adminPage.jsp").forward(request, response);

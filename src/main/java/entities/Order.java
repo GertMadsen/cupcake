@@ -29,15 +29,7 @@ public class Order {
 
     }
 
-    /*
-    public Order(int order_id, User user, List orderlines, int total_price) {
-        this.order_id = order_id;
-        this.user = user;
-        this.orderlines = orderlines;
-        this.total_price = total_price;
 
-    }
-    */
 
     public int getOrder_id() {
         return order_id;

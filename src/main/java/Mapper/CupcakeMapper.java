@@ -10,7 +10,6 @@ import entities.Bottom;
 import entities.Topping;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,29 +158,6 @@ public class CupcakeMapper {
         return output;
     }
     
-    
-    public static void main(String[] args) {
-        
-        List<Topping> toplist = new CupcakeMapper().getListOfTops();
-        List<Bottom> botlist = new CupcakeMapper().getListOfBots();
-        for (Topping t: toplist) {
-            System.out.println(t);
-        }
-        for (Bottom b: botlist) {
-            System.out.println(b);
-        }
-         
-        /*
-        Topping top = new Topping(1);
-        Bottom bot = new Bottom(2);
-        top = new CupcakeMapper().getToppingByToppingId(top);
-        bot = new CupcakeMapper().getBottomByBottomId(bot);
-        System.out.println(top);
-        System.out.println(bot);    
-        */
-    }
+
 }
 
-/*
-
-*/
