@@ -8,12 +8,6 @@ and open the template in the editor.
     Author     : Christian
 */
 
-/*
-
-     width: 303px;
-     height: 303px;
-*/
-
 #wholebody {
     background-color: #D2691E;
     color: #FFFDD0;
@@ -101,8 +95,6 @@ text-decoration:none;
     text-align: center;
 
 }
-#include{
-}
 #ordertable{
     margin-top: 5%;
 }
@@ -121,11 +113,9 @@ text-decoration:none;
     padding-top: 5%;
 }
 
-
 .blackText {
     color: black;
 }
-
 #picture {
     margin-left: auto ;
     margin-right: auto ;
