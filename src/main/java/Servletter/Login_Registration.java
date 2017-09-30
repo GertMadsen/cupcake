@@ -68,7 +68,7 @@ public class Login_Registration extends HttpServlet {
             } else {
                 ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
                 ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
-                ShoppingCart shopCart = new ShoppingCart();
+                ShoppingCart shopCart = ShoppingCart.createShoppingCart();
  
                 HttpSession session = request.getSession();
                 session.setAttribute("user", loggedInUser);

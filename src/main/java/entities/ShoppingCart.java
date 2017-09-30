@@ -7,7 +7,6 @@ package entities;
 
 import java.util.ArrayList;
 
-
 public class ShoppingCart {
     
     ArrayList<Orderline> Orderlines;
@@ -36,6 +35,11 @@ public class ShoppingCart {
     
     public boolean isEmpty() {
         return Orderlines.isEmpty();
+    }
+    
+    public static ShoppingCart createShoppingCart() {
+        ShoppingCart newCart = new ShoppingCart();
+        return newCart;
     }
     
 }
