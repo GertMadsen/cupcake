@@ -32,10 +32,14 @@ public class Connector {
 //    private final static String PASSWORD = "cupcake1971";
     private static Connection conn = null;
 
-    
     public static Connection getConnection() {
-        if(conn!=null) return conn;
-       
+
+   
+
+        if (conn != null) {
+            return conn;
+        }
+
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
