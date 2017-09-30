@@ -11,10 +11,12 @@ sortuser.onclick = function () {
     var tbody = document.getElementsByTagName("tbody")[0];
     var tableRows = tbody.getElementsByTagName("tr");
     var data = dataFromElements(tableRows);
-data.sort(function(x, y){
- var a=x.user.toLowerCase(), b=y.user.toLowerCase();
-        return (a < b) ? -1 : ((a > b) ? 1 : 0);
-});
+    
+    data.sort(function (x, y) {
+        var a = x.user.toLowerCase(), b = y.user.toLowerCase();
+        var c = parseInt(x.id), d = parseInt(y.id);
+        return (a < b) ? -1 : ((a > b) ? 1 : c-d);
+    });
     var newRows = data.map(function (obj) {
         return "<tr><td>" + obj.id + "</td>" + "<td>" + obj.user + "</td>" + "<td>" + obj.details + "</td>" + "<td>" + obj.date + "</td></tr>";
     }).reduce(function (accumulator, currentValue) {
