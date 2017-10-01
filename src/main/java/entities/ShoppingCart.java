@@ -16,7 +16,13 @@ public class ShoppingCart {
         this.Orderlines = new ArrayList();
         this.total_price = 0;
     }    
-
+    
+    public static ShoppingCart createShoppingCart() {
+        ShoppingCart newCart = new ShoppingCart();
+        return newCart;
+    }
+    
+    
     public ArrayList<Orderline> getOrderlines() {
         return Orderlines;
     }
@@ -35,11 +41,6 @@ public class ShoppingCart {
     
     public boolean isEmpty() {
         return Orderlines.isEmpty();
-    }
-    
-    public static ShoppingCart createShoppingCart() {
-        ShoppingCart newCart = new ShoppingCart();
-        return newCart;
     }
     
 }

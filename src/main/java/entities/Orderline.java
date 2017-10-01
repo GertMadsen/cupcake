@@ -22,7 +22,13 @@ public class Orderline {
         this.quantity = quantity;
         this.price = price;
     }
+    
+    public static Orderline createOrderline(Bottom bottom, Topping topping, int quantity, double price) {
+        Orderline orderline = new Orderline(bottom, topping, quantity, price);
+        return orderline;
+    }
 
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -68,6 +74,4 @@ public class Orderline {
         return "Orderline{" + "id=" + id + ", bottom=" + bottom + ", topping=" + topping + ", quantity=" + quantity + ", price=" + price + '}';
     }
     
-    
-
 }

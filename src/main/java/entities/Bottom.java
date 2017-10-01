@@ -21,7 +21,13 @@ public class Bottom {
         //this.name = name;
         //this.price = price;     
     }
-
+    
+    public static Bottom createBottom(int id) {
+        Bottom bottom = new Bottom(id);
+        return bottom;
+    }
+    
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -51,6 +57,11 @@ public class Bottom {
         return "Bottom{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
-    
+    /*
+    public static ShoppingCart createShoppingCart() {
+        ShoppingCart newCart = new ShoppingCart();
+        return newCart;
+    }
+    */
     
 }

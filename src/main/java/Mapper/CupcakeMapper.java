@@ -8,6 +8,7 @@ package Mapper;
 import Data.Connector;
 import entities.Bottom;
 import entities.Topping;
+import entities.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -18,6 +19,11 @@ import java.util.List;
  * @author Christian
  */
 public class CupcakeMapper {
+        
+    public static CupcakeMapper createCupcakeMapper() {
+        CupcakeMapper cm = new CupcakeMapper();
+        return cm;
+    }
     
     
     public List<Topping> getListOfTops() {
@@ -158,6 +164,5 @@ public class CupcakeMapper {
         return output;
     }
     
-
 }
 

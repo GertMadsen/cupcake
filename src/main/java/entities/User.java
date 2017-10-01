@@ -27,7 +27,13 @@ public class User {
         this.balance = balance;
         this.admin = admin;
     }
+    
+    public static User createUser(String name, String password, double balance, String email, boolean admin) {
+        User user = new User(name, password, balance, email, admin);
+        return user;
+    }
 
+    
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
@@ -81,9 +87,7 @@ public class User {
         return "User{" + "user_id=" + user_id + ", name=" + name + ", password=" + password + ", balance=" + balance + ", email=" + email + ", admin=" + admin + '}';
     }
 
-    
-    
-    
+       
     
     
 }

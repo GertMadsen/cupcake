@@ -41,8 +41,11 @@ public class Login_Registration extends HttpServlet {
         String loginSite = request.getParameter("login");
         String logoutSite = request.getParameter("logout");
 
-        UserMapper um = new UserMapper();
-        CupcakeMapper cm = new CupcakeMapper();
+        UserMapper um = null;
+        um = um.createUserMapper();
+        CupcakeMapper cm = null;
+        cm = cm.createCupcakeMapper();
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -112,8 +115,9 @@ public class Login_Registration extends HttpServlet {
                     admin = true;
                 }
 
-                User newUser = new User(username, password, balance, email, admin);
-
+                User newUser = null;
+                newUser = newUser.createUser(username, password, balance, email, admin);
+                
                 try {
                     um.putUser(newUser);
                     request.getRequestDispatcher("register_completed.jsp")

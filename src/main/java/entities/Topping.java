@@ -19,8 +19,14 @@ public class Topping {
         this.id = id;
         //this.name = name;
         //this.price = price;
+    }   
+    
+    public static Topping createTopping(int id) {
+        Topping topping = new Topping(id);
+        return topping;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -49,9 +55,7 @@ public class Topping {
     public String toString() {
         return "Topping{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
-    
-    
-    
+       
     
     
 }

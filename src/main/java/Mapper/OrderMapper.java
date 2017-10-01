@@ -20,7 +20,12 @@ import java.util.List;
  * @author Christian
  */
 public class OrderMapper {
-
+    
+    public static OrderMapper createOrderMapper() {
+        OrderMapper om = new OrderMapper();
+        return om;
+    }
+    
     public List<Order> getOrdersByUserId(User user) {
         List<Order> output = new ArrayList<Order>();
         try {
@@ -239,7 +244,5 @@ public class OrderMapper {
         return output;
 
     }
-
-
 
 }

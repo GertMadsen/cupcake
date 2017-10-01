@@ -29,7 +29,10 @@ public class Order {
 
     }
 
-
+    public static Order createOrder(User user) {
+        Order order = new Order(user);
+        return order;
+    }
 
     public int getOrder_id() {
         return order_id;
@@ -75,7 +78,6 @@ public class Order {
     public String toString() {
         return "Order{" + "order_id=" + order_id + ", user=" + user + ", date=" + date + ", orderlines=" + orderlines + ", total_price=" + total_price + '}';
     }
-    
     
 
 }

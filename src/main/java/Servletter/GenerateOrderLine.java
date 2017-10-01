@@ -45,7 +45,9 @@ public class GenerateOrderLine extends HttpServlet {
         int toppingID = Integer.parseInt(request.getParameter("topping"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        CupcakeMapper cm = new CupcakeMapper();
+        //CupcakeMapper cm = new CupcakeMapper();
+        CupcakeMapper cm = null;
+        cm  = cm.createCupcakeMapper();
         
         Bottom bottom = cm.getBottomByBottomId(bottomID);
         Topping topping = cm.getToppingByToppingId(toppingID);

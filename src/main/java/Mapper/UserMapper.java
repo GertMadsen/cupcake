@@ -18,7 +18,12 @@ import java.sql.*;
  * @author Christian
  */
 
-public class UserMapper {
+public class UserMapper { 
+
+    public static UserMapper createUserMapper() {
+        UserMapper um = new UserMapper();
+        return um;
+    }
     
     public User getUserByName(String name) {
         User output = null;
@@ -133,7 +138,4 @@ public class UserMapper {
         
     }
     
-
-    
-
 }
