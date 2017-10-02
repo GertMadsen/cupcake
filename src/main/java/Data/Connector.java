@@ -14,11 +14,12 @@ import java.sql.SQLException;
  * @author GertLehmann
  */
 public class Connector {
-
+// Gerts localhost.
 //    private final static String DRIVER = "com.mysql.jdbc.Driver";
 //    private final static String URL = "jdbc:mysql://localhost:3306/cupcake";
 //    private final static String USER = "cupcakeuser";
 //    private final static String PASSWORD = "cupcake1971";
+//    
 //  Christians MySQL aerver.
     private final static String DRIVER = "com.mysql.jdbc.Driver";
     private final static String URL = "jdbc:mysql://46.101.152.26:3306/cupcake";

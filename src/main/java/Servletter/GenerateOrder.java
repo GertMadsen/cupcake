@@ -58,6 +58,7 @@ public class GenerateOrder extends HttpServlet {
 
                 Order newOrder = null;
                 newOrder.createOrder(user);
+                
                 int orderNumber = 0;
                 try {
                     orderNumber = om.putToOrderTable(newOrder);
