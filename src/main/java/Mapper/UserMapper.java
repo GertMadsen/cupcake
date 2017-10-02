@@ -55,8 +55,8 @@ public class UserMapper {
         return output;
     } 
     
-    public User updateUserBalanceById(User user, double newbalance) throws SQLException {
-        User output = user;
+    public void updateUserBalanceById(User user, double newbalance) throws SQLException {
+        //User output = user;
                 
         Connection conn = Connector.getConnection();
         String sql = "UPDATE cupcake.users SET balance="+
@@ -71,12 +71,13 @@ public class UserMapper {
             if (conn != null) {
                 conn.rollback();
             }
-            return null;
+//            return null;
         } finally {
             conn.setAutoCommit(true);
         }
-        output.setBalance(newbalance);
-        return output;
+        user.setBalance(newbalance);
+//        output.setBalance(newbalance);
+//        return output;
     }
     
     public User getUserByID(int id) {
