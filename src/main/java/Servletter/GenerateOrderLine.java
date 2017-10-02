@@ -46,15 +46,14 @@ public class GenerateOrderLine extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
         //CupcakeMapper cm = new CupcakeMapper();
-        CupcakeMapper cm = null;
-        cm  = cm.createCupcakeMapper();
+        CupcakeMapper cm = CupcakeMapper.createCupcakeMapper();
         
         Bottom bottom = cm.getBottomByBottomId(bottomID);
         Topping topping = cm.getToppingByToppingId(toppingID);
         double price = (bottom.getPrice() + topping.getPrice())*(double)(quantity);
         totalPrice += price;
         
-        Orderline newLine = new Orderline (bottom,topping,quantity,price);
+        Orderline newLine = Orderline.createOrderline(bottom,topping,quantity,price);
         shopCart.addToOrderlines(newLine);
         shopCart.setTotal_price(totalPrice);
         session.setAttribute("shopCart",shopCart);

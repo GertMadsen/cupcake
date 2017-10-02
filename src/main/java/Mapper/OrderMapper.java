@@ -41,7 +41,7 @@ public class OrderMapper {
             while (rs.next()) {
                 orderId = rs.getInt("order_id");
                 date = rs.getString("date");
-                order = new Order(user);
+                order = Order.createOrder(user);
                 order.setDate(date);
                 order.setOrder_id(orderId);
                 order.setOrderlines(this.getOrderlinesByOrderId(order));
@@ -55,7 +55,7 @@ public class OrderMapper {
     
         public List<Order> getAllOrders() {
         List<Order> output = new ArrayList<Order>();
-        UserMapper um = new UserMapper();
+        UserMapper um = UserMapper.createUserMapper();
         try {
             Order order = null;
             String sql = "SELECT * FROM cupcake.orders ";
@@ -71,7 +71,7 @@ public class OrderMapper {
                 date = rs.getString("date");
                 userId = rs.getInt("users_user_id");
                 User user = um.getUserByID(userId);
-                order = new Order(user);
+                order = Order.createOrder(user);
                 order.setDate(date);
                 order.setOrder_id(orderId);
                 order.setOrderlines(this.getOrderlinesByOrderId(order));
@@ -95,11 +95,11 @@ public class OrderMapper {
             ResultSet rs = pstmt.executeQuery();
             int user_id = 0;
             String date = "";
-            UserMapper um = new UserMapper();
+            UserMapper um = UserMapper.createUserMapper();
             while (rs.next()) {
                 user_id = rs.getInt("users_user_id");
                 date = rs.getString("date");
-                order = new Order(um.getUserByID(user_id));
+                order = Order.createOrder(um.getUserByID(user_id));
                 order.setDate(date);
                 order.setOrder_id(id);
                 order.setOrderlines(this.getOrderlinesByOrderId(order));
@@ -113,7 +113,7 @@ public class OrderMapper {
     public List<Orderline> getOrderlinesByOrderId(Order order) {
         List<Orderline> output = new ArrayList<Orderline>();
         try {
-            CupcakeMapper cm = new CupcakeMapper();
+            CupcakeMapper cm = CupcakeMapper.createCupcakeMapper();
 
             Orderline oLine = null;
             String sql = "SELECT "
@@ -139,13 +139,13 @@ public class OrderMapper {
                 price = rs.getDouble("price");
                 quantity = rs.getInt("quantity");
 
-                Bottom bot = new Bottom(bottomId);
+                Bottom bot = Bottom.createBottom(bottomId);
                 bot = cm.getBottomByBottomId(bot);
 
-                Topping top = new Topping(toppingId);
+                Topping top = Topping.createTopping(toppingId);
                 top = cm.getToppingByToppingId(top);
 
-                oLine = new Orderline(bot, top, quantity, price);
+                oLine = Orderline.createOrderline(bot, top, quantity, price);
                 oLine.setId(orderlineId);
                 output.add(oLine);
             }

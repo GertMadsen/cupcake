@@ -41,10 +41,8 @@ public class Login_Registration extends HttpServlet {
         String loginSite = request.getParameter("login");
         String logoutSite = request.getParameter("logout");
 
-        UserMapper um = null;
-        um = um.createUserMapper();
-        CupcakeMapper cm = null;
-        cm = cm.createCupcakeMapper();
+        UserMapper um = UserMapper.createUserMapper();
+        CupcakeMapper cm = CupcakeMapper.createCupcakeMapper();
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
