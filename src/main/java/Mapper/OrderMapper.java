@@ -102,7 +102,8 @@ public class OrderMapper {
                 order = Order.createOrder(um.getUserByID(user_id));
                 order.setDate(date);
                 order.setOrder_id(id);
-                order.setOrderlines(this.getOrderlinesByOrderId(order));
+                List<Orderline> ol = this.getOrderlinesByOrderId(order);
+                order.setOrderlines(ol);
             }
         } catch (Exception e) {
             return null;
