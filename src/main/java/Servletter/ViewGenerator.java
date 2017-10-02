@@ -17,7 +17,7 @@ public class ViewGenerator {
 
     public static String viewOrdersByUser(User user) {
         String output = "";
-        OrderMapper om = new OrderMapper();
+        OrderMapper om = OrderMapper.createOrderMapper();
         ArrayList<Order> userOrders = (ArrayList) om.getOrdersByUserId(user);
        // ArrayList<Order> userOrders = user.orderList();
         output += "<tbody>";
@@ -43,8 +43,7 @@ public class ViewGenerator {
 
         String output = "";
         
-        OrderMapper om = null;
-        om = om.createOrderMapper();
+        OrderMapper om = OrderMapper.createOrderMapper();
         
         ArrayList<Order> userOrders = (ArrayList) om.getAllOrders();
         output += "<tbody>";
@@ -63,8 +62,7 @@ public class ViewGenerator {
 
     public static String viewSingleOrder(int orderId, boolean admin) {
         String output = "";
-        OrderMapper om = null;
-        om = om.createOrderMapper();
+        OrderMapper om = OrderMapper.createOrderMapper();
         
         Order orderToShow = om.getOrderById(orderId);
         ArrayList<Orderline> orderLines = (ArrayList) om.getOrderlinesByOrderId(orderToShow);
@@ -148,8 +146,7 @@ public class ViewGenerator {
     }
 
     public static void main(String[] args) {
-        UserMapper um = null;
-        um = um.createUserMapper();
+        UserMapper um = UserMapper.createUserMapper();
         User testUser = um.getUserByID(1);
 
         String toShow = viewOrdersByUser(testUser);

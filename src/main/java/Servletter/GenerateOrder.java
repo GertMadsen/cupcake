@@ -44,10 +44,8 @@ public class GenerateOrder extends HttpServlet {
         User user = (User) (session.getAttribute("user"));
 
         //UserMapper um = new UserMapper();
-        UserMapper um = null;
-        um = um.createUserMapper();
-        OrderMapper om = null;
-        om = om.createOrderMapper();
+        UserMapper um = UserMapper.createUserMapper();
+        OrderMapper om = OrderMapper.createOrderMapper();
 
         if (!shopCart.isEmpty()) {
 
@@ -56,8 +54,7 @@ public class GenerateOrder extends HttpServlet {
                             .forward(request, response); 
             } else {
 
-                Order newOrder = null;
-                newOrder.createOrder(user);
+                Order newOrder = Order.createOrder(user);
                 int orderNumber = 0;
                 try {
                     orderNumber = om.putToOrderTable(newOrder);
