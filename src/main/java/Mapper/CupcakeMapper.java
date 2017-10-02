@@ -38,7 +38,7 @@ public class CupcakeMapper {
             int toppint_id = 0;
             while (rs.next()) {
                 toppint_id = rs.getInt("topping_id");
-                mytop = new Topping(toppint_id);
+                mytop = Topping.createTopping(toppint_id);
                 mytop = this.getToppingByToppingId(mytop);
                 output.add(mytop);
             }
@@ -61,7 +61,7 @@ public class CupcakeMapper {
             int bottom_id = 0;
             while (rs.next()) {
                 bottom_id = rs.getInt("bottom_id");
-                mybot = new Bottom(bottom_id);
+                mybot = Bottom.createBottom(bottom_id);
                 mybot = this.getBottomByBottomId(mybot);
                 output.add(mybot);
             }
@@ -95,7 +95,7 @@ public class CupcakeMapper {
     }
     
         public Topping getToppingByToppingId(int id) {
-        Topping output = new Topping(id);
+        Topping output = Topping.createTopping(id);
         try {
             String sql = "SELECT name, price "
                     + "FROM cupcake.toppings where topping_id =" + 
@@ -142,7 +142,7 @@ public class CupcakeMapper {
     }
     
     public Bottom getBottomByBottomId(int id) {
-        Bottom output = new Bottom(id);
+        Bottom output = Bottom.createBottom(id);
         try{
             String sql = "SELECT name, price "
                     + "FROM cupcake.bottoms where bottom_id =" + 

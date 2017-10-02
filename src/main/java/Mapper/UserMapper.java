@@ -47,7 +47,7 @@ public class UserMapper {
                 admin = rs.getBoolean("administrator");
                 
             }
-            output = new User(userName, password, balance, email, admin);
+            output = User.createUser(userName, password, balance, email, admin);
             output.setUser_id(userID);
         }catch (SQLException ex) {
             return null;
@@ -99,7 +99,7 @@ public class UserMapper {
                 email = rs.getString("email");
                 admin = rs.getBoolean("administrator");
             }
-            output = new User(userName, password, balance, email, admin);
+            output = User.createUser(userName, password, balance, email, admin);
             output.setUser_id(id);
         }catch (Exception e) {
             return null;
