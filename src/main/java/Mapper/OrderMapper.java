@@ -16,16 +16,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 
+ * 
+ * 
+ * Instantiated from:
+ *
+ * Presentation Layer: 
+ *
+ * Data Layer: 
  *
  * @author Christian
  */
 public class OrderMapper {
-    
+
     public static OrderMapper createOrderMapper() {
         OrderMapper om = new OrderMapper();
         return om;
     }
-    
+
     public List<Order> getOrdersByUserId(User user) {
         List<Order> output = new ArrayList<Order>();
         try {
@@ -52,8 +60,8 @@ public class OrderMapper {
         }
         return output;
     }
-    
-        public List<Order> getAllOrders() {
+
+    public List<Order> getAllOrders() {
         List<Order> output = new ArrayList<Order>();
         UserMapper um = UserMapper.createUserMapper();
         try {
@@ -65,7 +73,7 @@ public class OrderMapper {
             int orderId = 0;
             String date = "";
             int userId = 0;
-            
+
             while (rs.next()) {
                 orderId = rs.getInt("order_id");
                 date = rs.getString("date");
@@ -82,9 +90,7 @@ public class OrderMapper {
         }
         return output;
     }
-    
 
-        
     public Order getOrderById(int id) {
         Order order = null;
         try {
@@ -157,7 +163,7 @@ public class OrderMapper {
         return output;
     }
 
-        public Order getInitOrderById(int id) {
+    public Order getInitOrderById(int id) {
         Order order = null;
         try {
 
@@ -181,7 +187,7 @@ public class OrderMapper {
         }
         return order;
     }
-    
+
     public void putToOrderdetailsTable(int orderId, int orderlineId, int quantity) throws SQLException {
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.orderdetails ("
@@ -205,7 +211,6 @@ public class OrderMapper {
             conn.setAutoCommit(true);
         }
     }
-
 
     public int putToOrderTable(Order order) throws SQLException {
         int output = 0;
@@ -236,7 +241,6 @@ public class OrderMapper {
         return output;
 
     }
-
 
     // public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
     public int putToOrderLineTable(Orderline oLine) throws SQLException {

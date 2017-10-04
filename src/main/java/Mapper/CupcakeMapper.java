@@ -15,7 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * This class is responsible for getting single elements and lists out of toppings and bottoms.
+ * 
+ * Instantiated from: 
+ * 
+ * Presentation Layer:  Login_regitration and viewGenerator
+ * 
+ * Data Layer: OrderMapper
+ * 
  * @author Christian
  */
 public class CupcakeMapper {
