@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class Order {
 
-    int order_id;
-    User user;
-    String date;
-    List<Orderline> orderlines;
-    double total_price;
+    private int order_id;
+    private User user;
+    private String date;
+    private List<Orderline> orderlines;
+    private double total_price;
     
 
     public Order(User user) {

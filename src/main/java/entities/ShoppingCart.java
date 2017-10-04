@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class ShoppingCart {
     
-    ArrayList<Orderline> Orderlines;
-    double total_price;
+    private ArrayList<Orderline> Orderlines;
+     private double total_price;
 
     public ShoppingCart() {
         this.Orderlines = new ArrayList();

@@ -11,12 +11,12 @@ package entities;
  */
 public class User {
     
-    int user_id;
-    String name;
-    String password;
-    double balance;
-    String email;
-    boolean admin;
+    private int user_id;
+    private String name;
+    private String password;
+    private double balance;
+    private String email;
+    private boolean admin;
     
 
     public User(String name, String password, double balance, String email, boolean admin) {

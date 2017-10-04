@@ -9,11 +9,11 @@ package entities;
 
 public class Orderline {
     
-    int id;
-    Bottom bottom;
-    Topping topping;
-    int quantity;
-    double price;
+    private int id;
+    private Bottom bottom;
+    private Topping topping;
+    private int quantity;
+    private double price;
 
     public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
         //this.id = id;

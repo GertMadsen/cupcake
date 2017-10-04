@@ -11,9 +11,9 @@ package entities;
  */
 public class Topping {
     
-    int id;
-    String name;
-    double price;
+    private int id;
+    private String name;
+    private double price;
 
     public Topping(int id) {
         this.id = id;

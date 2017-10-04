@@ -11,9 +11,9 @@ package entities;
  */
 public class Bottom {
     
-    int id;
-    String name;
-    double price;
+    private int id;
+    private String name;
+    private double price;
     
     
     public Bottom (int id){
