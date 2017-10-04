@@ -19,7 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * This class is called from shopCart.jsp.
+ * It can send the user to some errorpages if anything goes wrong:
+ * notEnoughMoney.jsp, error_writing_order.jsp, noOrderMade.jsp.
+ * If the order is a success it sends the user to: orderFinished.jsp.
+ * 
  * @author GertLehmann
  */
 @WebServlet(name = "GenerateOrder", urlPatterns = {"/GenerateOrder"})

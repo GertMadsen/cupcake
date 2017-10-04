@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * This class generates orderlines to the future order from shopCart.jsp and then redirects back to the same page,
+ * but now with an orderline attached to the page. The order is yet to be made, but will be created when your done
+ * adding orderlines.
+ * 
  * @author GertLehmann
  */
 @WebServlet(name = "GenerateOrderLine", urlPatterns = {"/GenerateOrderLine"})

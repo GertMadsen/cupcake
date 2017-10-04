@@ -10,11 +10,24 @@ import entities.*;
 import java.util.ArrayList;
 
 /**
- *
- * @author GertLehmann
- */
+     * This class is the "Render class" it takes alot of the work away from the jsp pages so they can look smooth.
+     * This class is used in shopCart.jsp, showOrders.jsp, showOrderInfo.jsp.
+     * 
+     * @param user
+     * @return 
+     */
 public class ViewGenerator {
-
+    
+   
+    /**
+     * @param user is an expected value and if null it would crash the application.
+     * @return a list of previous orders the specific user made. if parameter is wrong their
+     * will be nothing to return since it depends on the parameter to find the list.
+     * 
+     * This method does not change the state of any object it prints the list of the user.
+     * 
+     */
+    
     public static String viewOrdersByUser(User user) {
         String output = "";
         OrderMapper om = OrderMapper.createOrderMapper();

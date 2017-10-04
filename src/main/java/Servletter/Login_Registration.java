@@ -19,6 +19,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * This class is called from both index.jsp(login) and registration.jsp pages,
+ * where two differents forms are pushed.
+ * 
+ * Login: It takes a users info and
+ * checks the input with the database and access or deny the user access to the
+ * shop. If access sends user to shopCart.jsp or login_error.jsp If the user is
+ * an administrator it takes the admin to adminPage.jsp, where the admin can
+ * access another admin page.
+ *
+ * Register: It takes the information from the form in register and it adds an
+ * user in the database. then sends the user back to index(login) so the user
+ * can login from there
  *
  * @author GertLehmann
  */
@@ -29,9 +41,6 @@ public class Login_Registration extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * 
-     * 
-     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -46,7 +55,7 @@ public class Login_Registration extends HttpServlet {
 
         UserMapper um = UserMapper.createUserMapper();
         CupcakeMapper cm = CupcakeMapper.createCupcakeMapper();
-        
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -73,7 +82,7 @@ public class Login_Registration extends HttpServlet {
                 ArrayList<Topping> toppingList = (ArrayList) (cm.getListOfTops());
                 ArrayList<Bottom> bottomList = (ArrayList) (cm.getListOfBots());
                 ShoppingCart shopCart = ShoppingCart.createShoppingCart();
- 
+
                 HttpSession session = request.getSession();
                 session.setAttribute("user", loggedInUser);
                 session.setAttribute("toppingList", toppingList);
@@ -100,16 +109,16 @@ public class Login_Registration extends HttpServlet {
                         .forward(request, response);
             } else {
                 String balanceText = request.getParameter("balance");
-                
+
                 String email = request.getParameter("email");
                 String role = request.getParameter("role");
-                
-                if (username.equals("") | password.equals("") 
+
+                if (username.equals("") | password.equals("")
                         | balanceText.equals("") | email.equals("")) {
-                     request.getRequestDispatcher("Errorpages/error_fill_all.jsp")
-                        .forward(request, response);
+                    request.getRequestDispatcher("Errorpages/error_fill_all.jsp")
+                            .forward(request, response);
                 }
-             
+
                 double balance = Double.parseDouble(balanceText);
                 boolean admin = false;
                 if (role.equals("admin")) {
@@ -118,7 +127,7 @@ public class Login_Registration extends HttpServlet {
 
                 User newUser = null;
                 newUser = newUser.createUser(username, password, balance, email, admin);
-                
+
                 try {
                     um.putUser(newUser);
                     request.getRequestDispatcher("register_completed.jsp")
