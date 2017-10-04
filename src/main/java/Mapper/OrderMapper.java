@@ -84,6 +84,7 @@ public class OrderMapper {
     }
     
 
+        
     public Order getOrderById(int id) {
         Order order = null;
         try {
@@ -156,6 +157,31 @@ public class OrderMapper {
         return output;
     }
 
+        public Order getInitOrderById(int id) {
+        Order order = null;
+        try {
+
+            String sql = "SELECT date, users_user_id "
+                    + "FROM cupcake.orders where order_id ="
+                    + id;
+            PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            int user_id = 0;
+            String date = "";
+            UserMapper um = UserMapper.createUserMapper();
+            while (rs.next()) {
+                user_id = rs.getInt("users_user_id");
+                date = rs.getString("date");
+                order = Order.createOrder(um.getUserByID(user_id));
+                order.setDate(date);
+                order.setOrder_id(id);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return order;
+    }
+    
     public void putToOrderdetailsTable(int orderId, int orderlineId, int quantity) throws SQLException {
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.orderdetails ("

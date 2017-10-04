@@ -63,7 +63,7 @@ public class GenerateOrder extends HttpServlet {
                             .forward(request, response);
                 }
                 
-                newOrder = om.getOrderById(orderNumber);
+                newOrder = om.getInitOrderById(orderNumber);
                 request.setAttribute("newOrder", newOrder);
                 
                 for (Orderline ol : shopCart.getOrderlines()) {
