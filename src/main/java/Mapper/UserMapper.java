@@ -29,6 +29,12 @@ public class UserMapper {
         return um;
     }
     
+    /**
+     * 
+     * @param name Finds the user in the DB only from the name of the user.
+     * @return An user with all parameter set with the contructor and user id is added as well.
+     */
+    
     public User getUserByName(String name) {
         User output = null;
         try {
@@ -58,6 +64,14 @@ public class UserMapper {
         }
         return output;
     } 
+    /**
+     * The method is void, so it doesn't return anything but it updates an Users balance after a purchase.
+     * 
+     * @param user expected value and refers to the user who has done a purchase.
+     * @param newbalance the new double of the balance of the user where the purchase have been withdrawn,
+     * from his account.
+     * @throws SQLException 
+     */
     
     public void updateUserBalanceById(User user, double newbalance) throws SQLException {
         //User output = user;
@@ -83,7 +97,19 @@ public class UserMapper {
 //        output.setBalance(newbalance);
 //        return output;
     }
+    /**
+     * 
+     * @param id the id of a user, so that you can find the rest of information on an user,
+     * by seraching in the DB of the specific id
+     * 
+     * @return an user with all parameters in the entity.
+     */
     
+    /**
+     * 
+     * @param id Id of the user, nota visible is for the user, but is used to store and find a user easily in the DB.
+     * @return An user where all parameter have been set in the contructor and id is added as well.
+     */
     public User getUserByID(int id) {
         User output = null;
         try{
@@ -111,6 +137,12 @@ public class UserMapper {
         }
         return output;
     }
+    /**
+     * Void method so doesn't return anthing but rather update the table with the input of a user.
+     * 
+     * @param user Gets an user and put the user to the table in the DB.
+     * @throws SQLException 
+     */
     
     public void putUser(User user) throws SQLException {
         String name = user.getName();

@@ -16,10 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class contains methods that can collect orderlines and orders from a single id or all 
- * and return them as an order or a list of orders either from a single id or if your admin then all.
- * 
- * 
+ * This class contains methods that can collect orderlines and orders from a
+ * single id or all and return them as an order or a list of orders either from
+ * a single id or if your admin then all.
+ *
+ *
  * OrderMapper is only used and called from GenerateOrder and viewGenerator.
  *
  * @author Christian
@@ -30,6 +31,13 @@ public class OrderMapper {
         OrderMapper om = new OrderMapper();
         return om;
     }
+    
+    /**
+     * 
+     * @param user is in this method used so that we can extract the id from the user
+     *        and find the orders regarding this specifik user
+     * @return A list of orders for the user id.
+     */
 
     public List<Order> getOrdersByUserId(User user) {
         List<Order> output = new ArrayList<Order>();
@@ -57,6 +65,10 @@ public class OrderMapper {
         }
         return output;
     }
+    /**
+     * 
+     * @return a list of all orders, is used for the admin to get an overview.
+     */
 
     public List<Order> getAllOrders() {
         List<Order> output = new ArrayList<Order>();
@@ -88,6 +100,12 @@ public class OrderMapper {
         return output;
     }
 
+    /**
+     *
+     * @param id The id of an order to find the rest of the information of the order id.
+     * @return An order where date, id and orderlines has been set.
+     */
+
     public Order getOrderById(int id) {
         Order order = null;
         try {
@@ -115,6 +133,12 @@ public class OrderMapper {
         return order;
     }
 
+    /**
+     *
+     * @param order Gets the order as a parameter so that the order id can be
+     * extracted used to find the orderlines with the respective order id.
+     * @return a List of orderlines with the currect order id.
+     */
     public List<Orderline> getOrderlinesByOrderId(Order order) {
         List<Orderline> output = new ArrayList<Orderline>();
         try {
@@ -160,6 +184,11 @@ public class OrderMapper {
         return output;
     }
 
+    /**
+     *
+     * @param id the order id which gets send with the call to "update" the DB
+     * @return the order when filled with information. Date and id.
+     */
     public Order getInitOrderById(int id) {
         Order order = null;
         try {
@@ -185,6 +214,16 @@ public class OrderMapper {
         return order;
     }
 
+    /**
+     *
+     * @param orderId expected value and the Id of the Order that the Orderline
+     * and quantity are related to.
+     * @param orderlineId expected value and the id of the specific orderline.
+     * @param quantity the quantity of the orderline, if a customer ordered 10
+     * of one type of cupcake.
+     * @throws SQLException
+     */
+
     public void putToOrderdetailsTable(int orderId, int orderlineId, int quantity) throws SQLException {
         Connection conn = Connector.getConnection();
         String insertUser = "INSERT INTO cupcake.orderdetails ("
@@ -209,6 +248,13 @@ public class OrderMapper {
         }
     }
 
+    /**
+     * Insert the order created to the table in the Database
+     *
+     * @param order refers to the order which then can find the user.
+     * @return The primary key in the table
+     * @throws SQLException
+     */
     public int putToOrderTable(Order order) throws SQLException {
         int output = 0;
         ResultSet rs = null;
@@ -239,7 +285,14 @@ public class OrderMapper {
 
     }
 
-    // public Orderline(Bottom bottom, Topping topping, int quantity, double price) {
+    /**
+     *
+     * @param oLine a single orderline is put to the table with an id so that
+     * mutiple orderlines can be attached to an order. the orderlines parameters
+     * will then be set as well.
+     * @return The primary key in the table
+     * @throws SQLException
+     */
     public int putToOrderLineTable(Orderline oLine) throws SQLException {
         int output = 0;
         ResultSet rs = null;

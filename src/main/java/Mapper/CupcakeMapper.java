@@ -15,27 +15,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is responsible for getting single elements and lists out of toppings and bottoms.
- * 
- * Instantiated from: 
- * 
- * Presentation Layer:  Login_regitration and GeneratOrderline
- * 
+ * This class is responsible for getting single elements and lists out of
+ * toppings and bottoms.
+ *
+ * Instantiated from:
+ *
+ * Presentation Layer: Login_regitration and GeneratOrderline
+ *
  * Data Layer: OrderMapper
- * 
+ *
  * @author Christian
  */
 public class CupcakeMapper {
-        
+
     public static CupcakeMapper createCupcakeMapper() {
         CupcakeMapper cm = new CupcakeMapper();
         return cm;
     }
-    
-    
+
+    /**
+     * @return a List of Toppings from the DB, is also used to get store
+     * information in the dropdown menu.
+     */
     public List<Topping> getListOfTops() {
-        List<Topping> output = new ArrayList<Topping>();   
-        try{
+        List<Topping> output = new ArrayList<Topping>();
+        try {
             String sql = "SELECT topping_id "
                     + "FROM cupcake.toppings";
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
@@ -49,16 +53,20 @@ public class CupcakeMapper {
                 mytop = this.getToppingByToppingId(mytop);
                 output.add(mytop);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
-        
+
         return output;
     }
-    
+
+    /**
+     * @return a List of Toppings from the DB, is also used to get store
+     * information in the dropdown menu.
+     */
     public List<Bottom> getListOfBots() {
         List<Bottom> output = new ArrayList<Bottom>();
-        try{   
+        try {
             String sql = "SELECT bottom_id "
                     + "FROM cupcake.bottoms";
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
@@ -72,18 +80,23 @@ public class CupcakeMapper {
                 mybot = this.getBottomByBottomId(mybot);
                 output.add(mybot);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
         return output;
     }
-    
+
+    /**
+     * @param topping is used to get the id from the topping, so that we can
+     * find the specific topping in the DB with its name and price.
+     * @return A topping found from the id and name and price have been set.
+     */
     public Topping getToppingByToppingId(Topping topping) {
         Topping output = topping;
         try {
             String sql = "SELECT name, price "
-                    + "FROM cupcake.toppings where topping_id =" + 
-                    topping.getId();
+                    + "FROM cupcake.toppings where topping_id ="
+                    + topping.getId();
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -95,18 +108,22 @@ public class CupcakeMapper {
             }
             output.setName(name);
             output.setPrice(price);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
         return output;
     }
-    
-        public Topping getToppingByToppingId(int id) {
+
+    /**
+     * @param id The id of the topping so we can create a object of the topping.
+     * @return The topping with name, price and its id.
+     */
+    public Topping getToppingByToppingId(int id) {
         Topping output = Topping.createTopping(id);
         try {
             String sql = "SELECT name, price "
-                    + "FROM cupcake.toppings where topping_id =" + 
-                    id;
+                    + "FROM cupcake.toppings where topping_id ="
+                    + id;
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -118,19 +135,24 @@ public class CupcakeMapper {
             }
             output.setName(name);
             output.setPrice(price);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
         return output;
     }
-    
-    
+
+    /**
+     * @param bottom is used to get the id from the bottom, so that we can
+     * find the specific bottom in the DB with its name and price.
+     * @return A bottom found from the id and name and price have been set.
+     */
+
     public Bottom getBottomByBottomId(Bottom bottom) {
         Bottom output = bottom;
-        try{
+        try {
             String sql = "SELECT name, price "
-                    + "FROM cupcake.bottoms where bottom_id =" + 
-                    bottom.getId();
+                    + "FROM cupcake.bottoms where bottom_id ="
+                    + bottom.getId();
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -142,18 +164,22 @@ public class CupcakeMapper {
             }
             output.setName(name);
             output.setPrice(price);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
         return output;
     }
-    
+
+    /**
+     * @param id The id of the bottom so we can create a object of the bottom.
+     * @return The bottom with name, price and its id.
+     */
     public Bottom getBottomByBottomId(int id) {
         Bottom output = Bottom.createBottom(id);
-        try{
+        try {
             String sql = "SELECT name, price "
-                    + "FROM cupcake.bottoms where bottom_id =" + 
-                    id;
+                    + "FROM cupcake.bottoms where bottom_id ="
+                    + id;
             PreparedStatement pstmt = Connector.getConnection().prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
@@ -165,11 +191,10 @@ public class CupcakeMapper {
             }
             output.setName(name);
             output.setPrice(price);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
         return output;
     }
-    
-}
 
+}
