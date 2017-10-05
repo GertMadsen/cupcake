@@ -32,6 +32,10 @@ import javax.servlet.http.HttpSession;
  * user in the database. then sends the user back to index(login) so the user
  * can login from there
  *
+ * 
+ * This class can redirects to: login_error.jsp, adminPage.jsp, shopCart.jsp, 
+ * error_user_exist.jsp, register_completed.jsp, error_not_registered.jsp, error_fill_all.jsp.
+ * 
  * @author GertLehmann
  */
 @WebServlet(name = "Login_Registration", urlPatterns = {"/Login_Registration"})

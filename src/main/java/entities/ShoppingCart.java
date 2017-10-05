@@ -7,6 +7,14 @@ package entities;
 
 import java.util.ArrayList;
 
+/**
+ * This class is an entity of ShoppingCart.
+ * ShoppingCart is used to store the orderlines before it creates the order object.
+ * Methods are small easy understandable methods.
+ * 
+ * @author Mikkel Lindstrøm <Mikkel.Lindstrøm>
+ */
+
 public class ShoppingCart {
     
     private ArrayList<Orderline> Orderlines;

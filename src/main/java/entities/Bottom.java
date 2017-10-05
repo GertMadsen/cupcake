@@ -6,7 +6,10 @@
 package entities;
 
 /**
- *
+ *  This class is an entity which is used to make a cupcake combined with the entity Topping.
+ *  It's methods are pretty standard  set/get methods with the one exeptions that is has a method,
+ *  that creates a new object of a Bottom.
+ * 
  * @author Strom
  */
 public class Bottom {
@@ -57,11 +60,6 @@ public class Bottom {
         return "Bottom{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
-    /*
-    public static ShoppingCart createShoppingCart() {
-        ShoppingCart newCart = new ShoppingCart();
-        return newCart;
-    }
-    */
+
     
 }

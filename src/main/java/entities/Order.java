@@ -8,7 +8,9 @@ package entities;
 import java.util.List;
 
 /**
- *
+ *  This class is an entity which contains details of a User entity so that it can attach orders with the user.
+ *  It's methods are pretty standard set/get methods.
+ * 
  * @author Strom
  */
 public class Order {

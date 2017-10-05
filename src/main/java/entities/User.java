@@ -6,7 +6,12 @@
 package entities;
 
 /**
+ * This class is an entity class of User.
+ * 
+ * The user class is stored in the session and is used to attach an user to the order so that it is,
+ * possible to find the order for the curent user.
  *
+ * Methods are standard set/get methods, but has one mehtod which creates the object of an User.
  * @author Strom
  */
 public class User {

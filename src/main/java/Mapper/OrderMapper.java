@@ -16,14 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class contains methods that can collect orderlines and orders from a single id or all 
+ * and return them as an order or a list of orders either from a single id or if your admin then all.
  * 
  * 
- * 
- * Instantiated from:
- *
- * Presentation Layer: 
- *
- * Data Layer: 
+ * OrderMapper is only used and called from GenerateOrder and viewGenerator.
  *
  * @author Christian
  */

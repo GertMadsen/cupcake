@@ -13,8 +13,6 @@ import java.util.ArrayList;
      * This class is the "Render class" it takes alot of the work away from the jsp pages so they can look smooth.
      * This class is used in shopCart.jsp, showOrders.jsp, showOrderInfo.jsp.
      * 
-     * @param user
-     * @return 
      */
 public class ViewGenerator {
     
@@ -42,13 +40,6 @@ public class ViewGenerator {
                     + "<td>" + o.getDate() + "</td></tr>";
         }
         output += "</tbody>";
-        return output;
-    }
-    
-    
-    
-    public static String getMyString() {
-        String output = "hello from viewGenerator";
         return output;
     }
     
@@ -156,17 +147,6 @@ public class ViewGenerator {
             i++;
         }
         return output;
-    }
-
-    public static void main(String[] args) {
-        UserMapper um = UserMapper.createUserMapper();
-        User testUser = um.getUserByID(1);
-
-        String toShow = viewOrdersByUser(testUser);
-        System.out.println(toShow);
-
-//        String toShow2 = viewSingleOrder(1);
-//        System.out.println(toShow2);
     }
 
 }

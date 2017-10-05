@@ -14,7 +14,11 @@ import java.sql.*;
 
 
 /**
- *
+ * This class is used to get an user from the DB or update an user or to put a new user down in the DB.
+ * 
+ * 
+ * This class is used from OrderMapper, GenerateOrder, Login_registration.
+ * 
  * @author Christian
  */
 

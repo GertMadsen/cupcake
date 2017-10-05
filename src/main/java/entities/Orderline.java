@@ -5,6 +5,13 @@
  */
 package entities;
 
+/**
+ *  This class is an entity of Orderline.
+ *  The Orderline is used to create an order which is "filled" by orderlines
+ *  It's methods are pretty standard set/get methods
+ *  
+ * @author Mikkel Lindstrøm <Mikkel.Lindstrøm>
+ */
 
 
 public class Orderline {
