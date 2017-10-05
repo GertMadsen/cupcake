@@ -23,11 +23,8 @@ public class Order {
     
 
     public Order(User user) {
-        //this.order_id = order_id;
         this.user = user;
-        //this.date = date;
-        //this.orderlines = orderlines;
-        //this.total_price = total_price;
+       
 
     }
 

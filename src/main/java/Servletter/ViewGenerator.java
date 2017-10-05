@@ -10,45 +10,52 @@ import entities.*;
 import java.util.ArrayList;
 
 /**
-     * This class is the "Render class" it takes alot of the work away from the jsp pages so they can look smooth.
-     * This class is used in shopCart.jsp, showOrders.jsp, showOrderInfo.jsp.
-     * 
-     */
+ * This class is the "Render class" it takes alot of the work away from the jsp
+ * pages so they can look smooth. This class is used in shopCart.jsp,
+ * showOrders.jsp, showOrderInfo.jsp.
+ *
+ */
 public class ViewGenerator {
-    
-   
+
     /**
-     * @param user is an expected value and if null it would crash the application.
-     * @return a list of previous orders the specific user made. if parameter is wrong their
-     * will be nothing to return since it depends on the parameter to find the list.
-     * 
-     * This method does not change the state of any object it prints the list of the user.
-     * 
+     * @param user is an expected value and if null it would crash the
+     * application.
+     * @return a list of previous orders the specific user made. if parameter is
+     * wrong their will be nothing to return since it depends on the parameter
+     * to find the list.
+     *
+     * This method does not change the state of any object it prints the list of
+     * the user.
+     *
      */
-    
     public static String viewOrdersByUser(User user) {
         String output = "";
         OrderMapper om = OrderMapper.createOrderMapper();
         ArrayList<Order> userOrders = (ArrayList) om.getOrdersByUserId(user);
-       // ArrayList<Order> userOrders = user.orderList();
+        // ArrayList<Order> userOrders = user.orderList();
         output += "<tbody>";
 
         for (Order o : userOrders) {
             int id = o.getOrder_id();
-            output += "<tr><td>" + id + "</td>" 
+            output += "<tr><td>" + id + "</td>"
                     + "<td><a href=\"showOrderInfo.jsp?orderId=" + id + "\"> View this order </a></td>"
                     + "<td>" + o.getDate() + "</td></tr>";
         }
         output += "</tbody>";
         return output;
     }
-    
+
+    /**
+     * @return A list of all orders written in html so it can be displayed in
+     * the jsp file.
+     */
+
     public static String viewAllOrders() {
 
         String output = "";
-        
+
         OrderMapper om = OrderMapper.createOrderMapper();
-        
+
         ArrayList<Order> userOrders = (ArrayList) om.getAllOrders();
         output += "<tbody>";
 
@@ -64,10 +71,16 @@ public class ViewGenerator {
         return output;
     }
 
+    /**
+     * @param orderId The id of the order.
+     * @param admin Needs to know if it is an admin to see extended details.
+     * @return A list of orderlines written in html so that is cna be displayed
+     * in the jsp page.
+     */
     public static String viewSingleOrder(int orderId, boolean admin) {
         String output = "";
         OrderMapper om = OrderMapper.createOrderMapper();
-        
+
         Order orderToShow = om.getOrderById(orderId);
         ArrayList<Orderline> orderLines = (ArrayList) om.getOrderlinesByOrderId(orderToShow);
         double totalPrice = 0;
@@ -83,7 +96,7 @@ public class ViewGenerator {
         output += "<tr><th>Bottom</th><th>Topping</th><th>Price</th>";
         output += "<th>Quantity</th><th>SubTotal</th></tr></thead>";
         output += "<tbody>";
-        
+
         for (Orderline o : orderLines) {
             Bottom bot = o.getBottom();
             Topping top = o.getTopping();
@@ -96,12 +109,10 @@ public class ViewGenerator {
             double subPrice = o.getPrice();
             totalPrice += subPrice;
 
-            
-            
-            output += "<tr><td>" + botName + "</td>" 
-                    + "<td>" + topName + "</td>" 
+            output += "<tr><td>" + botName + "</td>"
+                    + "<td>" + topName + "</td>"
                     + "<td>" + price + "</td>"
-                    + "<td>" + quantity + "</td>" 
+                    + "<td>" + quantity + "</td>"
                     + "<td>" + subPrice + "</td> </tr>";
 
         }
@@ -109,10 +120,15 @@ public class ViewGenerator {
         output += "<tr><td><h3>Total</h3></td><td></td><td></td><td></td>";
         output += "<td><h3>" + totalPrice + "</h3></td></tr>";
         output += "</tbody></table>";
-        
+
         return output;
     }
 
+    /**
+     *
+     * @param orderLines
+     * @return
+     */
     public static String linesAddedView(ArrayList<Orderline> orderLines) {
         String output = "";
 
@@ -129,6 +145,12 @@ public class ViewGenerator {
         return output;
     }
 
+    /**
+     * 
+     * @param bottomList The list of bottoms.
+     * @return A list of bottoms, printed so that the jsp page can use them in the dropdown content.
+     */
+     
     public static String bottomSelect(ArrayList<Bottom> bottomList) {
         String output = "";
         int i = 1;
@@ -139,6 +161,11 @@ public class ViewGenerator {
         return output;
     }
 
+    /**
+     * 
+     * @param toppingList The list of toppings.
+     * @return A list of toppings, printed so that the jsp page can use them in the dropdown content.
+     */
     public static String toppingSelect(ArrayList<Topping> toppingList) {
         String output = "";
         int i = 1;
