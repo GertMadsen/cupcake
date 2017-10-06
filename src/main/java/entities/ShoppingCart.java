@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * ShoppingCart is used to store the orderlines before it creates the order object.
  * Methods are small easy understandable methods.
  * 
- * @author Mikkel Lindstrøm <Mikkel.Lindstrøm>
+ * @author Mikkel Lindstrøm 
  */
 
 public class ShoppingCart {
