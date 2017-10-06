@@ -126,8 +126,8 @@ public class ViewGenerator {
 
     /**
      *
-     * @param orderLines
-     * @return
+     * @param orderLines The parameter that is in shoppingCart when the user choose to select a cupcake
+     * @return A list of orderlines that is found in shoppingcart ´.
      */
     public static String linesAddedView(ArrayList<Orderline> orderLines) {
         String output = "";
@@ -146,7 +146,6 @@ public class ViewGenerator {
     }
 
     /**
-     * 
      * @param bottomList The list of bottoms.
      * @return A list of bottoms, printed so that the jsp page can use them in the dropdown content.
      */
