@@ -37,11 +37,11 @@ public class Connector {
 
    
 
-        if (conn != null) {
+        try {
+        if (conn != null || conn.isClosed()) {
             return conn;
         }
 
-        try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException ex) {
