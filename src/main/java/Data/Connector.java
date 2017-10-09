@@ -21,6 +21,7 @@ public class Connector {
 //    private final static String PASSWORD = "cupcake1971";
 //    
 //  Christians MySQL aerver.
+
     private final static String DRIVER = "com.mysql.jdbc.Driver";
     private final static String URL = "jdbc:mysql://46.101.152.26:3306/cupcake";
     private final static String USER = "cupcakeuser";
@@ -35,13 +36,10 @@ public class Connector {
 
     public static Connection getConnection() {
 
-   
-
-        try {
-        if (conn != null || conn.isClosed()) {
+        if (conn != null) {
             return conn;
         }
-
+        try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException | SQLException ex) {
