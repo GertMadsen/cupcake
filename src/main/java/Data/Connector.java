@@ -8,6 +8,8 @@ package Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,9 +38,15 @@ public class Connector {
 
     public static Connection getConnection() {
 
-        if (conn != null) {
-            return conn;
+             
+        try {
+            if (conn != null && !conn.isClosed()) {
+                return conn;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -51,7 +59,6 @@ public class Connector {
     public static void closeConnection() {
         try {
             conn.close();
-            conn = null;
         } catch (SQLException e) {
             System.out.println("Exception thrown  :" + e);
         }
